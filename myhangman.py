@@ -48,7 +48,10 @@ class WordGuesser:
         else:
             return False  # if it's false, then tell the user INVALID, TRY AGAIN
 
-    def guess_letter(self):
+    def guess_letter(self): # ,leter
+        #is vaid character else return false
+        #add atempt
+        #guess
         if self.attempts > self.max_guesses:
             return False
 
