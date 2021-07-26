@@ -26,47 +26,48 @@ class WordGuesser:
         # self.password = 0
 
     def custom_list(self):
+        # could add function to allow user to input their own list as a string
         pass
 
-    def pick_word(self):  # could combine with hide_word
+    def pick_word(self):
         self.chosen_word = random.choice(self.words_list)
-        ## split string chosen word and turn into list?
         # TODO splits up chosen word into a list and saves as self.split_word
         self.split_word = list(self.chosen_word)
+        self.hidden_word = len(self.chosen_word) * "_ "
         return self.chosen_word
 
-    def hide_word(self):  # hide word return show to user
-        self.hidden_word = len(self.chosen_word) * "_ "
-        return self.hidden_word
+    # def hide_word(self):  # hide word return show to user
+    #     self.hidden_word = len(self.chosen_word) * "_ "
+    #     return self.hidden_word
 
-    def input_letter(self, letter):
+    # def input_letter(self, letter):
+    #     letter = letter.strip()
+    #     self.guess = letter.lower()
+    #     if self.guess.isalpha():  # Could allow numbers too for a higher difficulty level
+    #         self.attempts += 1  # could move attempt count plus to guess_letter
+    #         return self.guess
+    #     else:
+    #         return False  # if it's false, then tell the user INVALID, TRY AGAIN
+
+# TODO combine guess letter and input letter
+
+    def guess_letter(self, letter):
         letter = letter.strip()
         self.guess = letter.lower()
-        if self.guess.isalpha():  # Could allow numbers too for a higher difficulty level
-            self.attempts += 1  # could move attempt count plus to guess_letter
-            return self.guess
-        else:
-            return False  # if it's false, then tell the user INVALID, TRY AGAIN
 
-    def guess_letter(self): # ,leter
-        #is vaid character else return false
-        #add atempt
-        #guess
+        if not self.guess.isalpha():  # Could allow numbers too for a higher difficulty level
+            self.attempts += 1
+            return False  # no numbers or special characters allowed
+
         if self.attempts > self.max_guesses:
-            return False
+            return False  # run out of guesses
 
         if self.guess in self.split_word:
             occurrences = [j for j, x in enumerate(self.split_word) if x == self.guess]
             for i in range(0, len(occurrences)):
-
-                self.split_word.index(self.guess)
+                # self.split_word.index(self.guess)
                 split_hidden_word = list(self.hidden_word)
                 split_hidden_word[occurrences[i]] = self.guess
-
-
-
-
-
 
 
             # find index where that letter is, check first how many times that letter appears
@@ -76,7 +77,9 @@ class WordGuesser:
 
 
 
+game1 = WordGuesser('player1', wordsList)
 
+game1.guess_letter()
 
 
 
