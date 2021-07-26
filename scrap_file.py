@@ -24,12 +24,12 @@
 # print(string.strip())
 # print(string)
 
-my_list = ['whatever', 'huh', 'huh', 'huh', 'whatever', 'huh', 'heya', '444']
-
-indices = [i for i, "whatever" in enumerate(my_list)]
-
-print(indices)
-
-print(my_list)
-
-print(len(indices))
+# my_list = ['whatever', 'hi', 'whatever', 'huh', 'hiya', '444']
+#
+# indices = [i for i, "whatever" in enumerate(my_list)]
+#
+# print(indices)
+#
+# print(my_list)
+#
+# print(len(indices))
