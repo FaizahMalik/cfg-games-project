@@ -28,7 +28,7 @@ class WordGuesser:
     def custom_list(self):
         pass
 
-    def pick_word(self):  # could be a useless fxn, doesn't do much
+    def pick_word(self):  # could combine with hide_word
         self.chosen_word = random.choice(self.words_list)
         ## split string chosen word and turn into list?
         # TODO splits up chosen word into a list and saves as self.split_word
@@ -36,8 +36,6 @@ class WordGuesser:
         return self.chosen_word
 
     def hide_word(self):  # hide word return show to user
-        # TODO check if they guessed a letter correctly,
-        #  replace the empty spaces with the letters and update self.hidden_word
         self.hidden_word = len(self.chosen_word) * "_ "
         return self.hidden_word
 
@@ -45,7 +43,7 @@ class WordGuesser:
         letter = letter.strip()
         self.guess = letter.lower()
         if self.guess.isalpha():  # Could allow numbers too for a higher difficulty level
-            self.attempts =+ 1  # could move attempt count plus to guess_letter
+            self.attempts += 1  # could move attempt count plus to guess_letter
             return self.guess
         else:
             return False  # if it's false, then tell the user INVALID, TRY AGAIN
@@ -55,9 +53,9 @@ class WordGuesser:
             return False
 
         if self.guess in self.split_word:
-            occurrences = [j for j, self.guess in enumerate(self.split_word)]
-            # OR occurrences = [j for j, x in enumerate(self.split_word) if x == self.guess]
+            occurrences = [j for j, x in enumerate(self.split_word) if x == self.guess]
             for i in range(0, len(occurrences)):
+
                 self.split_word.index(self.guess)
                 split_hidden_word = list(self.hidden_word)
                 split_hidden_word[occurrences[i]] = self.guess

@@ -26,7 +26,7 @@
 
 my_list = ['whatever', 'huh', 'huh', 'huh', 'whatever', 'huh', 'heya', '444']
 
-indices = [i for i, x in enumerate(my_list) if x == "whatever"]
+indices = [i for i, "whatever" in enumerate(my_list)]
 
 print(indices)
 
