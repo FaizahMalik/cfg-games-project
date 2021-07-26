@@ -57,10 +57,10 @@ class WordGuesser:
 
         if not self.guess.isalpha():  # Could allow numbers too for a higher difficulty level
             self.attempts += 1
-            return False  # no numbers or special characters allowed
+            return "No special characters"  # no numbers or special characters allowed
 
         if self.attempts > self.max_guesses:
-            return False  # run out of guesses
+            return "Run out of guesses"  # run out of guesses
 
         if self.guess in self.split_word:
             occurrences = [j for j, x in enumerate(self.split_word) if x == self.guess]
@@ -68,12 +68,13 @@ class WordGuesser:
                 # self.split_word.index(self.guess)
                 split_hidden_word = list(self.hidden_word)
                 split_hidden_word[occurrences[i]] = self.guess
+            return "Correct!!"
 
 
             # find index where that letter is, check first how many times that letter appears
             # replace hidden word with the correctly guessed letter(s)
         else:
-            return False # wrong guess, tell user try again OR end game if max attempts reached
+            return "Wrong guess"  # wrong guess, tell user try again OR end game if max attempts reached
 
 
 
