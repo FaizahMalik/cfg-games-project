@@ -14,14 +14,12 @@ wordsList = ['hello', 'how', 'are', 'you', 'doing']
 class WordGuesser:
     def __init__(self, username, words_list):
         self.words_list = words_list
-        self.username = username
+        self.username = username  # not implemented
         self.chosen_word = None
         self.hidden_word = None
-        self.split_word = None
-        self.attempts = 0
-        self.total_guesses = None
+        self.attempts = 9
+        self.past_guesses = None  # not implemented
         self.guess = None
-        self.max_guesses = 9
         # self.difficulty = 0
         # self.password = 0
 
@@ -31,8 +29,6 @@ class WordGuesser:
 
     def pick_word(self):
         self.chosen_word = random.choice(self.words_list)
-        # TODO splits up chosen word into a list and saves as self.split_word
-        self.split_word = list(self.chosen_word)
         self.hidden_word = len(self.chosen_word) * "_ "
         return self.chosen_word
 
@@ -49,21 +45,20 @@ class WordGuesser:
     #     else:
     #         return False  # if it's false, then tell the user INVALID, TRY AGAIN
 
-# TODO combine guess letter and input letter
 
     def guess_letter(self, letter):
-        letter = letter.strip()
-        self.guess = letter.lower()
+        self.guess = letter.lower().strip()
 
         if not self.guess.isalpha():  # Could allow numbers too for a higher difficulty level
-            self.attempts += 1
             return "No special characters"  # no numbers or special characters allowed
 
-        if self.attempts > self.max_guesses:
+        if self.attempts <= 0:
             return "Run out of guesses"  # run out of guesses
 
-        if self.guess in self.split_word:
-            occurrences = [j for j, x in enumerate(self.split_word) if x == self.guess]
+        self.attempts -= 1
+
+        if self.guess in self.chosen_word:
+            occurrences = [j for j, x in enumerate(self.chosen_word) if x == self.guess]
             for i in range(0, len(occurrences)):
                 # self.split_word.index(self.guess)
                 split_hidden_word = list(self.hidden_word)

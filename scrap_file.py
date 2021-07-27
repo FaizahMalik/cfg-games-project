@@ -24,12 +24,32 @@
 # print(string.strip())
 # print(string)
 
-# my_list = ['whatever', 'hi', 'whatever', 'huh', 'hiya', '444']
+# my_list = ['whatever', 'hi', '7', 'huh', 'hiya', 'whatever', '444']
 #
-# indices = [i for i, "whatever" in enumerate(my_list)]
+# my_string = 'words55wordswords'
+#
+# indices = [j for j, x in enumerate(my_string) if x == "5"]
 #
 # print(indices)
 #
 # print(my_list)
 #
 # print(len(indices))
+
+
+# my_string = '  worDDs55 wordswords  '
+#
+# if "s" in my_string:
+#     print("indeed")
+#
+# wow = my_string.lower().strip()
+#
+# print(wow)
+
+
+def pick_word(word):
+    hidden_word = len(word) * "_ "
+    print(word)
+    return hidden_word
+
+print(pick_word('hiii'))
