@@ -1,10 +1,16 @@
 import random
 
 
-class WordGuesser:
+class Level:  # main parent class
     def __init__(self, username, words_list):
-        self.words_list = words_list
         self.username = username
+        self.words_list = words_list
+
+
+class Beginner(Level):  # this is our beginner class
+
+    def __init__(self, username, words_list):
+        super().__init__(username, words_list)
         self.chosen_word = None
         self.display_word = None
         self.attempts = 9  # could be modified according to difficulty lvl
@@ -58,3 +64,25 @@ class WordGuesser:
             return "\nWrong guess\n\n{}".format(self.display_word)
 
 
+class Medium(Level):  # this is our medium-difficulty subclass
+    def __init__(self, username, words_list):
+        super().__init__(username, words_list)
+        self.chosen_word = None
+        self.display_word = None
+        self.attempts = 9  # could be modified according to difficulty lvl
+        self.past_guesses = None  # not implemented, but could be used to warn user if they have guessed a letter twice
+        self.guess = None
+        # self.difficulty = 0
+        # self.password = 0
+
+
+class Hard(Level):  # this is our beast mode subclass
+    def __init__(self, username, words_list):
+        super().__init__(username, words_list)
+        self.chosen_word = None
+        self.display_word = None
+        self.attempts = 9  # could be modified according to difficulty lvl
+        self.past_guesses = None  # not implemented, but could be used to warn user if they have guessed a letter twice
+        self.guess = None
+        # self.difficulty = 0
+        # self.password = 0
