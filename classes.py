@@ -1,5 +1,6 @@
 import random
 
+# draw_body, turtleDrawing.draw_head, draw_leg1, draw_leg2, draw_leg3, draw_leg4, draw_tail, draw_back_middle, draw_back_line, draw_eyes
 
 class Level:  # main parent class
     def __init__(self, username, words_list):
@@ -45,8 +46,6 @@ class Beginner(Level):  # this is our beginner class
         if not self.guess.isalpha():  # could allow numbers & multiple words for a higher difficulty level
             return "No special characters\n"  # no numbers, special characters or multiple words allowed
 
-        self.attempts -= 1
-
         if self.guess == self.chosen_word:  # they guess the whole word correctly
             self.display_word = self.chosen_word  # process will continue until it reaches ***
 
@@ -54,15 +53,20 @@ class Beginner(Level):  # this is our beginner class
             self.replace_letter()  # replaces display_word with correctly guessed letters
 
             if self.display_word.replace(' ', '') == self.chosen_word:  # *** guessed all characters
-                return "\n{} \n\nWell done! The word was {}\n".format(self.display_word, self.chosen_word)
+                return "\n{} \n\nWell done! The word was {}.\n".format(self.display_word, self.chosen_word)
             else:
-                return "\ncorrect! \n\n{}".format(self.display_word)
+                return "\nCorrect! \n\n{}".format(self.display_word)
 
+        elif self.guess not in self.chosen_word:
+            self.attempts -= 1
+            return "\nWrong guess\n\n{}".format(self.display_word)
+            
         elif self.attempts <= 0:
             return "Run out of guesses, the word was: {}. \n".format(self.chosen_word)  # run out of guesses
-        else:
-            return "\nWrong guess\n\n{}".format(self.display_word)
 
+        else:
+            print()
+            
 
 class Medium(Level):  # this is our medium-difficulty subclass
     def __init__(self, username, words_list):
