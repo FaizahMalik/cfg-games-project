@@ -1,6 +1,6 @@
 import random
+from draw_turtle import Donatello
 
-# draw_body, turtleDrawing.draw_head, draw_leg1, draw_leg2, draw_leg3, draw_leg4, draw_tail, draw_back_middle, draw_back_line, draw_eyes
 
 class Level:  # main parent class
     def __init__(self, username, words_list):
@@ -44,7 +44,7 @@ class Beginner(Level):  # this is our beginner class
         """takes an input (letter or word), and decides whether it is correct or not"""
         self.guess = letter.lower().strip()
         if not self.guess.isalpha():  # could allow numbers & multiple words for a higher difficulty level
-            return "No special characters\n"  # no numbers, special characters or multiple words allowed
+            return "No special characters.\n"  # no numbers, special characters or multiple words allowed
 
         if self.guess == self.chosen_word:  # they guess the whole word correctly
             self.display_word = self.chosen_word  # process will continue until it reaches ***
@@ -59,14 +59,43 @@ class Beginner(Level):  # this is our beginner class
 
         elif self.guess not in self.chosen_word:
             self.attempts -= 1
-            return "\nWrong guess\n\n{}".format(self.display_word)
-            
+            msg = "\nWrong guess! Please try again.\n\n{}".format(self.display_word)
+            if self.attempts == 8:
+                Donatello.draw_body()
+                return msg
+            elif self.attempts == 7:
+                Donatello.draw_head()
+                return msg
+            elif self.attempts == 6:
+                Donatello.draw_leg1()
+                Donatello.draw_leg2()
+                return msg
+            elif self.attempts == 5:
+                Donatello.draw_leg3()
+                Donatello.draw_leg4()
+                return msg
+            elif self.attempts == 4:
+                Donatello.draw_tail()
+                return msg
+            elif self.attempts == 3:
+                Donatello.draw_back_middle()
+                return msg
+            elif self.attempts == 2:
+                Donatello.draw_back_line()
+                return msg
+            elif self.attempts == 1:
+                Donatello.draw_eyes()
+                return msg
+            else:
+                return "Run out of guesses, the word was: {}. \n".format(self.chosen_word)  # run out of guesses
+            # print("\nWrong guess\n\n{}".format(self.display_word))
+
         elif self.attempts <= 0:
-            return "Run out of guesses, the word was: {}. \n".format(self.chosen_word)  # run out of guesses
+            return
 
         else:
             print()
-            
+
 
 class Medium(Level):  # this is our medium-difficulty subclass
     def __init__(self, username, words_list):
