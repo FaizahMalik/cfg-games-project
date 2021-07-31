@@ -26,3 +26,5 @@ while game1.display_word.replace(' ', '') != game1.chosen_word:
 print()
 print(" Thanks for playing! ".center(44, "="))
 print(f"Your word was {game1.chosen_word}, thanks for playing!")
+
+# show which letters you have already tried

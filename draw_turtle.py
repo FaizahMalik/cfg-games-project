@@ -1,16 +1,23 @@
 import turtle as t
-import time
 
 
 class TurtleDrawing:
-    def __init__(self, turtle, speed, pensize, penup, goto, pendown, ht):
-        self.turtle = turtle
-        self.speed = speed
-        self.pensize = pensize
-        self.penup = penup
-        self.goto = goto
-        self.pendown = pendown
-        self.ht = ht
+    def __init__(self):
+        self.speed = t.speed(5)
+        self.pensize = t.pensize(8)
+        self.penup = t.penup()
+        self.goto = t.goto(0, -150)
+        self.pendown = t.pendown()
+        self.ht = t.ht()
+
+    # def __init__(self, turtle, speed, pensize, penup, goto, pendown, ht):
+    #     self.turtle = turtle
+    #     self.speed = speed
+    #     self.pensize = pensize
+    #     self.penup = penup
+    #     self.goto = goto
+    #     self.pendown = pendown
+    #     self.ht = ht
 
     # draw circle body
     def draw_body(self):
@@ -150,16 +157,15 @@ class TurtleDrawing:
     #     t.draw_back_line()
 
 
-Donatello_ = t.Turtle(visible=False)
-Donatello_speed = t.speed(5000)
-Donatello_pensize = t.pensize(8)
-Donatello_penup = t.penup()
-Donatello_goto = t.goto(0, -150)
-Donatello_pendown = t.pendown()
-Donatello_ht = t.ht()
+# Donatello_ = t.Turtle(visible=False)
+# Donatello_speed = t.speed(5000)
+# Donatello_pensize = t.pensize(8)
+# Donatello_penup = t.penup()
+# Donatello_goto = t.goto(0, -150)
+# Donatello_pendown = t.pendown()
+# Donatello_ht = t.ht()
 
-Donatello = TurtleDrawing(Donatello_, Donatello_speed, Donatello_pensize, Donatello_penup, Donatello_goto,
-                          Donatello_pendown, Donatello_ht)
+Donatello = TurtleDrawing()
 
 
 # Donatello.draw_body()

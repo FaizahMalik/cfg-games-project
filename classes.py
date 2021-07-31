@@ -87,7 +87,7 @@ class Beginner(Level):  # this is our beginner class
                 Donatello.draw_eyes()
                 return msg
             else:
-                return "Run out of guesses, the word was: {}. \n".format(self.chosen_word)  # run out of guesses
+                return "Run out of guesses, the word was: {}.\n".format(self.chosen_word)  # run out of guesses
             # print("\nWrong guess\n\n{}".format(self.display_word))
 
         elif self.attempts <= 0:
@@ -102,7 +102,7 @@ class Medium(Level):  # this is our medium-difficulty subclass
         super().__init__(username, words_list)
         self.chosen_word = None
         self.display_word = None
-        self.attempts = 9  # could be modified according to difficulty lvl
+        self.attempts = 8  # could be modified according to difficulty lvl
         self.past_guesses = None  # not implemented, but could be used to warn user if they have guessed a letter twice
         self.guess = None
         # self.difficulty = 0
@@ -114,7 +114,7 @@ class Hard(Level):  # this is our beast mode subclass
         super().__init__(username, words_list)
         self.chosen_word = None
         self.display_word = None
-        self.attempts = 9  # could be modified according to difficulty lvl
+        self.attempts = 7  # could be modified according to difficulty lvl
         self.past_guesses = None  # not implemented, but could be used to warn user if they have guessed a letter twice
         self.guess = None
         # self.difficulty = 0
