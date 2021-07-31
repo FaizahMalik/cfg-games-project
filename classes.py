@@ -8,7 +8,7 @@ class Level:  # main parent class
         self.words_list = words_list
 
 
-class Beginner(Level):  # this is our beginner class
+class Beginner(Level):  # this is our beginner level class
 
     def __init__(self, username, words_list):
         super().__init__(username, words_list)

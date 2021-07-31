@@ -3,7 +3,7 @@ import turtle as t
 
 class TurtleDrawing:
     def __init__(self):
-        self.speed = t.speed(5)
+        self.speed = t.speed(5000)
         self.pensize = t.pensize(8)
         self.penup = t.penup()
         self.goto = t.goto(0, -150)
@@ -166,7 +166,6 @@ class TurtleDrawing:
 # Donatello_ht = t.ht()
 
 Donatello = TurtleDrawing()
-
 
 # Donatello.draw_body()
 # Donatello.draw_head()

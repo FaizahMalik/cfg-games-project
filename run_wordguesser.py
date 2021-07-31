@@ -1,6 +1,6 @@
 from classes import Beginner, Medium, Hard
 
-defaultList = ['software', 'list', 'dictionary', 'string', 'tuple', 'programming', 'function', 'class']
+defaultList = ['python', 'software', 'list', 'dictionary', 'string', 'tuple', 'programming', 'function', 'class']
 
 if input("Do you wanna play word guesser? y/n: ") == "y":
     username = input("Enter your name: ")
