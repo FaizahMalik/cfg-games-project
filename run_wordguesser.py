@@ -1,4 +1,4 @@
-from classes import WordGuesser
+from WordGuesser import WordGuesser
 
 defaultList = ['python']  # 'software', 'list', 'dictionary', 'string', 'tuple', 'programming', 'function', 'class']
 
