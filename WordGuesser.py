@@ -35,27 +35,26 @@ class WordGuesser:
 
     def process_guess(self, letter):
         letter = letter.lower().strip()
-        letter
-
-    def isValidGuess(self, letter):
-        return letter.isAlpha()
+        if letter.isAlpha():
+            return True
+        else:
+            return "Special characters and numbers are not allowed"
 
     def guess_letter(self, letter):
         """takes an input (letter or word), and decides whether it is correct or not"""
 
-        letter = self.sanitizeGuess(letter)
+        # letter = self.sanitizeGuess(letter)
+        #
+        # if not self.isValidGuess(letter):
+        #     return
+        #
+        # self.guess = letter
+        # return self.actuallyGuess(letter)
 
-        if not self.isValidGuess(letter):
-            return "AAAHH WRONG GUESS!!!"
-
-        self.guess = letter
-        return self.actuallyGuess(letter)
-
-    def actuallyGuess(self, letter):
+    def check_letter(self, letter):
 
         if self.guess == self.chosen_word:  # they guess the whole word correctly
             self.display_word = self.chosen_word  # process will continue until it reaches ***
-            self.attempts -= 1
 
         if self.guess in self.chosen_word:
             self.replace_letter()  # replaces display_word with correctly guessed letters
@@ -67,10 +66,14 @@ class WordGuesser:
 
         elif self.attempts <= 0:
             return "Run out of guesses, the word was: {}. \n".format(self.chosen_word)  # run out of guesses
+            #TODO print('%f %s cost $%.2f' % (6, 'bananas', 1.74))
         else:
+            self.attempts -= 1
             return "\nWrong guess\n\n{}".format(self.display_word)
 
 
-# show number of attempts
-# don't add new drawing when a user has already attempted
-# show letters already guessed
+
+#TODO show number of attempts
+#TODO don't add new drawing when a user has already attempted
+#TODO show letters already guessed
+#TODO split up functions
