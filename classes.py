@@ -19,7 +19,7 @@ class Level:  # main parent class
                 method = getattr(Donatello, draw_method)
                 method()
         else:
-            print("MISSING KEY")
+            print("MISSING KEY")  # <<< FOR TESTING
 
 
 class Beginner(Level):  # this is our beginner level class
