@@ -1,28 +1,22 @@
-import turtle as t
-
+from turtle import Turtle, Screen
+t = Turtle()
+s = Screen()
 
 class TurtleDrawing:
     def __init__(self):
-        self.speed = t.speed(5000)
-        self.pensize = t.pensize(8)
-        self.penup = t.penup()
-        self.goto = t.goto(0, -150)
-        self.pendown = t.pendown()
-        self.ht = t.ht()
-
-    # def __init__(self, turtle, speed, pensize, penup, goto, pendown, ht):
-    #     self.turtle = turtle
-    #     self.speed = speed
-    #     self.pensize = pensize
-    #     self.penup = penup
-    #     self.goto = goto
-    #     self.pendown = pendown
-    #     self.ht = ht
+        t.speed(5000)
+        t.pensize(8)
+        t.penup()
+        t.goto(0, -150)
+        t.pendown()
+        t.ht()
+        s.setup(500, 600)
 
     # draw circle body
     def draw_body(self):
         r = 150
         t.circle(r)
+        # FIXME body appears instantly not sure if that's supposed to happen
 
     # draw head
     def draw_head(self):
@@ -47,6 +41,7 @@ class TurtleDrawing:
             t.forward(2)
             t.left(4)
         t.forward(10)
+        t.done()
 
     # draw leg 2
     def draw_leg2(self):
@@ -59,6 +54,7 @@ class TurtleDrawing:
             t.forward(2)
             t.right(4)
         t.forward(10)
+        # t.done()
 
     # draw leg 3
     def draw_leg3(self):
@@ -70,6 +66,7 @@ class TurtleDrawing:
             t.forward(2)
             t.right(4)
         t.forward(10)
+        # t.done()
 
     # draw leg 4
     def draw_leg4(self):
@@ -82,6 +79,7 @@ class TurtleDrawing:
             t.forward(2)
             t.left(4)
         t.forward(10)
+        # t.done()
 
     # draw tail
     def draw_tail(self):
@@ -92,6 +90,7 @@ class TurtleDrawing:
         t.forward(30)
         t.left(90)
         t.forward(30)
+        # t.done()
 
     # draw back
     def draw_back_middle(self):
@@ -102,6 +101,7 @@ class TurtleDrawing:
         for i in range(6):
             t.forward(75)
             t.right(300)
+            # t.done()
 
     # draw back pattern
     def draw_back_line(self):
@@ -132,6 +132,7 @@ class TurtleDrawing:
         t.pendown()
         t.left(60)
         t.forward(72)
+        # t.done()
 
     # draw eyes
     def draw_eyes(self):
@@ -143,7 +144,8 @@ class TurtleDrawing:
         t.goto(13, 185)
         t.pendown()
         t.circle(3)
-        
+        # t.done()
+
 
     # # for more difficulty:
     # def draw_legs(self):
@@ -180,5 +182,5 @@ Donatello = TurtleDrawing()
 
 # t.mainloop()
 
-# t.done()
+# # # t.done()
 # t.Screen().exitonclick()
