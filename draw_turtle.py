@@ -2,6 +2,8 @@ from turtle import Turtle, Screen
 t = Turtle()
 s = Screen()
 
+# TODO turtle window goes unresponsive in between drawings, we could find a fix for that?
+
 class TurtleDrawing:
     def __init__(self):
         t.speed(5000)
@@ -41,7 +43,7 @@ class TurtleDrawing:
             t.forward(2)
             t.left(4)
         t.forward(10)
-        t.done()
+        # t.done()
 
     # draw leg 2
     def draw_leg2(self):
@@ -66,7 +68,7 @@ class TurtleDrawing:
             t.forward(2)
             t.right(4)
         t.forward(10)
-        # t.done()
+        # # t.done()
 
     # draw leg 4
     def draw_leg4(self):
@@ -79,7 +81,7 @@ class TurtleDrawing:
             t.forward(2)
             t.left(4)
         t.forward(10)
-        # t.done()
+        # # t.done()
 
     # draw tail
     def draw_tail(self):
@@ -90,7 +92,7 @@ class TurtleDrawing:
         t.forward(30)
         t.left(90)
         t.forward(30)
-        # t.done()
+        # # t.done()
 
     # draw back
     def draw_back_middle(self):
@@ -101,7 +103,7 @@ class TurtleDrawing:
         for i in range(6):
             t.forward(75)
             t.right(300)
-            # t.done()
+            # # t.done()
 
     # draw back pattern
     def draw_back_line(self):
@@ -132,7 +134,7 @@ class TurtleDrawing:
         t.pendown()
         t.left(60)
         t.forward(72)
-        # t.done()
+        # # t.done()
 
     # draw eyes
     def draw_eyes(self):
@@ -144,7 +146,7 @@ class TurtleDrawing:
         t.goto(13, 185)
         t.pendown()
         t.circle(3)
-        # t.done()
+        # # t.done()
 
 
     # # for more difficulty:
@@ -182,5 +184,5 @@ Donatello = TurtleDrawing()
 
 # t.mainloop()
 
-# # # t.done()
+# # # # t.done()
 # t.Screen().exitonclick()
