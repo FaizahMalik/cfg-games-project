@@ -6,11 +6,11 @@ class WordPicker:
 
     def __init__(self):
         """Reads from the words_list.json file (5000 most common words from the Brown corpus)
-         and creates a list of lists [word, POS tag] and a list of only words."""
+         and creates a list of lists [word, POS tag] and a set of only words."""
         with open("words_list.json", "r") as json_file:
             final_words_list = json.load(json_file)
         self.all_words = final_words_list
-        self.only_words = [word for word, tag in self.all_words]
+        self.only_words = set([word for word, tag in self.all_words])
 
     def get_freq_pos(self, pos):
         """Creates a list of frequent words belonging to a chosen part of speech: either nouns, adjectives, adverbs or verbs."""
@@ -47,7 +47,7 @@ class WordPicker:
 
         elif task_num == 4:
             message = "Palindromes are words that read the same backward or forward. Can you guess one?"
-            palindromes = [w for w in set(self.only_words) if self.is_palindrome(w) and 10 > len(w) > 1]
+            palindromes = [w for w in self.only_words if self.is_palindrome(w) and 10 > len(w) > 1]
             word_to_guess = random.choice(palindromes)
 
         elif task_num == 5:
