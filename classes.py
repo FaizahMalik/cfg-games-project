@@ -21,23 +21,6 @@ class Level:  # main parent class
         else:
             print("MISSING KEY")  # <<< FOR TESTING
 
-
-class Beginner(Level):  # this is our beginner level class
-
-    def __init__(self, username, words_list):
-        super().__init__(username, words_list)
-        self.attempts = 9
-        self.turtle_drawings = {
-            8: ["draw_body"],
-            7: ["draw_head"],
-            6: ["draw_leg1", "draw_leg2"],
-            5: ["draw_leg3", "draw_leg4"],
-            4: ["draw_tail"],
-            3: ["draw_back_middle"],
-            2: ["draw_back_line"],
-            1: ["draw_eyes"]
-        }
-
     def pick_word(self):
         """chooses a random word from given list & returns hidden version of the word"""
         self.chosen_word = random.choice(self.words_list)
@@ -96,6 +79,24 @@ class Beginner(Level):  # this is our beginner level class
                 return f"\nWrong guess! Please try again.\n\n{self.display_word}"
 
 
+class Beginner(Level):  # this is our beginner level class
+
+    def __init__(self, username, words_list):
+        super().__init__(username, words_list)
+        self.attempts = 9
+        self.turtle_drawings = {
+            8: ["draw_body"],
+            7: ["draw_head"],
+            6: ["draw_leg1", "draw_leg2"],
+            5: ["draw_leg3", "draw_leg4"],
+            4: ["draw_tail"],
+            3: ["draw_back_middle"],
+            2: ["draw_back_line"],
+            1: ["draw_eyes"]
+        }
+
+
+
 class Medium(Level):  # this is our medium-difficulty subclass
     def __init__(self, username, words_list):
         super().__init__(username, words_list)
@@ -119,11 +120,10 @@ class Hard(Level):  # this is our beast mode subclass
             6: ["draw_body", "draw_head"],
             5: ["draw_leg1", "draw_leg2"],
             4: ["draw_leg3", "draw_leg4"],
-            3: ["draw_back_middle", "draw_tail"],
+            3: ["draw_tail", "draw_back_middle"],
             2: ["draw_back_line"],
             1: ["draw_eyes"]
         }
-
 
 # DONE resize turtle screen
 # DONE reorganise turtle drawing function
@@ -134,4 +134,5 @@ class Hard(Level):  # this is our beast mode subclass
 # DONE split up and simplify methods
 # DONE delete unnecessary __init__ attributes in subclasses
 # DONE get rid of self. part in TurtleDrawing initialisation
+# TODO check if guess is equal to word, then only allow 1 character inputs
 
