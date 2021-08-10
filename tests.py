@@ -1,5 +1,5 @@
 import unittest
-from src.hw_session9 import validate_pin_code, validate_withdrawal_amount, log_in
+from src.run_wordguesser.py import validate_pin_code, validate_withdrawal_amount, log_in
 
 
 class TestHangman(unittest.TestCase):
@@ -38,6 +38,10 @@ class TestHangman(unittest.TestCase):
 
     # test if turtle is drawing when answer is incorrect
     def test_if_incorrect_answer_draws_turtle(self):
+        pass
+
+    # test if number of attempts is reduced when answer is incorrect
+    def test_if_attempts_is_reduced(self):
         pass
 
 
