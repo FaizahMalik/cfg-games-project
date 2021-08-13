@@ -3,6 +3,7 @@ t = Turtle()
 s = Screen()
 
 # TODO turtle window goes unresponsive in between drawings, we could find a fix for that?
+# TODO make class an iterator
 
 class TurtleDrawing:
     def __init__(self):
@@ -13,6 +14,18 @@ class TurtleDrawing:
         t.pendown()
         t.ht()
         s.setup(500, 600)
+
+    # def __iter__(self):
+    #     self.n = 0
+    #     return self
+    #
+    # def __next__(self):
+    #     if self.n <= self.max:
+    #         result = 2 ** self.n
+    #         self.n += 1
+    #         return result
+    #     else:
+    #         raise StopIteration
 
     # draw circle body
     def draw_body(self):
@@ -169,7 +182,7 @@ class TurtleDrawing:
 # Donatello_pendown = t.pendown()
 # Donatello_ht = t.ht()
 
-Donatello = TurtleDrawing()
+# Donatello = TurtleDrawing()
 
 # Donatello.draw_body()
 # Donatello.draw_head()
