@@ -9,7 +9,7 @@ Donatello = TurtleDrawing()
 # DONE sanitise_guess() returns False if there are special characters and self.guess if it was a letter.
 # DONE split check_guess() and process_guess() into check_guess_if_previous(), add_previous_guess(), correct_word(),
 # correct_guess(), display_correct_guess() and incorrect_guess()
-# DONE instantiated Donatello in classes.py rather than draw_turtle.py
+# DONE instantiated Donatello in levels.py rather than draw_turtle.py
 
 
 class Level:  # main parent class

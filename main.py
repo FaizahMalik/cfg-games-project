@@ -1,4 +1,4 @@
-from classes import Beginner  #, Medium, Hard
+from levels import Beginner  #, Medium, Hard
 import time
 
 # TODO put in function to avoid repetition of code

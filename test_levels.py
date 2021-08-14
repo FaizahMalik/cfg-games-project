@@ -1,5 +1,5 @@
 import unittest
-from classes import Beginner, Medium, Hard
+from levels import Beginner, Medium, Hard
 
 #TODO put in a test folder?
 
@@ -21,7 +21,7 @@ class TestClasses(unittest.TestCase):
         cls.l2.guess = 'l'
         cls.l2.past_guesses = ['p']
         cls.l2.chosen_word = 'orange'
-        cls.l1.display_word = '_ _ _ _ _ _ '
+        cls.l2.display_word = '_ _ _ _ _ _ '
 
         cls.l3 = Beginner(username='tester2', words_list=['mermaid'])
         cls.l3.guess = 'mermaid'
@@ -100,4 +100,4 @@ if __name__ == '__main__':
 # cd .. (so you are not in the test folder)
 # and then: python -m unittest -v test/test_hw_session9.py
 
-# python -m unittest -v test_classes.py
+# python -m unittest -v test_levels.py
