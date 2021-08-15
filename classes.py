@@ -25,6 +25,7 @@ class Level:  # main parent class
         """chooses a random word from given list & returns hidden version of the word"""
         self.chosen_word = random.choice(self.words_list)
         self.display_word = len(self.chosen_word) * "_ "
+        Donatello.draw_word(self.display_word)
         return self.display_word
 
     def replace_letter(self):
@@ -65,17 +66,22 @@ class Level:  # main parent class
             self.replace_letter()  # replaces display_word with correctly guessed letters
 
             if self.display_word.replace(' ', '') == self.chosen_word:  # *** guessed all characters
+                Donatello.draw_word(self.display_word)
+                Donatello.correct_word(self.chosen_word.upper())
                 return f"\n{self.display_word}\n\nWell done! The word was {self.chosen_word}.\n"
             else:
+                Donatello.draw_word(self.display_word)
                 return f"\nCorrect!\n\n{self.display_word}"
 
         else:
             self.attempts -= 1
 
             if self.attempts <= 0:
+                Donatello.game_lost(self.chosen_word.upper())
                 return f"\nWrong guess!\n\nYou ran out of attempts. The word was: {self.chosen_word}. \n"
             else:
                 self.draw()
+                Donatello.draw_word(self.display_word)
                 return f"\nWrong guess! Please try again.\n\n{self.display_word}"
 
 
