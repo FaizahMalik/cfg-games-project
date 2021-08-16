@@ -1,5 +1,8 @@
 from turtle import Turtle, Screen
+import time
+
 t = Turtle()
+t1 = Turtle()
 s = Screen()
 
 # TODO turtle window goes unresponsive in between drawings, we could find a fix for that?
@@ -7,7 +10,7 @@ s = Screen()
 
 class TurtleDrawing:
     def __init__(self):
-        t.speed(5000)
+        t.speed(10)
         t.pensize(8)
         t.penup()
         t.goto(0, -150)
@@ -29,33 +32,48 @@ class TurtleDrawing:
 
     # draw circle body
     def draw_body(self):
+        t.penup()
+        t.goto(0, -150)
+        t.pendown()
+        t.pencolor('dark green')
+        t.fillcolor('forest green')
+        t.begin_fill()
         r = 150
         t.circle(r)
-        # FIXME body appears instantly not sure if that's supposed to happen
+        t.end_fill()
 
     # draw head
     def draw_head(self):
+        t.pensize(4)
         t.penup()
         t.goto(-40, 150)
         t.pendown()
+        t.pencolor('yellow green')
+        t.fillcolor('yellow green')
+        t.begin_fill()
         t.left(90)
         t.forward(30)
         for i in range(45):
             t.forward(3)
             t.right(4)
         t.forward(35)
+        t.end_fill()
 
     # draw leg 1
     def draw_leg1(self):
         t.penup()
         t.goto(-85, 125)
         t.pendown()
+        t.pencolor('yellow green')
+        t.fillcolor('yellow green')
+        t.begin_fill()
         t.right(135)
         t.forward(10)
         for i in range(45):
             t.forward(2)
             t.left(4)
         t.forward(10)
+        t.end_fill()
         # t.done()
 
     # draw leg 2
@@ -63,12 +81,16 @@ class TurtleDrawing:
         t.penup()
         t.goto(85, 125)
         t.pendown()
+        t.pencolor('yellow green')
+        t.fillcolor('yellow green')
+        t.begin_fill()
         t.left(90)
         t.forward(10)
         for i in range(45):
             t.forward(2)
             t.right(4)
         t.forward(10)
+        t.end_fill()
         # t.done()
 
     # draw leg 3
@@ -76,24 +98,32 @@ class TurtleDrawing:
         t.penup()
         t.goto(-85, -125)
         t.pendown()
+        t.pencolor('yellow green')
+        t.fillcolor('yellow green')
+        t.begin_fill()
         t.forward(10)
         for i in range(45):
             t.forward(2)
             t.right(4)
         t.forward(10)
-        # # t.done()
+        t.end_fill()
+        # t.done()
 
     # draw leg 4
     def draw_leg4(self):
         t.penup()
         t.goto(85, -125)
         t.pendown()
+        t.pencolor('yellow green')
+        t.fillcolor('yellow green')
+        t.begin_fill()
         t.right(90)
         t.forward(10)
         for i in range(45):
             t.forward(2)
             t.left(4)
         t.forward(10)
+        t.end_fill()
         # # t.done()
 
     # draw tail
@@ -101,17 +131,23 @@ class TurtleDrawing:
         t.penup()
         t.goto(-15, -150)
         t.pendown()
+        t.pencolor('yellow green')
+        t.fillcolor('yellow green')
+        t.begin_fill()
         t.right(180)
         t.forward(30)
         t.left(90)
         t.forward(30)
+        t.end_fill()
         # # t.done()
 
     # draw back
     def draw_back_middle(self):
+        t.pensize(10)
         t.penup()
         t.goto(-34, -60)
         t.pendown()
+        t.pencolor('dark green')
         t.right(45)
         for i in range(6):
             t.forward(75)
@@ -120,6 +156,7 @@ class TurtleDrawing:
 
     # draw back pattern
     def draw_back_line(self):
+        t.pencolor('dark green')
         t.right(120)
         t.forward(78)
         t.penup()
@@ -160,6 +197,34 @@ class TurtleDrawing:
         t.pendown()
         t.circle(3)
         # # t.done()
+
+    def draw_word(self, word):
+        t1.clear()
+        t1.speed(5)
+        t1.pensize(4)
+        t1.penup()
+        t1.goto(-290, -250)
+        t1.pendown()
+        t1.ht()
+        t1.write(word, move=False, align="Left", font=("arial", 25, "normal"))
+
+    def correct_word(self, word):
+        t.clear()
+        t.penup()
+        t.goto(-100, 0)
+        t.write(f"Well done, you win! \n", move=False, align="center", font=("arial", 25, "bold"))
+        t.write(f"The word was '{word}'", move=False, align="center", font=("arial", 25, "bold"))
+        time.sleep(3)
+
+    def game_lost(self, word):
+        t.clear()
+        t.penup()
+        t.goto(-100, 0)
+        t.pencolor('black')
+        t.write(f"\nWrong guess!\n\nYou ran out of attempts", move=False, align="center",
+                font=("arial", 25, "normal"))
+        t.write(f"The word was: '{word}'. \n", move=False, align="center", font=("arial", 25, "bold"))
+        time.sleep(3)
 
 
     # # for more difficulty:

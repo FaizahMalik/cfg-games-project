@@ -3,7 +3,7 @@ from draw_turtle import TurtleDrawing
 
 Donatello = TurtleDrawing()
 
-
+# TODO check if guess is equal to word, then only allow 1 character inputs
 # DONE split pick_word() into two functions, pick_word() and show_word()
 # DONE replace_letter() returns self.display_word
 # DONE sanitise_guess() returns False if there are special characters and self.guess if it was a letter.
@@ -39,6 +39,7 @@ class Level:  # main parent class
     def show_word(self):
         """Returns hidden version of the word"""
         self.display_word = len(self.chosen_word) * "_ "
+        Donatello.draw_word(self.display_word)
         return self.display_word
 
     def replace_letter(self):  # helper function to correct_guess()
@@ -62,7 +63,7 @@ class Level:  # main parent class
         if not self.guess.isalpha():
             print("No special characters.\n")  # no numbers, special characters or multiple words allowed
             return False
-        # if type != str raise assert
+        # TODO if type != str raise assert
         return self.guess
 
     def check_guess_if_previous(self):  # is a helper function to add_previous_guess()
@@ -72,8 +73,8 @@ class Level:  # main parent class
         else:
             return True
 
-    def add_previous_guess(
-            self):  # relies on the results from check_guess_if_previous() | helper function to incorrect_guess()
+    def add_previous_guess(self):
+        # relies on the results from check_guess_if_previous() | helper function to incorrect_guess()
         """If check_guess_if_previous() returns True, the letter is added to the list of self.past_guesses"""
         if self.check_guess_if_previous():
             self.past_guesses.append(self.guess)  # adds guessed letter to past guesses
@@ -86,7 +87,7 @@ class Level:  # main parent class
         """checks if the the guess is equal to the chosen word, if yes it returns True and the full word"""
         if self.guess == self.chosen_word:  # they guess the whole word correctly
             self.display_word = self.chosen_word  # process will continue until it reaches ***
-            return True, self.display_word
+            return True, self.display_word  # FIXME is there a reason why we're also returning self.display_word?
         else:
             return False
 
@@ -103,9 +104,12 @@ class Level:  # main parent class
             self):  # relies on the results from correct_word() and correct_guess() | helper function to incorrect_guess()
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
+            Donatello.draw_word(self.display_word)
+            Donatello.correct_word(self.chosen_word.upper())
             print(f"\n{self.display_word}\n\nWell done! The word was {self.chosen_word}.\n")
             return True, self.display_word
         elif self.correct_guess():
+            Donatello.draw_word(self.display_word)
             print(f"\nCorrect!\n\n{self.display_word}")
             return True, self.display_word
         else:
@@ -122,10 +126,12 @@ class Level:  # main parent class
             self.attempts -= 1
 
             if self.attempts <= 0:
+                Donatello.game_lost(self.chosen_word.upper())
                 print(f"\nWrong guess!\n\nYou ran out of attempts. The word was: {self.chosen_word}. \n")
                 return False
             else:
                 self.draw()
+                Donatello.draw_word(self.display_word)
                 print(f"\nWrong guess! Please try again.\n\n{self.display_word}")
                 return False, self.attempts
 
@@ -188,16 +194,6 @@ class Hard(Level):  # this is our beast mode subclass
 # print(test.display_correct_guess())
 # test.incorrect_guess()
 
-# DONE resize turtle screen
-# DONE reorganise turtle drawing function
-# DONE animate welcome and goodbye messages
-# DONE show number of attempts
-# DONE don't draw when user has already attempted a letter
-# DONE show letters already guessed
-# DONE split up and simplify methods
-# DONE delete unnecessary __init__ attributes in subclasses
-# DONE get rid of self. part in TurtleDrawing initialisation
-# TODO check if guess is equal to word, then only allow 1 character inputs
 
 
 # import random
