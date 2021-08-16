@@ -10,25 +10,40 @@ import turtle
 
 turtle.ht()
 screen = turtle.getscreen()
+screen.colormode(255)
 screen.setup(width=700, height=700)
+turtle.bgcolor(87, 217, 255)
 
 
 def welcome_message():
-    turtle.write("\n" + " WELCOME TO WORDGUESSER ".center(44, "=") + "\n\n", move=False, align="center",
-                 font=("Arial", 20, "normal"))
-    # for char in string:
-    #     turtle.write(char + '', move=False, align="left", font=("Arial", 8, "normal"))
-    #     time.sleep(.05)
+    font_size=1
+    # for i in range(10):
+    #     turtle.pencolor(249, 249, 121)
+    for x in range(20):
+        if x % 2 == 0:
+            turtle.pencolor(249, 249, 121)
+        elif x == 19:
+            turtle.pencolor(255, 145, 0)
+        else:
+            turtle.pencolor(255, 193, 69)
+        turtle.write("WORDGUESSER!", move=False, align="center", font=("Arial", font_size, "bold"))
+        time.sleep(0.1)
+        font_size+=3
+    turtle.penup()
+    turtle.goto(0, 30)
+    turtle.write("\n" + " WELCOME TO ".center(44, "~") + "\n\n", move=False, align="center",
+                 font=("Courier New", 20, "normal"))
+    turtle.pendown()
     time.sleep(2)
-
     if turtle.textinput("Turtle Game", "Do you want to play wordguesser? y/n: ").lower().strip() == "y":
+        turtle.clear()
         username = turtle.textinput("Turtle Game", "Enter your name: ")
-        play_hangman(Beginner, username)
+        play_hangman(Beginner, username)  #### TODO SAYS BEGINNER
         return username
     else:
         turtle.clear()
-        turtle.write("Maybe next time... \n", move=False, align="center", font=("Arial", 15, "normal"))
-        time.sleep(2)
+        turtle.write("That's too bad. Maybe next time? ):", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(4)
         exit()
 
 
@@ -41,14 +56,16 @@ def play_hangman(level, username):
         game1 = level(username, customList)
     else:
         turtle.clear()
-        turtle.penup()
-        turtle.goto(-100, 0)
-        turtle.write(f"You will be using the default list", move=False, align="center", font=("Arial", 15, "normal"))
+        turtle.write(f"You will be using the default list", move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(2)
         turtle.clear()
-        turtle.write(f"Your word will be hidden below...\n Good luck!", move=False, align="center", font=("Arial", 15, "normal"))
-        time.sleep(2.5)
+        turtle.write("Your word will be hidden below. Good luck.", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(2)
         turtle.clear()
+        for c in range(4):
+            turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 20, "bold"))
+            time.sleep(0.6)
+            turtle.clear()
         game1 = level(username, defaultList)
 
     game1.pick_word()
@@ -66,18 +83,24 @@ def play_hangman(level, username):
     time.sleep(3)
 
 
-# def welcome_message():
-#     string = "\n" + " WELCOME TO WORDGUESSER ".center(44, "=") + "\n\n"
-#     for char in string:
-#         print(char, end='')
-#         time.sleep(.05)
+# turtle.ht()
+# screen = turtle.getscreen()
+# screen.setup(width=700, height=700)
 #
-#     if input("Do you want to play wordguesser? y/n: ").lower().strip() == "y":
-#         username = input("Enter your name: ")
+#
+# def welcome_message():
+#     turtle.write("\n" + " WELCOME TO WORDGUESSER ".center(44, "=") + "\n\n", move=False, align="center",
+#                  font=("Arial", 20, "normal"))
+#     time.sleep(2)
+#
+#     if turtle.textinput("Turtle Game", "Do you want to play wordguesser? y/n: ").lower().strip() == "y":
+#         username = turtle.textinput("Turtle Game", "Enter your name: ")
 #         play_hangman(Beginner, username)
 #         return username
 #     else:
-#         print("Maybe next time!")
+#         turtle.clear()
+#         turtle.write("Maybe next time... \n", move=False, align="center", font=("Arial", 15, "normal"))
+#         time.sleep(2)
 #         exit()
 #
 #
@@ -85,26 +108,37 @@ def play_hangman(level, username):
 #
 #     defaultList = ['python']  #, 'software', 'list', 'dictionary', 'string', 'tuple', 'programming', 'function', 'class']
 #
-#     if input("Hi, {}. Would you like to use your own custom words? y/n: ".format(username)) == "y":
-#         customList = input("Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
+#     if turtle.textinput("Turtle Game", "Hi, {}. Would you like to use your own custom words? y/n: ".format(username)) == "y":
+#         customList = turtle.textinput("Turtle Game", "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
 #         game1 = level(username, customList)
 #     else:
-#         print(f"You will be using the default list. Your word is hidden below...\n")
+#         turtle.clear()
+#         turtle.penup()
+#         turtle.goto(-25, 0)
+#         turtle.write(f"You will be using the default list", move=False, align="center", font=("Arial", 15, "normal"))
+#         time.sleep(2)
+#         turtle.clear()
+#         turtle.write(f"Your word will be hidden below.\nGood luck!", move=False, align="right", font=("Arial", 20, "normal"))
+#         # for i in range(15):
+#         #     turtle.write("\r" + ('=' * (i + 1)) + " THANKS FOR PLAYING! " + ('=' * (i + 1)), move=False, align="center", font=("Arial", 15, "normal"))
+#         #     time.sleep(0.12)
+#         time.sleep(2.5)
+#         turtle.clear()
 #         game1 = level(username, defaultList)
 #
 #     game1.pick_word()
 #     print(game1.show_word())
 #
 #     while game1.display_word.replace(' ', '') != game1.chosen_word:
-#         guess = input(f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
+#         guess = turtle.textinput("Turtle Game", f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
 #         game1.incorrect_guess(guess)
 #         if game1.attempts <= 0:
 #             break
 #
-#     string = "\n" + " THANKS FOR PLAYING! ".center(44, "=") + "\n\n"
-#     for char in string:
-#         print(char, end='')
-#         time.sleep(.05)
+#     screen.clear()
+#     time.sleep(3)
+#     turtle.write("\n" + " THANKS FOR PLAYING! ".center(44, "=") + "\n\n", move=False, align="center", font=("Arial", 15, "normal"))
+#     time.sleep(3)
 
     ## POTENTIAL CODE TO ALLOW USER TO PLAY AGAIN??####
     # if input("Do you want to play again? y/n: ").lower().strip() == "y":

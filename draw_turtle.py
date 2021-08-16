@@ -3,10 +3,12 @@ import time
 
 t = Turtle()
 t1 = Turtle()
+t2 = Turtle()
 s = Screen()
 
 # TODO turtle window goes unresponsive in between drawings, we could find a fix for that?
 # TODO make class an iterator
+# FIXME game lost function works but correct word function doesn't
 
 class TurtleDrawing:
     def __init__(self):
@@ -208,15 +210,35 @@ class TurtleDrawing:
         t1.ht()
         t1.write(word, move=False, align="Left", font=("arial", 25, "normal"))
 
-    def correct_word(self, word):
+    def turtle_correct(self):
+        t2.penup()
+        t2.goto(200, -300)
+        t2.clear()
+        # t.color((87, 217, 255))
+        # t.write("Wrong guess!", move=False, align="center", font=("Courier New", 20, "bold"))
+        # t.color(0,0,0)
+        t2.write("Correct guess", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.5)
+
+    def turtle_incorrect(self):
+        t2.penup()
+        t2.goto(200, -300)
+        t2.clear()
+        # t.color((87, 217, 255))
+        # t.write("Correct guess", move=False, align="center", font=("Courier New", 20, "bold"))
+        # t.color(0, 0, 0)
+        t2.write("Wrong guess!", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.5)
+
+    def turtle_win(self, word):  # FIXME help
         t.clear()
         t.penup()
         t.goto(-100, 0)
-        t.write(f"Well done, you win! \n", move=False, align="center", font=("arial", 25, "bold"))
-        t.write(f"The word was '{word}'", move=False, align="center", font=("arial", 25, "bold"))
+        t.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
+        t.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
 
-    def game_lost(self, word):
+    def turtle_lose(self, word):
         t.clear()
         t.penup()
         t.goto(-100, 0)
