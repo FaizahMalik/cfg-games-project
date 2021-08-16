@@ -1,6 +1,7 @@
 from levels import Beginner, Medium, Hard
 import time
 import turtle
+from word_picker import WordPicker
 
 # DONE rename main.py to main.py
 # DONE put script into two functions - welcome_message() & play_hangman to avoid repeating code if player
@@ -49,33 +50,36 @@ def welcome_message():
 
 def play_hangman(level, username):
 
-    defaultList = ['python']  #, 'software', 'list', 'dictionary', 'string', 'tuple', 'programming', 'function', 'class']
-
-    if turtle.textinput("Turtle Game", "Hi, {}. Would you like to use your own custom words? y/n: ".format(username)) == "y":
-        customList = turtle.textinput("Turtle Game", "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
-        game1 = level(username, customList)
-    else:
+    turtle.clear()
+    #turtle.write(f"You will be using the default list", move=False, align="center", font=("Courier New", 20, "bold"))
+    time.sleep(2)
+    turtle.clear()
+    turtle.write("Your word will be hidden below. Good luck.", move=False, align="center", font=("Courier New", 20, "bold"))
+    time.sleep(2)
+    turtle.clear()
+    for c in range(4):
+        turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.6)
         turtle.clear()
-        turtle.write(f"You will be using the default list", move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(2)
-        turtle.clear()
-        turtle.write("Your word will be hidden below. Good luck.", move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(2)
-        turtle.clear()
-        for c in range(4):
-            turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 20, "bold"))
-            time.sleep(0.6)
-            turtle.clear()
-        game1 = level(username, defaultList)
+    words_to_pick = WordPicker()
 
-    game1.pick_word()
-    print(game1.show_word())
+    for task_num in range(1, 10):
+        task = words_to_pick.get_word_of_task(task_num)
+        turtle.write(task[0], move=False, align="center",
+                     font=("Courier New", 20, "bold"))
+        game1 = level(username, [task[1]])
 
-    while game1.display_word.replace(' ', '') != game1.chosen_word:
-        guess = turtle.textinput("Turtle Game", f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
-        game1.incorrect_guess(guess)
+        game1.pick_word()
+        print(game1.show_word())
+
+        while game1.display_word.replace(' ', '') != game1.chosen_word:
+            guess = turtle.textinput("Turtle Game", f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
+            game1.incorrect_guess(guess)
+            if game1.attempts <= 0:
+                break
         if game1.attempts <= 0:
             break
+        turtle.clear()
 
     screen.clear()
     time.sleep(3)
