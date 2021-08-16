@@ -37,6 +37,7 @@ class Level:  # main parent class
         self.username = username
         self.words_list = words_list
         self.turtle_drawings = {}
+        self.status = None
 
     def draw(self):  # helper function to incorrect_guess()
         if self.attempts in self.turtle_drawings:
@@ -141,6 +142,7 @@ class Level:  # main parent class
             if self.attempts <= 0:
                 Donatello.turtle_lose(self.chosen_word.upper())
                 print(f"\nWrong guess!\n\nYou ran out of attempts. The word was: {self.chosen_word}. \n")
+                self.status = 'Lost'
                 return False
             else:
                 self.draw()

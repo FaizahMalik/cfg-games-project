@@ -75,9 +75,9 @@ def play_hangman(level, username):
         while game1.display_word.replace(' ', '') != game1.chosen_word:
             guess = turtle.textinput("Turtle Game", f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
             game1.incorrect_guess(guess)
-            if game1.attempts <= 0:
+            if game1.status == 'Lost':
                 break
-        if game1.attempts <= 0:
+        if game1.status == 'Lost':
             break
         turtle.clear()
 
