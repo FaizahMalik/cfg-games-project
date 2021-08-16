@@ -89,14 +89,6 @@ class Level:  # main parent class
             Donatello.turtle_text(f"You've already guessed '{self.guess}'!")
             return False
 
-    def correct_word(self):  # is a helper function to display_correct_guess()
-        """checks if the the guess is equal to the chosen word, if yes it returns True and the full word"""
-        if self.guess == self.chosen_word:  # they guess the whole word correctly
-            self.display_word = self.chosen_word  # process will continue until it reaches ***
-            return True, self.display_word  # FIXME is there a reason why we're also returning self.display_word?
-        else:
-            return False
-
     def correct_guess(self):  # relies on the results from replace_letter() | helper function to display_correct_guess()
         """checks if guess exists in self.chosen_word, if so it calls the replaces_letter() function to replace
         letter """
@@ -106,12 +98,35 @@ class Level:  # main parent class
         else:
             return False
 
+    def correct_word(self):  # is a helper function to display_correct_guess()
+        """checks if the the guess is equal to the chosen word, if yes it returns True and the full word"""
+        if self.guess == self.chosen_word:  # they guess the whole word correctly
+            self.display_word = self.chosen_word  # process will continue until it reaches ***
+            return True, self.display_word  # FIXME is there a reason why we're also returning self.display_word?
+        else:
+            return False
+
+    def guessed_word(self):
+        """checks if the total of the guesses is equal to the chosen word, if yes it returns True and the full word"""
+        if self.correct_guess():
+            if self.display_word.replace(' ','') == self.chosen_word:
+                self.display_word = self.chosen_word  # process will continue until it reaches ***
+                return True, self.display_word  # FIXME is there a reason why we're also returning self.display_word?
+        else:
+            return False
+
     def display_correct_guess(
             self):  # relies on the results from correct_word() and correct_guess() | helper function to incorrect_guess()
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
             Donatello.draw_word(self.display_word)
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
+            Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
+            return True, self.display_word
+        elif self.guessed_word():
+            Donatello.draw_word(self.display_word)
+            Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
+            Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
             return True, self.display_word
         elif self.correct_guess():
             Donatello.turtle_text("Correct guess!")
@@ -134,10 +149,9 @@ class Level:  # main parent class
                 Donatello.turtle_focused_text(f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
                 return False
             else:
+                Donatello.turtle_text("Wrong guess!")
                 self.draw()
                 Donatello.draw_word(self.display_word)
-                # Donatello.turtle_incorrect()
-                Donatello.turtle_text("Wrong guess!")
                 return False, self.attempts
 
 

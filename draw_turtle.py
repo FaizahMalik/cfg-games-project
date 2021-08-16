@@ -4,9 +4,11 @@ import time
 t = Turtle()
 t1 = Turtle()
 t2 = Turtle()
+t3 = Turtle()
 t.ht()
 t1.ht()
 t2.ht()
+t3.ht()
 s = Screen()
 s.title("Hangman? Pfffffft never heard of it.")
 
@@ -15,15 +17,17 @@ s.title("Hangman? Pfffffft never heard of it.")
 # t is turtle drawing
 
 # TODO make class an iterator?!?!?!?!
-# FIXME game lost function works but correct word function doesn't?!?!?1
 
 class TurtleDrawing:
     def __init__(self):
+        t.reset()
+        t.ht()
         t.speed(10)
         t.pensize(8)
         t.penup()
         t.goto(0, -150)
         t.pendown()
+        t.pencolor('dark green')
 
     # def __iter__(self):
     #     self.n = 0
@@ -61,8 +65,8 @@ class TurtleDrawing:
         t.penup()
         t.goto(-40, 150)
         t.pendown()
-        t.pencolor('yellow green')
-        t.fillcolor('yellow green')
+        t.pencolor('olive drab')
+        t.fillcolor('olive drab')
         t.begin_fill()
         t.left(90)
         t.forward(30)
@@ -77,8 +81,8 @@ class TurtleDrawing:
         t.penup()
         t.goto(-85, 125)
         t.pendown()
-        t.pencolor('yellow green')
-        t.fillcolor('yellow green')
+        t.pencolor('olive drab')
+        t.fillcolor('olive drab')
         t.begin_fill()
         t.right(135)
         t.forward(10)
@@ -94,8 +98,8 @@ class TurtleDrawing:
         t.penup()
         t.goto(85, 125)
         t.pendown()
-        t.pencolor('yellow green')
-        t.fillcolor('yellow green')
+        t.pencolor('olive drab')
+        t.fillcolor('olive drab')
         t.begin_fill()
         t.left(90)
         t.forward(10)
@@ -111,8 +115,8 @@ class TurtleDrawing:
         t.penup()
         t.goto(-85, -125)
         t.pendown()
-        t.pencolor('yellow green')
-        t.fillcolor('yellow green')
+        t.pencolor('olive drab')
+        t.fillcolor('olive drab')
         t.begin_fill()
         t.forward(10)
         for i in range(45):
@@ -127,8 +131,8 @@ class TurtleDrawing:
         t.penup()
         t.goto(85, -125)
         t.pendown()
-        t.pencolor('yellow green')
-        t.fillcolor('yellow green')
+        t.pencolor('olive drab')
+        t.fillcolor('olive drab')
         t.begin_fill()
         t.right(90)
         t.forward(10)
@@ -144,8 +148,8 @@ class TurtleDrawing:
         t.penup()
         t.goto(-15, -150)
         t.pendown()
-        t.pencolor('yellow green')
-        t.fillcolor('yellow green')
+        t.pencolor('olive drab')
+        t.fillcolor('olive drab')
         t.begin_fill()
         t.right(180)
         t.forward(30)
@@ -165,7 +169,7 @@ class TurtleDrawing:
         for i in range(6):
             t.forward(75)
             t.right(300)
-            # # t.done()
+
 
     # draw back pattern
     def draw_back_line(self):
@@ -197,7 +201,7 @@ class TurtleDrawing:
         t.pendown()
         t.left(60)
         t.forward(72)
-        # # t.done()
+
 
     # draw eyes
     def draw_eyes(self):
@@ -209,7 +213,7 @@ class TurtleDrawing:
         t.goto(13, 185)
         t.pendown()
         t.circle(3)
-        # # t.done()
+
 
     def draw_word(self, word):
         t1.pencolor(38, 70, 83)
@@ -217,7 +221,7 @@ class TurtleDrawing:
         t1.speed(5)
         t1.pensize(4)
         t1.penup()
-        t1.goto(-290, -250)
+        t1.goto(-390, -250)
         t1.pendown()
         t1.write(word, move=False, align="Left", font=("arial", 25, "normal"))
 
@@ -244,7 +248,7 @@ class TurtleDrawing:
     def turtle_text(self, string):
         t2.pencolor(38, 70, 83)
         t2.penup()
-        t2.goto(80, -300)
+        t2.goto(200, -250)
         t2.clear()
         t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(0.5)
@@ -253,43 +257,52 @@ class TurtleDrawing:
         t2.pencolor(38, 70, 83)
         t.clear()
         t1.clear()
+        t3.clear()
         t2.penup()
         t2.goto(0, 0)
         t2.clear()
         t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
 
-    def turtle_win(self, word):  # FIXME help
-        t2.pencolor(38, 70, 83)
-        t2.clear()
-        t.clear()
-        t2.penup()
-        t2.goto(0, 0)
-        t2.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
-        t2.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(3)
+    def attempts_left(self, num):
+        t3.pencolor(38, 70, 83)
+        t3.penup()
+        t3.goto(200, 250)
+        t3.clear()
+        t3.write(f"Attempts remaining: {num}", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.5)
 
-    def turtle_lose(self, word):
-        t2.pencolor(38, 70, 83)
-        t2.clear()
-        t.clear()
-        t2.penup()
-        t2.goto(0, 0)
-        t2.pencolor()
-        t2.write("You ran out of attempts", move=False, align="center",
-                font=("Courier New", 25, "bold"))
-        t2.write(f"The word was: '{word}'. \n", move=False, align="center", font=("Courier New", 25, "bold"))
-        time.sleep(3)
+    # def turtle_win(self, word):  # FIXME help
+    #     t2.pencolor(38, 70, 83)
+    #     t2.clear()
+    #     t.clear()
+    #     t2.penup()
+    #     t2.goto(0, 0)
+    #     t2.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
+    #     t2.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
+    #     time.sleep(3)
 
-    def already_guessed(self, letter):
-        t2.pencolor(38, 70, 83)
-        t2.ht()
-        t2.penup()
-        t2.goto(200, -250)
-        t2.clear()
-        t2.write(f'\nYou have already guessed the letter "{letter}"! Try again.', move=False, align="center",
-                 font=("arial", 18, "normal"))
-        time.sleep(1)
+    # def turtle_lose(self, word):
+    #     t2.pencolor(38, 70, 83)
+    #     t2.clear()
+    #     t.clear()
+    #     t2.penup()
+    #     t2.goto(0, 0)
+    #     t2.pencolor()
+    #     t2.write("You ran out of attempts", move=False, align="center",
+    #             font=("Courier New", 25, "bold"))
+    #     t2.write(f"The word was: '{word}'. \n", move=False, align="center", font=("Courier New", 25, "bold"))
+    #     time.sleep(3)
+
+    # def already_guessed(self, letter):
+    #     t2.pencolor(38, 70, 83)
+    #     t2.ht()
+    #     t2.penup()
+    #     t2.goto(200, -250)
+    #     t2.clear()
+    #     t2.write(f'\nYou have already guessed the letter "{letter}"! Try again.', move=False, align="center",
+    #              font=("arial", 18, "normal"))
+    #     time.sleep(1)
 
 Donatello = TurtleDrawing()
 
