@@ -1,17 +1,13 @@
 import random
 import time
 
-from draw_turtle import TurtleDrawing
+from draw_turtle import Donatello
 import turtle
 
-Donatello = TurtleDrawing()
 
-#  TODO - show user has already guessed letter on turtle
-#  TODO - make correct & incorrect guess appear on turtle
-#  TODO - move "no special characters" to turtle
-#  TODO -
-# turtle.write("\n" + " WELCOME TO WORDGUESSER ".center(44, "=") + "\n\n", move=False, align="center",
-#                  font=("Arial", 20, "normal"))
+#  DONE - show user has already guessed letter on turtle
+#  DONE - make correct & incorrect guess appear on turtle
+#  DONE - move "no special characters" to turtle
 #
 # turtle.clear()
 # turtle.penup()
@@ -19,12 +15,6 @@ Donatello = TurtleDrawing()
 # turtle.write(f"You will be using the default list", move=False, align="center", font=("Arial", 15, "normal"))
 # time.sleep(2)
 # TODO check if guess is equal to word, then only allow 1 character inputs
-# DONE split pick_word() into two functions, pick_word() and show_word()
-# DONE replace_letter() returns self.display_word
-# DONE sanitise_guess() returns False if there are special characters and self.guess if it was a letter.
-# DONE split check_guess() and process_guess() into check_guess_if_previous(), add_previous_guess(), correct_word(),
-# correct_guess(), display_correct_guess() and incorrect_guess()
-# DONE instantiated Donatello in levels.py rather than draw_turtle.py
 
 
 class Level:  # main parent class
@@ -39,12 +29,13 @@ class Level:  # main parent class
         self.turtle_drawings = {}
 
     def draw(self):  # helper function to incorrect_guess()
-        if self.attempts in self.turtle_drawings:
+        try:
             for draw_method in self.turtle_drawings[self.attempts]:
                 method = getattr(Donatello, draw_method)
                 method()
-        else:
-            print("MISSING KEY")  # <<< FOR TESTING
+        except KeyError:
+            print(KeyError, "missing key in self.turtle_drawings")
+
 
     def pick_word(self):
         """chooses a random word from given list"""
@@ -76,7 +67,7 @@ class Level:  # main parent class
         """takes an input, and cleans it, returns false if guess is not exclusively alphabetical"""
         self.guess = letter.lower().strip()
         if not self.guess.isalpha():
-            print("No special characters.\n")  # no numbers, special characters or multiple words allowed
+            Donatello.turtle_text("Only letters allowed")  # no numbers, special characters or multiple words allowed
             return False
         # TODO if type != str raise assert
         return self.guess
@@ -95,7 +86,7 @@ class Level:  # main parent class
             self.past_guesses.append(self.guess)  # adds guessed letter to past guesses
             return self.past_guesses
         else:
-            turtle.write(f'\nYou have already guessed the letter "{self.guess}"! Try again.')
+            Donatello.turtle_text(f"You've already guessed '{self.guess}'!")
             return False
 
     def correct_word(self):  # is a helper function to display_correct_guess()
@@ -120,11 +111,11 @@ class Level:  # main parent class
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
             Donatello.draw_word(self.display_word)
-            Donatello.turtle_win(self.chosen_word.upper())  ## FIXME Does not show up
+            Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
             return True, self.display_word
         elif self.correct_guess():
+            Donatello.turtle_text("Correct guess!")
             Donatello.draw_word(self.display_word)
-            Donatello.turtle_correct()
             return True, self.display_word
         else:
             return False
@@ -139,14 +130,14 @@ class Level:  # main parent class
             self.attempts -= 1
 
             if self.attempts <= 0:
-                Donatello.turtle_lose(self.chosen_word.upper())
-                print(f"\nWrong guess!\n\nYou ran out of attempts. The word was: {self.chosen_word}. \n")
+                Donatello.turtle_text("Wrong guess!")
+                Donatello.turtle_focused_text(f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
                 return False
             else:
                 self.draw()
                 Donatello.draw_word(self.display_word)
-                Donatello.turtle_incorrect()
-                print(f"\nWrong guess! Please try again.\n\n{self.display_word}")
+                # Donatello.turtle_incorrect()
+                Donatello.turtle_text("Wrong guess!")
                 return False, self.attempts
 
 
