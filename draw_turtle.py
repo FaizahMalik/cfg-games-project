@@ -4,11 +4,18 @@ import time
 t = Turtle()
 t1 = Turtle()
 t2 = Turtle()
+t.ht()
+t1.ht()
+t2.ht()
 s = Screen()
+s.title("Hangman? Pfffffft never heard of it.")
 
-# TODO turtle window goes unresponsive in between drawings, we could find a fix for that?
-# TODO make class an iterator
-# FIXME game lost function works but correct word function doesn't
+# t2 is small messages
+# t1 is big messages
+# t is turtle drawing
+
+# TODO make class an iterator?!?!?!?!
+# FIXME game lost function works but correct word function doesn't?!?!?1
 
 class TurtleDrawing:
     def __init__(self):
@@ -17,8 +24,6 @@ class TurtleDrawing:
         t.penup()
         t.goto(0, -150)
         t.pendown()
-        t.ht()
-        s.setup(500, 600)
 
     # def __iter__(self):
     #     self.n = 0
@@ -33,6 +38,12 @@ class TurtleDrawing:
     #         raise StopIteration
 
     # draw circle body
+    # def initialise(self):
+    #     screen = turtle.getscreen()
+    #     screen.colormode(255)
+    #     screen.setup(width=700, height=700)
+    #     Donatello.bgcolor(87, 217, 255)
+
     def draw_body(self):
         t.penup()
         t.goto(0, -150)
@@ -201,52 +212,86 @@ class TurtleDrawing:
         # # t.done()
 
     def draw_word(self, word):
+        t1.pencolor(38, 70, 83)
         t1.clear()
         t1.speed(5)
         t1.pensize(4)
         t1.penup()
         t1.goto(-290, -250)
         t1.pendown()
-        t1.ht()
         t1.write(word, move=False, align="Left", font=("arial", 25, "normal"))
 
-    def turtle_correct(self):
+    def welcome_screen(self):
+        font_size = 1
+        for x in range(20):
+            if x % 2 == 0:
+                t2.pencolor(249, 249, 121)
+            elif x == 19:
+                t2.pencolor(255, 145, 0)
+            else:
+                t2.pencolor(255, 193, 69)
+            t2.write("WORDGUESSER!", move=False, align="center", font=("Arial", font_size, "bold"))
+            time.sleep(0.1)
+            font_size += 3
         t2.penup()
-        t2.goto(200, -300)
+        t2.goto(0, 30)
+        t2.write("\n" + " WELCOME TO ".center(44, "~") + "\n\n", move=False, align="center",
+                     font=("Courier New", 20, "normal"))
+        t2.pendown()
+        time.sleep(4)
         t2.clear()
-        # t.color((87, 217, 255))
-        # t.write("Wrong guess!", move=False, align="center", font=("Courier New", 20, "bold"))
-        # t.color(0,0,0)
-        t2.write("Correct guess", move=False, align="center", font=("Courier New", 20, "bold"))
+
+    def turtle_text(self, string):
+        t2.pencolor(38, 70, 83)
+        t2.penup()
+        t2.goto(80, -300)
+        t2.clear()
+        t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(0.5)
 
-    def turtle_incorrect(self):
+    def turtle_focused_text(self, string):
+        t2.pencolor(38, 70, 83)
+        t.clear()
+        t1.clear()
         t2.penup()
-        t2.goto(200, -300)
+        t2.goto(0, 0)
         t2.clear()
-        # t.color((87, 217, 255))
-        # t.write("Correct guess", move=False, align="center", font=("Courier New", 20, "bold"))
-        # t.color(0, 0, 0)
-        t2.write("Wrong guess!", move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(0.5)
+        t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(3)
 
     def turtle_win(self, word):  # FIXME help
+        t2.pencolor(38, 70, 83)
+        t2.clear()
         t.clear()
-        t.penup()
-        t.goto(-100, 0)
-        t.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
-        t.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
+        t2.penup()
+        t2.goto(0, 0)
+        t2.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
+        t2.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
 
     def turtle_lose(self, word):
+        t2.pencolor(38, 70, 83)
+        t2.clear()
         t.clear()
-        t.penup()
-        t.goto(-100, 0)
-        t.pencolor('black')
-        t.write(f"\nWrong guess!\n\nYou ran out of attempts", move=False, align="center",
-                font=("arial", 25, "normal"))
-        t.write(f"The word was: '{word}'. \n", move=False, align="center", font=("arial", 25, "bold"))
+        t2.penup()
+        t2.goto(0, 0)
+        t2.pencolor()
+        t2.write("You ran out of attempts", move=False, align="center",
+                font=("Courier New", 25, "bold"))
+        t2.write(f"The word was: '{word}'. \n", move=False, align="center", font=("Courier New", 25, "bold"))
         time.sleep(3)
+
+    def already_guessed(self, letter):
+        t2.pencolor(38, 70, 83)
+        t2.ht()
+        t2.penup()
+        t2.goto(200, -250)
+        t2.clear()
+        t2.write(f'\nYou have already guessed the letter "{letter}"! Try again.', move=False, align="center",
+                 font=("arial", 18, "normal"))
+        time.sleep(1)
+
+Donatello = TurtleDrawing()
 
 
     # # for more difficulty:
