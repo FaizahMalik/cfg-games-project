@@ -1,10 +1,14 @@
 from turtle import Turtle, Screen
-
 import time
+
 t = Turtle()
 t1 = Turtle()
+t2 = Turtle()
 s = Screen()
 
+# TODO turtle window goes unresponsive in between drawings, we could find a fix for that?
+# TODO make class an iterator
+# FIXME game lost function works but correct word function doesn't
 
 class TurtleDrawing:
     def __init__(self):
@@ -15,6 +19,18 @@ class TurtleDrawing:
         t.pendown()
         t.ht()
         s.setup(500, 600)
+
+    # def __iter__(self):
+    #     self.n = 0
+    #     return self
+    #
+    # def __next__(self):
+    #     if self.n <= self.max:
+    #         result = 2 ** self.n
+    #         self.n += 1
+    #         return result
+    #     else:
+    #         raise StopIteration
 
     # draw circle body
     def draw_body(self):
@@ -44,7 +60,6 @@ class TurtleDrawing:
             t.right(4)
         t.forward(35)
         t.end_fill()
-
 
     # draw leg 1
     def draw_leg1(self):
@@ -195,25 +210,55 @@ class TurtleDrawing:
         t1.ht()
         t1.write(word, move=False, align="Left", font=("arial", 25, "normal"))
 
-    def correct_word(self, word):
+    def turtle_correct(self):
+        t2.penup()
+        t2.goto(200, -300)
+        t2.clear()
+        # t.color((87, 217, 255))
+        # t.write("Wrong guess!", move=False, align="center", font=("Courier New", 20, "bold"))
+        # t.color(0,0,0)
+        t2.write("Correct guess", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.5)
+
+    def turtle_incorrect(self):
+        t2.penup()
+        t2.goto(200, -300)
+        t2.clear()
+        # t.color((87, 217, 255))
+        # t.write("Correct guess", move=False, align="center", font=("Courier New", 20, "bold"))
+        # t.color(0, 0, 0)
+        t2.write("Wrong guess!", move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.5)
+
+    def turtle_win(self, word):  # FIXME help
         t.clear()
         t.penup()
-        t.goto(-100,0)
-        t.write(f"Well done, you win! \n", move=False, align="center", font=("arial", 25, "bold"))
-        t.write(f"The word was '{word}'", move=False, align="center", font=("arial", 25, "bold"))
+        t.goto(-100, 0)
+        t.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
+        t.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
 
-    def game_lost(self, word):
+    def turtle_lose(self, word):
         t.clear()
         t.penup()
-        t.goto(-100,0)
+        t.goto(-100, 0)
         t.pencolor('black')
-        t.write(f"\nWrong guess!\n\nYou ran out of attempts", move=False, align="center", font=("arial", 25, "normal"))
+        t.write(f"\nWrong guess!\n\nYou ran out of attempts", move=False, align="center",
+                font=("arial", 25, "normal"))
         t.write(f"The word was: '{word}'. \n", move=False, align="center", font=("arial", 25, "bold"))
         time.sleep(3)
 
 
+    # # for more difficulty:
+    # def draw_legs(self):
+    #     t.draw_leg1()
+    #     t.draw_leg2()
+    #     t.draw_leg3()
+    #     t.draw_leg4()
 
+    # def draw_back(self):
+    #     t.draw_back_middle()
+    #     t.draw_back_line()
 
 
 # Donatello_ = t.Turtle(visible=False)
@@ -224,7 +269,7 @@ class TurtleDrawing:
 # Donatello_pendown = t.pendown()
 # Donatello_ht = t.ht()
 
-Donatello = TurtleDrawing()
+# Donatello = TurtleDrawing()
 
 # Donatello.draw_body()
 # Donatello.draw_head()
