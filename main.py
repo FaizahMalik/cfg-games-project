@@ -19,11 +19,9 @@ import json
 # turtle.bgcolor(157, 238, 238)
 
 
-# with open("words_list.json", "r") as json_file:n
-#     final_words_list = json.load(json_file)
-#     defaultList = [word for word, tag in final_words_list]
-
-defaultList = ['python']
+with open("words_list.json", "r") as json_file:
+    final_words_list = json.load(json_file)
+    defaultList = [word for word, tag in final_words_list]
 
 
 def level_selection(username):
