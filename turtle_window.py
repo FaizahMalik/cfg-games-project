@@ -1,18 +1,15 @@
 from turtle import Turtle, Screen
 import time
 
-# t = Turtle()
-# t1 = Turtle()
-# t2 = Turtle()
-# t3 = Turtle()
-
 
 # TODO make class an iterator?!?!?!?!
 
 class TurtleWindow:
     def __init__(self):
         self.s = Screen()
-        self.s.setup(width=1.0, height=1.0)
+        self.s.setup(width=0.9, height=0.9)
+        self.s.colormode(255)
+        self.s.bgcolor(157, 238, 238)
         self.s.title("Hangman? Pfffffft never heard of it")
         [self.t, self.t1, self.t2, self.t3] = [Turtle(), Turtle(), Turtle(), Turtle()]
         self.t.reset()
@@ -39,12 +36,63 @@ class TurtleWindow:
     #     else:
     #         raise StopIteration
 
-    # draw circle body
-    # def initialise(self):
-    #     screen = turtle.getscreen()
-    #     screen.colormode(255)
-    #     screen.setup(width=700, height=700)
-    #     Donatello.bgcolor(87, 217, 255)
+    def draw_word(self, word):
+        self.t1.pencolor(45, 83, 98)
+        self.t1.clear()
+        self.t1.speed(5)
+        self.t1.pensize(4)
+        self.t1.penup()
+        self.t1.goto(-560,-400)
+        self.t1.pendown()
+        self.t1.write(word, move=False, align="Left", font=("arial", 40, "normal"))
+
+    def welcome_screen(self):
+        font_size = 20
+        for x in range(20):
+            if x % 2 == 0:
+                self.t2.pencolor(255, 232, 120)
+            elif x == 19:
+                self.t2.pencolor(255, 149, 107)
+            else:
+                self.t2.pencolor(255, 177, 113)
+            self.t2.write("WORDGUESSER!", move=False, align="center", font=("Arial", font_size, "bold"))
+            time.sleep(0.1)
+            font_size += 5
+        self.t2.penup()
+        self.t2.goto(0, 100)
+        self.t2.write("\n" + " W E L C O M E   T O ".center(100, "~") + "\n\n", move=False, align="center",
+                     font=("Courier New", 30, "normal"))
+        self.t2.pendown()
+        time.sleep(4)
+        self.t2.clear()
+
+    def goodbye_screen(self):
+        self.s.clear()
+        self.s.colormode(255)
+        self.s.bgcolor(87, 217, 255)
+        time.sleep(2)
+        self.t2.write("\n" + " THANKS FOR PLAYING! ".center(44, "~"), move=False, align="center",
+                     font=("Courier New", 40, "normal"))
+        time.sleep(3)
+
+    def turtle_text(self, string):
+        self.t2.pencolor(45, 83, 98)
+        self.t2.penup()
+        self.t2.goto(350, -450)
+        self.t2.clear()
+        self.t2.write(string, move=False, align="center", font=("Courier New", 25, "bold"))
+        time.sleep(0.5)
+
+    def turtle_focused_text(self, string):
+        self.t2.pencolor(45, 83, 98)
+        self.t.clear()
+        self.t1.clear()
+        self.t3.clear()
+        self.t2.penup()
+        self.t2.goto(0, 0)
+        self.t2.clear()
+        self.t2.write(string, move=False, align="center", font=("Courier New", 40, "bold"))
+        time.sleep(3)
 
     def draw_body(self):
         self.t.penup()
@@ -212,56 +260,6 @@ class TurtleWindow:
         self.t.pendown()
         self.t.circle(3)
 
-
-    def draw_word(self, word):
-        self.t1.pencolor(38, 70, 83)
-        self.t1.clear()
-        self.t1.speed(5)
-        self.t1.pensize(4)
-        self.t1.penup()
-        self.t1.goto(-390, -250)
-        self.t1.pendown()
-        self.t1.write(word, move=False, align="Left", font=("arial", 25, "normal"))
-
-    def welcome_screen(self):
-        font_size = 1
-        for x in range(20):
-            if x % 2 == 0:
-                self.t2.pencolor(249, 249, 121)
-            elif x == 19:
-                self.t2.pencolor(255, 145, 0)
-            else:
-                self.t2.pencolor(255, 193, 69)
-            self.t2.write("WORDGUESSER!", move=False, align="center", font=("Arial", font_size, "bold"))
-            time.sleep(0.1)
-            font_size += 3
-        self.t2.penup()
-        self.t2.goto(0, 30)
-        self.t2.write("\n" + " WELCOME TO ".center(44, "~") + "\n\n", move=False, align="center",
-                     font=("Courier New", 20, "normal"))
-        self.t2.pendown()
-        time.sleep(4)
-        self.t2.clear()
-
-    def turtle_text(self, string):
-        self.t2.pencolor(38, 70, 83)
-        self.t2.penup()
-        self.t2.goto(200, -250)
-        self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(0.5)
-
-    def turtle_focused_text(self, string):
-        self.t2.pencolor(38, 70, 83)
-        self.t.clear()
-        self.t1.clear()
-        self.t3.clear()
-        self.t2.penup()
-        self.t2.goto(0, 0)
-        self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(3)
-
     # def attempts_left(self, num):
     #     self.t3.pencolor(38, 70, 83)
     #     self.t3.penup()
@@ -270,7 +268,7 @@ class TurtleWindow:
     #     self.t3.write(f"Attempts remaining: {num}", move=False, align="center", font=("Courier New", 20, "bold"))
     #     time.sleep(0.5)
 
-Donatello = TurtleDrawing()
+Donatello = TurtleWindow()
 
 
     # def turtle_win(self, word):  # FIXME help

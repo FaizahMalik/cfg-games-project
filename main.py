@@ -3,7 +3,7 @@ import random
 from levels import Beginner, Medium, Hard
 import time
 import turtle
-from draw_turtle import Donatello
+from turtle_window import Donatello
 import json
 
 # DONE rename main.py to main.py
@@ -12,14 +12,14 @@ import json
 # DONE Added the option to play again
 # TODO reset turtle so drawing starts over again
 
-turtle.ht()
-screen = turtle.getscreen()
-screen.colormode(255)
-screen.setup(width=1.0, height=1.0)
-turtle.bgcolor(87, 217, 255)
+# turtle.ht()
+# screen = turtle.getscreen()
+# screen.colormode(255)
+# screen.setup(width=0.95, height=0.95)
+# turtle.bgcolor(157, 238, 238)
 
 
-# with open("words_list.json", "r") as json_file:
+# with open("words_list.json", "r") as json_file:n
 #     final_words_list = json.load(json_file)
 #     defaultList = [word for word, tag in final_words_list]
 
@@ -62,7 +62,7 @@ def play_hangman(level, username):
         game1 = level(username, customList)
     else:
         turtle.clear()
-        turtle.pencolor(38, 70, 83)
+        turtle.pencolor(45, 83, 98)
         turtle.write(f"You will be using the default list", move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(2)
         turtle.clear()
@@ -81,37 +81,59 @@ def play_hangman(level, username):
 
     while game1.display_word.replace(' ', '') != game1.chosen_word:
         # TODO if the word is python and I guess "py" i cry a tad
-        guess = turtle.textinput("WordGuesser", f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
+        guess = turtle.textinput("WordGuesser", f"Past Guesses: {game1.past_guesses}\n\nEnter your guess: ")
         game1.incorrect_guess(guess)
         if game1.attempts <= 0:
             break
 
-    screen.clear()
-    screen.colormode(255)
-    turtle.bgcolor(87, 217, 255)
-    time.sleep(2)
-    turtle.write("\n" + " THANKS FOR PLAYING! ".center(44, "="),  move=False, align="center", font=("Courier New", 20, "bold"))
-    time.sleep(3)
+    # screen.clear()
+    # screen.colormode(255)
+    # turtle.bgcolor(87, 217, 255)
+    # time.sleep(2)
+    # turtle.write("\n" + " THANKS FOR PLAYING! ".center(44, "="),  move=False, align="center", font=("Courier New", 20, "bold"))
+    # time.sleep(3)
 
-    # POTENTIAL CODE TO ALLOW USER TO PLAY AGAIN??####
-    if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
-        user_level = turtle.textinput("WordGuesser", "Which level would you like to play? Beginner/Medium/Hard: ").capitalize().strip()
-        available_levels = {
-            'Beginner': Beginner,
-            'Medium': Medium,
-            'Hard': Hard
-        }
+    # Gives the user the option to play again
 
-        if user_level in available_levels:
-            level = available_levels[user_level]
+    def play_again():
+        if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
+            user_level = turtle.textinput("WordGuesser",
+                                          "Which level would you like to play? Beginner/Medium/Hard: ").capitalize().strip()
+            available_levels = {
+                'Beginner': Beginner,
+                'Medium': Medium,
+                'Hard': Hard
+            }
+            if user_level in available_levels:
+                level = available_levels[user_level]
+                return play_hangman(level, username)
+            else:
+                print("Level does not exist.")
+                return play_again()
         else:
-            print("Level does not exist.")
-        turtle.pencolor('dark green')
-        play_hangman(level, username)
-    else:
-        Donatello.turtle_focused_text("Maybe next time!")
-        time.sleep(2)
-        exit()
+            Donatello.turtle_focused_text("Maybe next time!")
+            time.sleep(2)
+            exit(0)
+
+    # if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
+    #     user_level = turtle.textinput("WordGuesser", "Which level would you like to play? Beginner/Medium/Hard: ").capitalize().strip()
+    #     available_levels = {
+    #         'Beginner': Beginner,
+    #         'Medium': Medium,
+    #         'Hard': Hard
+    #     }
+    #
+    #     if user_level in available_levels:
+    #         level = available_levels[user_level]
+    #     else:
+    #         print("Level does not exist.")
+    #
+    #     # turtle.pencolor('dark green')
+    #     play_hangman(level, username)
+    # else:
+    #     Donatello.turtle_focused_text("Maybe next time!")
+    #     time.sleep(2)
+    #     exit()
 
 
 # turtle.ht()

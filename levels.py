@@ -1,7 +1,7 @@
 import random
 import time
 
-from draw_turtle import Donatello
+from turtle_window import Donatello
 import turtle
 
 
@@ -67,7 +67,7 @@ class Level:  # main parent class
         """takes an input, and cleans it, returns false if guess is not exclusively alphabetical"""
         self.guess = letter.lower().strip()
         if not self.guess.isalpha():
-            Donatello.turtle_text("Only letters allowed")  # no numbers, special characters or multiple words allowed
+            Donatello.turtle_text("No special characters/numbers")  # no numbers, special characters or multiple words allowed
             return False
         # TODO if type != str raise assert
         return self.guess
@@ -129,7 +129,7 @@ class Level:  # main parent class
             Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
             return True, self.display_word
         elif self.correct_guess():
-            Donatello.turtle_text(f"Correct guess!\n Attempts left: {self.attempts}")
+            Donatello.turtle_text(f"Correct guess! Attempts left: {self.attempts}")
             Donatello.draw_word(self.display_word)
             return True, self.display_word
         else:
@@ -145,11 +145,11 @@ class Level:  # main parent class
             self.attempts -= 1
 
             if self.attempts <= 0:
-                Donatello.turtle_text(f"Wrong guess!\n Attempts left: {self.attempts}")
+                Donatello.turtle_text(f"Wrong guess! Attempts left: {self.attempts}")
                 Donatello.turtle_focused_text(f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
                 return False
             else:
-                Donatello.turtle_text(f"Wrong guess!\n Attempts left: {self.attempts}")
+                Donatello.turtle_text(f"Wrong guess! Attempts left: {self.attempts}")
                 self.draw()
                 Donatello.draw_word(self.display_word)
                 return False, self.attempts
