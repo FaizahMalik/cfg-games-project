@@ -1,4 +1,5 @@
 import random
+from word_picker import word_task
 from turtle_window import Donatello
 
 
