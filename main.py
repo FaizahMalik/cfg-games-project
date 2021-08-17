@@ -36,16 +36,20 @@ def welcome_message():
                  font=("Courier New", 20, "normal"))
     turtle.pendown()
     time.sleep(2)
-    if turtle.textinput("Turtle Game", "Do you want to play wordguesser? y/n: ").lower().strip() == "y":
-        turtle.clear()
-        username = turtle.textinput("Turtle Game", "Enter your name: ")
-        play_hangman(Beginner, username)  #### TODO SAYS BEGINNER
-        return username
-    else:
-        turtle.clear()
-        turtle.write("That's too bad. Maybe next time? ):", move=False, align="center", font=("Courier New", 20, "bold"))
-        time.sleep(4)
-        exit()
+
+        if turtle.textinput("Turtle Game", "Do you want to play wordguesser? y/n: ").lower().strip() == "y":
+            turtle.clear()
+            username = turtle.textinput("Turtle Game", "Enter your name: ")
+            play_hangman(Beginner, username)  #### TODO SAYS BEGINNER
+            return username
+
+        elif turtle.textinput("Turtle Game", "Do you want to play wordguesser? y/n: ").lower().strip() == "n":
+            turtle.clear()
+            turtle.write("That's too bad. Maybe next time? ):", move=False, align="center",
+                         font=("Courier New", 20, "bold"))
+            time.sleep(4)
+            exit()
+
 
 
 def play_hangman(level, username):
@@ -63,7 +67,7 @@ def play_hangman(level, username):
         turtle.clear()
     words_to_pick = WordPicker()
 
-    for task_num in range(1, 10):
+    for task_num in range(1, 11):
         task = words_to_pick.get_word_of_task(task_num)
         turtle.write(task[0], move=False, align="center",
                      font=("Courier New", 20, "bold"))
@@ -77,10 +81,9 @@ def play_hangman(level, username):
             game1.incorrect_guess(guess)
             if game1.status == 'Lost':
                 break
-        if game1.status == 'Lost':
+        if game1.status == 'Lost': # thanks for playing
             break
-        turtle.clear()
-
+    # should say it's the end of all tasks. Congratulations!
     screen.clear()
     time.sleep(3)
     turtle.write("\n" + " THANKS FOR PLAYING! ".center(44, "=") + "\n\n", move=False, align="center", font=("Arial", 15, "normal"))
