@@ -8,12 +8,11 @@ class TurtleWindow:
         self.s.colormode(255)
         self.s.bgcolor(157, 238, 238)
         self.s.title("Hangman? Pfffffft never heard of it")
-        [self.t, self.t1, self.t2, self.t3] = [Turtle(), Turtle(), Turtle(), Turtle()]
+        [self.t, self.t1, self.t2] = [Turtle(), Turtle(), Turtle()]
         self.t.reset()
         self.t.ht()  # t is turtle drawing
         self.t1.ht()  # t1 is for big messages that clear the screen
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
-        self.t3.ht()
         self.t.speed(20)
         self.t.pensize(8)
         self.t.penup()
@@ -75,7 +74,6 @@ class TurtleWindow:
         self.t2.pencolor(45, 83, 98)
         self.t.clear()
         self.t1.clear()
-        self.t3.clear()
         self.t2.penup()
         self.t2.goto(0, 0)
         self.t2.clear()
@@ -248,5 +246,15 @@ class TurtleWindow:
         self.t.goto(13, 185)
         self.t.pendown()
         self.t.circle(3)
+
+    # CLEAR FUNCTION
+    def clear_window(self):
+        self.t.clear()
+        self.t1.clear()
+        self.t2.clear()
+        self.t.reset()
+        self.t1.reset()
+        self.t2.reset()
+
 
 Donatello = TurtleWindow()

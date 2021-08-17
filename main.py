@@ -12,7 +12,6 @@ with open("words_list.json", "r") as json_file:
 
 # defaultList = ['python']
 
-
 def level_selection(username):
     user_level = turtle.textinput("WordGuesser",
                                   f"Which level would you like to play, {username}? Beginner/Medium/Hard: ").capitalize().strip()

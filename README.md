@@ -11,3 +11,5 @@
 - Start guessing and have fun!
 
 ---
+
+- Explain what the diff files do
