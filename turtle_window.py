@@ -47,6 +47,9 @@ class TurtleWindow:
         self.t1.write(word, move=False, align="Left", font=("arial", 40, "normal"))
 
     def welcome_screen(self):
+        self.t.clear()
+        self.t1.clear()
+        self.t2.clear()
         font_size = 20
         for x in range(20):
             if x % 2 == 0:
@@ -93,6 +96,7 @@ class TurtleWindow:
         self.t2.clear()
         self.t2.write(string, move=False, align="center", font=("Courier New", 40, "bold"))
         time.sleep(3)
+        self.t2.clear()
 
     def draw_body(self):
         self.t.penup()

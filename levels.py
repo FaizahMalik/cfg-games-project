@@ -67,7 +67,7 @@ class Level:  # main parent class
         """takes an input, and cleans it, returns false if guess is not exclusively alphabetical"""
         self.guess = letter.lower().strip()
         if not self.guess.isalpha():
-            Donatello.turtle_text("No special characters/numbers")  # no numbers, special characters or multiple words allowed
+            Donatello.turtle_text("No special characters or numbers")  # no numbers, special characters or multiple words allowed
             return False
         # TODO if type != str raise assert
         return self.guess
