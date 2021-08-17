@@ -13,7 +13,7 @@ class TurtleWindow:
         self.t.ht()  # t is turtle drawing
         self.t1.ht()  # t1 is for big messages that clear the screen
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
-        self.t.speed(20)
+        self.t.speed(8)
         self.t.pensize(8)
         self.t.penup()
         self.t.goto(0, -150)
