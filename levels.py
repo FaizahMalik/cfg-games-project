@@ -1,19 +1,6 @@
 import random
-import time
-
 from turtle_window import Donatello
-import turtle
 
-
-#  DONE - show user has already guessed letter on turtle
-#  DONE - make correct & incorrect guess appear on turtle
-#  DONE - move "no special characters" to turtle
-#
-# turtle.clear()
-# turtle.penup()
-# turtle.goto(-100, 0)
-# turtle.write(f"You will be using the default list", move=False, align="center", font=("Arial", 15, "normal"))
-# time.sleep(2)
 # TODO check if guess is equal to word, then only allow 1 character inputs
 
 
@@ -92,17 +79,17 @@ class Level:  # main parent class
     def correct_guess(self):  # relies on the results from replace_letter() | helper function to display_correct_guess()
         """checks if guess exists in self.chosen_word, if so it calls the replaces_letter() function to replace
         letter """
-        if self.guess in self.chosen_word:
-            self.replace_letter()  # replaces display_word with correctly guessed letters
-            return True
-        else:
-            return False
+        if len(self.guess) == 1:
+            if self.guess in self.chosen_word:
+                self.replace_letter()  # replaces display_word with correctly guessed letters
+                return True
+        return False
 
     def correct_word(self):  # is a helper function to display_correct_guess()
         """checks if the the guess is equal to the chosen word, if yes it returns True and the full word"""
         if self.guess == self.chosen_word:  # they guess the whole word correctly
             self.display_word = self.chosen_word  # process will continue until it reaches ***
-            return True, self.display_word  # FIXME is there a reason why we're also returning self.display_word?
+            return True, self.display_word
         else:
             return False
 
@@ -111,7 +98,7 @@ class Level:  # main parent class
         if self.correct_guess():
             if self.display_word.replace(' ','') == self.chosen_word:
                 self.display_word = self.chosen_word  # process will continue until it reaches ***
-                return True, self.display_word  # FIXME is there a reason why we're also returning self.display_word?
+                return True, self.display_word
         else:
             return False
 
