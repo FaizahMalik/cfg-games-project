@@ -186,35 +186,41 @@ class Hard(Level):  # this is our beast mode subclass
             1: ["draw_eyes"]
         }
 
-class Campaign(Level):
-    def __init__(self, username):
-        super(Campaign, self).__init__(username, words_list=[0])
-        self.attempts = 8
-        self.task_number = 11
-        self.turtle_drawings = {
-            7: ["draw_body", "draw_head"],
-            6: ["draw_leg1", "draw_leg2"],
-            5: ["draw_leg3", "draw_leg4"],
-            4: ["draw_tail"],
-            3: ["draw_back_middle"],
-            2: ["draw_back_line"],
-            1: ["draw_eyes"]
-        }
-
-    def task_picker(self):
-        return word_task.get_word_of_task(self.task_number)
-
-    def next_task(self):
-        # try:
-        assert 1 <= self.task_number <= 10
-        # except AssertionError:
-        #     print("That task does not exist!")
-        # else:
-        #     self.task_number += 1
-
-
-
-
+# class Campaign(Level):
+#     def __init__(self, username):
+#         super(Campaign, self).__init__(username, words_list=[0])
+#         self.attempts = 8
+#         self.task_number = 1
+#         self.task_message = None
+#         self.words_list = None
+#         self.turtle_drawings = {
+#             7: ["draw_body", "draw_head"],
+#             6: ["draw_leg1", "draw_leg2"],
+#             5: ["draw_leg3", "draw_leg4"],
+#             4: ["draw_tail"],
+#             3: ["draw_back_middle"],
+#             2: ["draw_back_line"],
+#             1: ["draw_eyes"]
+#         }
+#
+#
+#
+#     def task_picker(self):
+#         self.task_message = word_task.get_word_of_task(self.task_number)[0]
+#         self.words_list = [word_task.get_word_of_task(self.task_number)[1]]
+#
+#     # def next_task(self):
+#     #     if 1 <= self.task_number <= 10:
+#     #         self.task_number += 1
+#     #     else:
+#     #         print("That task does not exist!")
+#
+#     def run_tasks(self):
+#         while 1 <= self.task_number <= 10:
+#             self.task_picker()
+#             self.task_number += 1
+#                 if self.attempts <= 0:
+#                     break
             # Donatello
             # turtle.write(task[0], move=False, align="center",
             #              font=("Courier New", 20, "bold"))
@@ -230,18 +236,18 @@ class Campaign(Level):
             #     if game1.status == 'Lost':
             #         break
 
-username = 'person'
-game2 = Campaign(username)
-
-
-print(game2.task_picker())
-print(game2.next_task())
-print(game2.next_task())
-print(game2.task_picker())
-print(game2.next_task())
-print(game2.task_picker())
-print(game2.next_task())
-print(game2.task_picker())
-print(game2.next_task())
+# username = 'person'
+# game2 = Campaign(username)
+#
+#
+# print(game2.task_picker())
+# print(game2.next_task())
+# print(game2.next_task())
+# print(game2.task_picker())
+# print(game2.next_task())
+# print(game2.task_picker())
+# print(game2.next_task())
+# print(game2.task_picker())
+# print(game2.next_task())
 
 

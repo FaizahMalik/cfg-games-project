@@ -1,5 +1,5 @@
 import random
-from levels import Beginner, Medium, Hard
+from levels import Beginner, Medium, Hard, Campaign
 import time
 import turtle
 from turtle_window import Donatello
@@ -18,11 +18,14 @@ def level_selection(username):
     available_levels = {
         'Beginner': Beginner,
         'Medium': Medium,
-        'Hard': Hard
+        'Hard': Hard,
+        'Campaign': Campaign
     }
-    if user_level in available_levels:
+    if user_level == 'Beginner' or 'Medium' or 'Hard':
         level = available_levels[user_level]
         play_hangman(level, username)
+    elif user_level == 'Campaign':
+        pass
     else:
         Donatello.turtle_focused_text("Not a valid level! Try again.")
         # Donatello.t2.clear()
@@ -72,6 +75,16 @@ def play_hangman(level, username):
         game1.incorrect_guess(guess)
         if game1.attempts <= 0:
             break
+
+
+
+
+
+    # #CODE FOR CAMPAIGN MODE
+    # while game1.display_word.replace(' ', '') != game1.chosen_word:
+    #     guess = turtle.textinput("WordGuesser", f"Past Guesses: {game1.past_guesses}\n\nEnter your guess: ")
+    #     game1.incorrect_guess(guess)
+
     play_again(username)
 
 initiate_game()
