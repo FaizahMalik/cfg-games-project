@@ -81,7 +81,6 @@ def play_hangman(level, username):
 
     while game1.display_word.replace(' ', '') != game1.chosen_word:
         # TODO if the word is python and I guess "py" i cry a tad
-        Donatello.attempts_left(game1.attempts)
         guess = turtle.textinput("WordGuesser", f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
         game1.incorrect_guess(guess)
         if game1.attempts <= 0:

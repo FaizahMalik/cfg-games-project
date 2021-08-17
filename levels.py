@@ -129,7 +129,7 @@ class Level:  # main parent class
             Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
             return True, self.display_word
         elif self.correct_guess():
-            Donatello.turtle_text("Correct guess!")
+            Donatello.turtle_text(f"Correct guess!\n Attempts left: {self.attempts}")
             Donatello.draw_word(self.display_word)
             return True, self.display_word
         else:
@@ -145,11 +145,11 @@ class Level:  # main parent class
             self.attempts -= 1
 
             if self.attempts <= 0:
-                Donatello.turtle_text("Wrong guess!")
+                Donatello.turtle_text(f"Wrong guess!\n Attempts left: {self.attempts}")
                 Donatello.turtle_focused_text(f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
                 return False
             else:
-                Donatello.turtle_text("Wrong guess!")
+                Donatello.turtle_text(f"Wrong guess!\n Attempts left: {self.attempts}")
                 self.draw()
                 Donatello.draw_word(self.display_word)
                 return False, self.attempts
