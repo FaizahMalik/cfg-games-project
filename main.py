@@ -6,10 +6,6 @@ from turtle_window import Donatello
 import json
 
 
-# TODO reset turtle so drawing starts over again
-
-
-
 with open("words_list.json", "r") as json_file:
     final_words_list = json.load(json_file)
     defaultList = [word for word, tag in final_words_list]
@@ -71,7 +67,6 @@ def play_hangman(level, username):
     game1.show_word()
 
     while game1.display_word.replace(' ', '') != game1.chosen_word:
-        # TODO if the word is python and I guess "py" i cry
         guess = turtle.textinput("WordGuesser", f"Past Guesses: {game1.past_guesses}\n\nEnter your guess: ")
         game1.incorrect_guess(guess)
         if game1.attempts <= 0:
