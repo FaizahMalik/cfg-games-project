@@ -46,23 +46,25 @@ def play_again(username):
 def play_hangman(level, username):
     turtle.reset()
     turtle.ht()
+    wordList = defaultList
     if turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ") == "y":
-        customList = turtle.textinput("WordGuesser", "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
-        game1 = level(username, customList)
+        wordList = turtle.textinput("WordGuesser", "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
+        list_type = 'custom'
     else:
+        list_type = 'default'
+    turtle.clear()
+    turtle.pencolor(45, 83, 98)
+    turtle.write(f"You will be using a {list_type} list", move=False, align="center", font=("Courier New", 30, "bold"))
+    time.sleep(2)
+    turtle.clear()
+    turtle.write("Your word will be hidden below. Good luck.", move=False, align="center", font=("Courier New", 30, "bold"))
+    time.sleep(2)
+    turtle.clear()
+    for c in range(4):
+        turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
+        time.sleep(random.uniform(0.3, 0.8))
         turtle.clear()
-        turtle.pencolor(45, 83, 98)
-        turtle.write(f"You will be using the default list", move=False, align="center", font=("Courier New", 30, "bold"))
-        time.sleep(2)
-        turtle.clear()
-        turtle.write("Your word will be hidden below. Good luck.", move=False, align="center", font=("Courier New", 30, "bold"))
-        time.sleep(2)
-        turtle.clear()
-        for c in range(4):
-            turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
-            time.sleep(random.uniform(0.3, 0.8))
-            turtle.clear()
-        game1 = level(username, defaultList)
+    game1 = level(username, wordList)
     game1.pick_word()
     game1.show_word()
 

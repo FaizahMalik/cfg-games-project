@@ -14,7 +14,8 @@ class TurtleWindow:
         self.t1.ht()  # t1 is for big messages that clear the screen
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
         self.t3.ht()
-        self.t.speed(10)
+        self.t.speed(1505
+                     )
         self.t.pensize(8)
         self.t.penup()
         self.t.goto(0, -150)
