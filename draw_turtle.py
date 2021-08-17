@@ -19,6 +19,8 @@ s.title("Hangman? Pfffffft never heard of it.")
 
 class TurtleDrawing:
     def __init__(self):
+        self.t = Turtle()
+
         t.speed(10)
         t.pensize(8)
         t.penup()
