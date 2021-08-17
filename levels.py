@@ -1,4 +1,5 @@
 import random
+from word_picker import word_task
 from turtle_window import Donatello
 
 
@@ -186,9 +187,10 @@ class Hard(Level):  # this is our beast mode subclass
         }
 
 class Campaign(Level):
-    def __init__(self, username, words_list):
-        super().__init__(username, words_list)
+    def __init__(self, username):
+        super(Campaign, self).__init__(username, words_list=[0])
         self.attempts = 8
+        self.task_number = 11
         self.turtle_drawings = {
             7: ["draw_body", "draw_head"],
             6: ["draw_leg1", "draw_leg2"],
@@ -200,18 +202,46 @@ class Campaign(Level):
         }
 
     def task_picker(self):
-        for task_num in range(1, 10):
-            task = words_to_pick.get_word_of_task(task_num)
-            turtle.write(task[0], move=False, align="center",
-                         font=("Courier New", 20, "bold"))
-            game1 = level(username, [task[1]])
+        return word_task.get_word_of_task(self.task_number)
 
-            game1.pick_word()
-            print(game1.show_word())
+    def next_task(self):
+        # try:
+        assert 1 <= self.task_number <= 10
+        # except AssertionError:
+        #     print("That task does not exist!")
+        # else:
+        #     self.task_number += 1
 
-            while game1.display_word.replace(' ', '') != game1.chosen_word:
-                guess = turtle.textinput("Turtle Game",
-                                         f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
-                game1.incorrect_guess(guess)
-                if game1.status == 'Lost':
-                    break
+
+
+
+            # Donatello
+            # turtle.write(task[0], move=False, align="center",
+            #              font=("Courier New", 20, "bold"))
+            # game1 = level(username, [task[1]])
+            #
+            # game1.pick_word()
+            # print(game1.show_word())
+            #
+            # while game1.display_word.replace(' ', '') != game1.chosen_word:
+            #     guess = turtle.textinput("Turtle Game",
+            #                              f"\nAttempts left: {game1.attempts}\nPast Guesses: {game1.past_guesses}\n\nEnter your guess: ")
+            #     game1.incorrect_guess(guess)
+            #     if game1.status == 'Lost':
+            #         break
+
+username = 'person'
+game2 = Campaign(username)
+
+
+print(game2.task_picker())
+print(game2.next_task())
+print(game2.next_task())
+print(game2.task_picker())
+print(game2.next_task())
+print(game2.task_picker())
+print(game2.next_task())
+print(game2.task_picker())
+print(game2.next_task())
+
+
