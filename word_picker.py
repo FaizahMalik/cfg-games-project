@@ -63,7 +63,7 @@ class WordPicker:
             self.word_to_guess = random.choice(unique_verbs)
 
         elif task_num == 7:
-            self.message = "Adjective:"
+            self.message = "An adjective this time:"
             long_adj = [w for w in self.get_freq_pos("ADJ")[-110:] if len(w) == 9]
             self.word_to_guess = random.choice(long_adj)
 

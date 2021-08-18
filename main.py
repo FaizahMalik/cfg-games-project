@@ -75,10 +75,10 @@ def play_campaign(username):
         task = word_task.get_word_of_task(task_num)
         turtle.ht()
         turtle.penup()
-        turtle.goto(-350, 350)
+        turtle.goto(-300, 325)
         turtle.pencolor(45, 83, 98)
         turtle.write(task[0], move=False, align="center",
-                     font=("Courier New", 30, "bold"))
+                     font=("Courier New", 20, "bold"))
         game1 = Beginner(username, [task[1]])
         game1.pick_word()
         print(game1.show_word())
