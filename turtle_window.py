@@ -45,6 +45,7 @@ class TurtleWindow:
         self.t1.goto(-350, -250)
         self.t1.pendown()
         self.t1.write(word, move=False, align="center", font=("arial", 25, "normal"))
+        return True
 
     def welcome_screen(self):
         self.t.clear()
@@ -68,6 +69,7 @@ class TurtleWindow:
         self.t2.pendown()
         time.sleep(3)
         self.t2.clear()
+        return True
 
     def goodbye_screen(self):
         self.s.clear()
@@ -77,6 +79,7 @@ class TurtleWindow:
         self.t2.write("\n" + " THANKS FOR PLAYING! ".center(44, "~"), move=False, align="center",
                      font=("Courier New", 25, "normal"))
         time.sleep(2)
+        return True
 
     def turtle_text(self, string):
         self.t2.pencolor(45, 83, 98)
@@ -85,6 +88,7 @@ class TurtleWindow:
         self.t2.clear()
         self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(0.5)
+        return True
 
     def turtle_focused_text(self, string):
         self.t2.pencolor(45, 83, 98)
@@ -96,6 +100,7 @@ class TurtleWindow:
         self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
         self.t2.clear()
+        return True
 
     # draw body
     def draw_body(self):
@@ -111,6 +116,7 @@ class TurtleWindow:
         r = 150
         self.t.circle(r)
         self.t.end_fill()
+        return True
 
     # draw head
     def draw_head(self):
@@ -128,6 +134,7 @@ class TurtleWindow:
             self.t.right(4)
         self.t.forward(35)
         self.t.end_fill()
+        return True
 
     # draw leg 1
     def draw_leg1(self):
@@ -145,6 +152,7 @@ class TurtleWindow:
         self.t.forward(10)
         self.t.end_fill()
         # self.t.done()
+        return True
 
     # draw leg 2
     def draw_leg2(self):
@@ -162,6 +170,7 @@ class TurtleWindow:
         self.t.forward(10)
         self.t.end_fill()
         # self.t.done()
+        return True
 
     # draw leg 3
     def draw_leg3(self):
@@ -178,6 +187,7 @@ class TurtleWindow:
         self.t.forward(10)
         self.t.end_fill()
         # self.t.done()
+        return True
 
     # draw leg 4
     def draw_leg4(self):
@@ -195,6 +205,7 @@ class TurtleWindow:
         self.t.forward(10)
         self.t.end_fill()
         # # self.t.done()
+        return True
 
     # draw tail
     def draw_tail(self):
@@ -210,6 +221,7 @@ class TurtleWindow:
         self.t.forward(30)
         self.t.end_fill()
         # # self.t.done()
+        return True
 
     # draw back
     def draw_back_middle(self):
@@ -222,6 +234,7 @@ class TurtleWindow:
         for i in range(6):
             self.t.forward(75)
             self.t.right(300)
+        return True
 
 
     # draw back pattern
@@ -254,6 +267,7 @@ class TurtleWindow:
         self.t.pendown()
         self.t.left(60)
         self.t.forward(72)
+        return True
 
 
     # draw eyes
@@ -266,6 +280,16 @@ class TurtleWindow:
         self.t.goto(13, 185)
         self.t.pendown()
         self.t.circle(3)
+        return True
+
+    # CLEAR FUNCTION
+    def clear_window(self):
+        self.t.clear()
+        self.t1.clear()
+        self.t2.clear()
+        self.t.reset()
+        self.t1.reset()
+        self.t2.reset()
 
     # CLEAR FUNCTION
     def clear_window(self):
