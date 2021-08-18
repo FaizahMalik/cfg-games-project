@@ -15,7 +15,7 @@ class TurtleWindow:
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
         self.t.speed(8)
         self.t.pensize(8)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
         self.t.pencolor('dark green')
@@ -31,7 +31,7 @@ class TurtleWindow:
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
         self.t.speed(8)
         self.t.pensize(8)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
         self.t.pencolor('dark green')
@@ -99,7 +99,7 @@ class TurtleWindow:
 
     # draw body
     def draw_body(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
         self.t.pencolor('dark green')
@@ -112,7 +112,7 @@ class TurtleWindow:
     # draw head
     def draw_head(self):
         self.t.pensize(4)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-40, 150)
         self.t.pendown()
         self.t.pencolor('olive drab')
@@ -128,7 +128,7 @@ class TurtleWindow:
 
     # draw leg 1
     def draw_leg1(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-85, 125)
         self.t.pendown()
         self.t.pencolor('olive drab')
@@ -145,7 +145,7 @@ class TurtleWindow:
 
     # draw leg 2
     def draw_leg2(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(85, 125)
         self.t.pendown()
         self.t.pencolor('olive drab')
@@ -162,7 +162,7 @@ class TurtleWindow:
 
     # draw leg 3
     def draw_leg3(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-85, -125)
         self.t.pendown()
         self.t.pencolor('olive drab')
@@ -178,7 +178,7 @@ class TurtleWindow:
 
     # draw leg 4
     def draw_leg4(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(85, -125)
         self.t.pendown()
         self.t.pencolor('olive drab')
@@ -195,7 +195,7 @@ class TurtleWindow:
 
     # draw tail
     def draw_tail(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-15, -150)
         self.t.pendown()
         self.t.pencolor('olive drab')
@@ -211,7 +211,7 @@ class TurtleWindow:
     # draw back
     def draw_back_middle(self):
         self.t.pensize(10)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-34, -60)
         self.t.pendown()
         self.t.pencolor('dark green')
@@ -226,27 +226,27 @@ class TurtleWindow:
         self.t.pencolor('dark green')
         self.t.right(120)
         self.t.forward(78)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(41, -60)
         self.t.pendown()
         self.t.left(60)
         self.t.forward(78)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(75, 5)
         self.t.pendown()
         self.t.left(60)
         self.t.forward(75)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(42, 70)
         self.t.pendown()
         self.t.left(60)
         self.t.forward(68)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-35, 70)
         self.t.pendown()
         self.t.left(60)
         self.t.forward(68)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-70, 5)
         self.t.pendown()
         self.t.left(60)
@@ -255,11 +255,11 @@ class TurtleWindow:
 
     # draw eyes
     def draw_eyes(self):
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(-10, 185)
         self.t.pendown()
         self.t.circle(3)
-        #self.t.penup()
+        self.t.penup()
         self.t.goto(13, 185)
         self.t.pendown()
         self.t.circle(3)
