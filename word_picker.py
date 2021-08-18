@@ -53,7 +53,7 @@ class WordPicker:
             self.word_to_guess = random.choice(palindromes)
 
         elif task_num == 5:
-            self.message = "A word with all unique characters:"
+            self.message = "All the letters are different:"
             unique = [w for w in self.only_words if self.is_unique_chars(w) and len(w) == 7]
             self.word_to_guess = random.choice(unique)
 
@@ -63,22 +63,22 @@ class WordPicker:
             self.word_to_guess = random.choice(unique_verbs)
 
         elif task_num == 7:
-            self.message = "How about an adjective this time?"
+            self.message = "Adjective:"
             long_adj = [w for w in self.get_freq_pos("ADJ")[-110:] if len(w) == 9]
             self.word_to_guess = random.choice(long_adj)
 
         elif task_num == 8:
-            self.message = "It's a noun or a verb:"
+            self.message = "Noun or verb:"
             rare_noun_verb = [w for w, tag in self.all_words if 9 >= len(w) > 6 and tag not in {"ADJ", "ADV"}]
             self.word_to_guess = random.choice(rare_noun_verb[-50:])
 
         elif task_num == 9:
-            self.message = "This time, it's an adverb:"
+            self.message = "Adverb:"
             long_adv = [w for w in self.get_freq_pos("ADV") if len(w) == 9]
             self.word_to_guess = random.choice(long_adv)
 
         elif task_num == 10:
-            self.message = "Final task! Guess a verb:"
+            self.message = "Verb:"
             long_verb = [w for w in self.get_freq_pos("VERB") if len(w) == 10]
             self.word_to_guess = random.choice((long_verb))
 

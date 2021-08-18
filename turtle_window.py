@@ -42,9 +42,9 @@ class TurtleWindow:
         self.t1.speed(5)
         self.t1.pensize(4)
         self.t1.penup()
-        self.t1.goto(-560,-400)
+        self.t1.goto(-350, -250)
         self.t1.pendown()
-        self.t1.write(word, move=False, align="Left", font=("arial", 40, "normal"))
+        self.t1.write(word, move=False, align="center", font=("arial", 25, "normal"))
 
     def welcome_screen(self):
         self.t.clear()
@@ -60,11 +60,11 @@ class TurtleWindow:
                 self.t2.pencolor(255, 177, 113)
             self.t2.write("WORDGUESSER!", move=False, align="center", font=("Arial", font_size, "bold"))
             time.sleep(0.1)
-            font_size += 5
+            font_size += 3
         self.t2.penup()
         self.t2.goto(0, 100)
-        self.t2.write("\n" + " W E L C O M E   T O ".center(100, "~") + "\n\n", move=False, align="center",
-                     font=("Courier New", 30, "normal"))
+        self.t2.write("\n" + " W E L C O M E   T O ".center(44, "~") + "\n\n", move=False, align="center",
+                     font=("Courier New", 20, "normal"))
         self.t2.pendown()
         time.sleep(3)
         self.t2.clear()
@@ -72,18 +72,18 @@ class TurtleWindow:
     def goodbye_screen(self):
         self.s.clear()
         self.s.colormode(255)
-        self.s.bgcolor(87, 217, 255)
-        time.sleep(2)
+        self.s.bgcolor(157, 238, 238)
+        time.sleep(1)
         self.t2.write("\n" + " THANKS FOR PLAYING! ".center(44, "~"), move=False, align="center",
-                     font=("Courier New", 40, "normal"))
-        time.sleep(3)
+                     font=("Courier New", 25, "normal"))
+        time.sleep(2)
 
     def turtle_text(self, string):
         self.t2.pencolor(45, 83, 98)
         self.t2.penup()
-        self.t2.goto(350, -450)
+        self.t2.goto(200, -250)
         self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 25, "bold"))
+        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(0.5)
 
     def turtle_focused_text(self, string):
@@ -93,12 +93,15 @@ class TurtleWindow:
         self.t2.penup()
         self.t2.goto(0, 0)
         self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 40, "bold"))
+        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
         self.t2.clear()
 
     # draw body
     def draw_body(self):
+        self.t.reset()
+        self.t.ht()
+        self.t.pensize(8)
         self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
