@@ -20,22 +20,6 @@ class TurtleWindow:
         self.t.pendown()
         self.t.pencolor('dark green')
 
-    def initialise(self):
-        self.s.setup(width=0.9, height=0.9)
-        self.s.colormode(255)
-        self.s.bgcolor(157, 238, 238)
-        self.s.title("Hangman? Pfffffft never heard of it")
-        self.t.reset()
-        self.t.ht()  # t is turtle drawing
-        self.t1.ht()  # t1 is for big messages that clear the screen
-        self.t2.ht()  # t2 is for small side notes in the corner of the screen
-        self.t.speed(8)
-        self.t.pensize(8)
-        self.t.penup()
-        self.t.goto(0, -150)
-        self.t.pendown()
-        self.t.pencolor('dark green')
-
     def draw_word(self, word):
         self.t1.pencolor(45, 83, 98)
         self.t1.clear()

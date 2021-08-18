@@ -34,51 +34,51 @@ class WordPicker:
         """Accepts the number of the task as an integer (from 1 to 10) and returns a tuple:
         (message_for_the_user, word_to_guess)"""
         if task_num == 1:
-            self.message = "Most common noun:"
+            self.message = "Lets start! Try guess the most common noun:"
             self.word_to_guess = self.get_freq_pos("NOUN")[0]
 
         elif task_num == 2:
-            self.message = "Adjective:"
+            self.message = "Guess an adjective this time:"
             common_adj = [w for w in self.get_freq_pos("ADJ")[:100] if 10 > len(w) > 6]
             self.word_to_guess = random.choice(common_adj)
 
         elif task_num == 3:
-            self.message = "Adverb:"
+            self.message = "Great work! Now guess an adverb:"
             adverb = [w for w, tag in self.all_words[:1500] if 8 > len(w) > 5 and tag == "ADV" and not self.is_unique_chars(w)]
             self.word_to_guess = random.choice(adverb)
 
         elif task_num == 4:
-            self.message = "Palindrome (reads the same backward or forward):"
+            self.message = "A palindrome perhaps?:"
             palindromes = [w for w in self.only_words if self.is_palindrome(w) and 10 > len(w) > 1]
             self.word_to_guess = random.choice(palindromes)
 
         elif task_num == 5:
-            self.message = "All the letters are different:"
+            self.message = "This is a word with all unique letters:"
             unique = [w for w in self.only_words if self.is_unique_chars(w) and len(w) == 7]
             self.word_to_guess = random.choice(unique)
 
         elif task_num == 6:
-            self.message = "Verb with all unique characters:"
+            self.message = "A verb with all unique characters:"
             unique_verbs = [w for w in self.get_freq_pos("VERB") if 7 <= len(w) <= 9 and self.is_unique_chars(w)]
             self.word_to_guess = random.choice(unique_verbs)
 
         elif task_num == 7:
-            self.message = "An adjective this time:"
+            self.message = "Another adjective this time:"
             long_adj = [w for w in self.get_freq_pos("ADJ")[-110:] if len(w) == 9]
             self.word_to_guess = random.choice(long_adj)
 
         elif task_num == 8:
-            self.message = "Noun or verb:"
+            self.message = "Is it a noun or is it a verb?!:"
             rare_noun_verb = [w for w, tag in self.all_words if 9 >= len(w) > 6 and tag not in {"ADJ", "ADV"}]
             self.word_to_guess = random.choice(rare_noun_verb[-50:])
 
         elif task_num == 9:
-            self.message = "Adverb:"
+            self.message = "You're close to the end! Try an adverb:"
             long_adv = [w for w in self.get_freq_pos("ADV") if len(w) == 9]
             self.word_to_guess = random.choice(long_adv)
 
         elif task_num == 10:
-            self.message = "Verb:"
+            self.message = "Well done! One last task, guess a verb:"
             long_verb = [w for w in self.get_freq_pos("VERB") if len(w) == 10]
             self.word_to_guess = random.choice((long_verb))
 
