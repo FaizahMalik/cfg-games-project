@@ -3,7 +3,6 @@ from levels import Beginner, Medium, Hard
 import time
 import turtle
 from turtle_window import Donatello
-import json
 from word_picker import word_task
 
 
@@ -95,17 +94,6 @@ def play_campaign(username):
             if game1.attempts <= 0:
                 break
         turtle.clear()
-
-        #     if game1.status == 'Lost':
-        #         break
-        # if game1.status == 'Lost':  # thanks for playing
-        #     break
-
-
-    # #CODE FOR CAMPAIGN MODE
-    # while game1.display_word.replace(' ', '') != game1.chosen_word:
-    #     guess = turtle.textinput("WordGuesser", f"Past Guesses: {game1.past_guesses}\n\nEnter your guess: ")
-    #     game1.incorrect_guess(guess)
 
     play_again(username)
 
