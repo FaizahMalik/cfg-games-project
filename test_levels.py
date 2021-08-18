@@ -1,15 +1,15 @@
 import unittest
 from levels import Beginner, Medium, Hard
 
-#TODO put in a test folder?
+
+# TODO put in a test folder without breaking the code?
 
 
 class TestLevels(unittest.TestCase):
-
     """instantiates five objects that exist for the duration of the test. These are used for testing the functions."""
+
     @classmethod
     def setUpClass(cls):
-
         cls.l1 = Beginner(username='tester', words_list=['apple'])
         cls.l1.guess = 'a'
         cls.l1.past_guesses = ['a']
@@ -37,7 +37,7 @@ class TestLevels(unittest.TestCase):
         cls.l6.guess = 'n'
         cls.l6.chosen_word = 'lion'
         cls.l6.display_word = 'l i o _ '
-        cls.l6.past_guesses =['l', 'i', 'o']
+        cls.l6.past_guesses = ['l', 'i', 'o']
 
     # test that module was successfully imported? can't be run simultaneously as test_incorrect_guess()
     def test_draw(self):
@@ -68,18 +68,18 @@ class TestLevels(unittest.TestCase):
         self.assertEqual(self.l2.incorrect_guess(self.l2.guess), (False, 7))
 
     ## HELPER FUNCTIONS ##
-    ## can't be tested simultaneously as test_check_guess_if_previous or test_incorrect_guess
+    # # can't be tested simultaneously as test_check_guess_if_previous or test_incorrect_guess
     # def test_add_previous_guess(self):
     #     self.assertEqual(self.l2.add_previous_guess(), ['p', 'l'])
     #     self.assertFalse(self.l1.add_previous_guess())
 
-    ## can't be tested simultaneously as test_display_correct_guess
+    # # can't be tested simultaneously as test_display_correct_guess
     # def test_correct_word(self):
     #     self.assertTrue(self.l3.correct_word())
     #     self.assertFalse(self.l1.correct_word())
     #     self.assertFalse(self.l2.correct_word())
     #
-    # ## can't be tested simultaneously as test_display_correct_guess
+    # # can't be tested simultaneously as test_display_correct_guess
     # def test_correct_guess(self):
     #     self.assertTrue(self.l1.correct_guess())
     #     self.assertFalse(self.l2.correct_guess())
@@ -102,10 +102,8 @@ class TestLevels(unittest.TestCase):
     #     self.assertTrue(self.l6.guessed_word())
 
 
-
 if __name__ == '__main__':
     unittest.main()
-
 
 # cd .. (so you are not in the test folder)
 # then try
