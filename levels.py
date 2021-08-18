@@ -14,7 +14,6 @@ import turtle
 # turtle.goto(-100, 0)
 # turtle.write(f"You will be using the default list", move=False, align="center", font=("Arial", 15, "normal"))
 # time.sleep(2)
-# TODO check if guess is equal to word, then only allow 1 character inputs
 
 
 class Level:  # main parent class
@@ -29,12 +28,16 @@ class Level:  # main parent class
         self.turtle_drawings = {}
 
     def draw(self):  # helper function to incorrect_guess()
+        """Calls the draw method where self.attempt is the key"""
         try:
             for draw_method in self.turtle_drawings[self.attempts]:
                 method = getattr(Donatello, draw_method)
                 method()
+            if self.attempts > 10:
+                raise Exception(KeyError)
         except KeyError:
-            print(KeyError, "missing key in self.turtle_drawings")
+            print("missing key in self.turtle_drawings")
+            return False
 
 
     def pick_word(self):
@@ -106,7 +109,7 @@ class Level:  # main parent class
         else:
             return False
 
-    def guessed_word(self):
+    def guessed_word(self): # helper function to display_correct_guess()
         """checks if the total of the guesses is equal to the chosen word, if yes it returns True and the full word"""
         if self.correct_guess():
             if self.display_word.replace(' ','') == self.chosen_word:

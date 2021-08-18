@@ -4,7 +4,6 @@ from levels import Beginner, Medium, Hard
 import time
 import turtle
 from turtle_window import Donatello
-import json
 
 # DONE rename main.py to main.py
 # DONE put script into two functions - welcome_message() & play_hangman to avoid repeating code if player
