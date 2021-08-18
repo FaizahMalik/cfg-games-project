@@ -40,8 +40,6 @@ def play_again(username):
         exit(0)
 
 def play_hangman(level, username):
-    # turtle.reset() TODOm
-    Donatello.__init__()
     turtle.ht()
     wordList = list(word_task.only_words)
     if turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ") == "y":
