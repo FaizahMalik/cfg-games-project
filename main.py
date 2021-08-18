@@ -7,10 +7,7 @@ from word_picker import word_task
 
 
 
-# defaultList = ['python']
-
 def level_selection(username):
-    # global username
     user_level = turtle.textinput("WordGuesser",
                                   f"Which level would you like to play, {username}? Beginner/Medium/Hard/Campaign: ").capitalize().strip()
     available_levels = {
