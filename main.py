@@ -27,7 +27,6 @@ def level_selection(username):
 
 def initiate_game():
     Donatello.welcome_screen()
-    # turtle.ht()
     username = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
     level_selection(username)
 
@@ -41,7 +40,8 @@ def play_again(username):
         exit(0)
 
 def play_hangman(level, username):
-    turtle.reset()
+    # turtle.reset() TODOm
+    Donatello.__init__()
     turtle.ht()
     wordList = list(word_task.only_words)
     if turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ") == "y":
@@ -73,7 +73,7 @@ def play_hangman(level, username):
 
 
 def play_campaign(username):
-    for task_num in range(1, 3):
+    for task_num in range(1, 11):
         task = word_task.get_word_of_task(task_num)
         turtle.ht()
         turtle.penup()
@@ -91,7 +91,6 @@ def play_campaign(username):
             if game1.attempts <= 0:
                 break
         turtle.clear()
-
     play_again(username)
 
 initiate_game()
