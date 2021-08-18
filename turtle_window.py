@@ -1,9 +1,6 @@
 from turtle import Turtle, Screen
 import time
 
-
-# TODO make class an iterator?!?!?!?!
-
 class TurtleWindow:
     def __init__(self):
         self.s = Screen()
@@ -11,30 +8,33 @@ class TurtleWindow:
         self.s.colormode(255)
         self.s.bgcolor(157, 238, 238)
         self.s.title("Hangman? Pfffffft never heard of it")
-        [self.t, self.t1, self.t2, self.t3] = [Turtle(), Turtle(), Turtle(), Turtle()]
+        [self.t, self.t1, self.t2] = [Turtle(), Turtle(), Turtle()]
         self.t.reset()
         self.t.ht()  # t is turtle drawing
         self.t1.ht()  # t1 is for big messages that clear the screen
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
-        self.t3.ht()
-        self.t.speed(10)
+        self.t.speed(8)
         self.t.pensize(8)
         self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
         self.t.pencolor('dark green')
 
-    # def __iter__(self):
-    #     self.n = 0
-    #     return self
-    #
-    # def __next__(self):
-    #     if self.n <= self.max:
-    #         result = 2 ** self.n
-    #         self.n += 1
-    #         return result
-    #     else:
-    #         raise StopIteration
+    def initialise(self):
+        self.s.setup(width=0.9, height=0.9)
+        self.s.colormode(255)
+        self.s.bgcolor(157, 238, 238)
+        self.s.title("Hangman? Pfffffft never heard of it")
+        self.t.reset()
+        self.t.ht()  # t is turtle drawing
+        self.t1.ht()  # t1 is for big messages that clear the screen
+        self.t2.ht()  # t2 is for small side notes in the corner of the screen
+        self.t.speed(8)
+        self.t.pensize(8)
+        self.t.penup()
+        self.t.goto(0, -150)
+        self.t.pendown()
+        self.t.pencolor('dark green')
 
     def draw_word(self, word):
         self.t1.pencolor(45, 83, 98)
@@ -42,12 +42,15 @@ class TurtleWindow:
         self.t1.speed(5)
         self.t1.pensize(4)
         self.t1.penup()
-        self.t1.goto(-560,-400)
+        self.t1.goto(-350, -250)
         self.t1.pendown()
-        self.t1.write(word, move=False, align="Left", font=("arial", 40, "normal"))
+        self.t1.write(word, move=False, align="center", font=("arial", 25, "normal"))
         return True
 
     def welcome_screen(self):
+        self.t.clear()
+        self.t1.clear()
+        self.t2.clear()
         font_size = 20
         for x in range(20):
             if x % 2 == 0:
@@ -58,32 +61,32 @@ class TurtleWindow:
                 self.t2.pencolor(255, 177, 113)
             self.t2.write("WORDGUESSER!", move=False, align="center", font=("Arial", font_size, "bold"))
             time.sleep(0.1)
-            font_size += 5
+            font_size += 3
         self.t2.penup()
         self.t2.goto(0, 100)
-        self.t2.write("\n" + " W E L C O M E   T O ".center(100, "~") + "\n\n", move=False, align="center",
-                     font=("Courier New", 30, "normal"))
+        self.t2.write("\n" + " W E L C O M E   T O ".center(44, "~") + "\n\n", move=False, align="center",
+                     font=("Courier New", 20, "normal"))
         self.t2.pendown()
-        time.sleep(4)
+        time.sleep(3)
         self.t2.clear()
         return True
 
     def goodbye_screen(self):
         self.s.clear()
         self.s.colormode(255)
-        self.s.bgcolor(87, 217, 255)
-        time.sleep(2)
+        self.s.bgcolor(157, 238, 238)
+        time.sleep(1)
         self.t2.write("\n" + " THANKS FOR PLAYING! ".center(44, "~"), move=False, align="center",
-                     font=("Courier New", 40, "normal"))
-        time.sleep(3)
+                     font=("Courier New", 25, "normal"))
+        time.sleep(2)
         return True
 
     def turtle_text(self, string):
         self.t2.pencolor(45, 83, 98)
         self.t2.penup()
-        self.t2.goto(350, -450)
+        self.t2.goto(200, -250)
         self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 25, "bold"))
+        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(0.5)
         return True
 
@@ -91,15 +94,19 @@ class TurtleWindow:
         self.t2.pencolor(45, 83, 98)
         self.t.clear()
         self.t1.clear()
-        self.t3.clear()
         self.t2.penup()
         self.t2.goto(0, 0)
         self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 40, "bold"))
+        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(3)
+        self.t2.clear()
         return True
 
+    # draw body
     def draw_body(self):
+        self.t.reset()
+        self.t.ht()
+        self.t.pensize(8)
         self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
@@ -284,85 +291,14 @@ class TurtleWindow:
         self.t1.reset()
         self.t2.reset()
 
-    # def attempts_left(self, num):
-    #     self.t3.pencolor(38, 70, 83)
-    #     self.t3.penup()
-    #     self.t3.goto(200, 250)
-    #     self.t3.clear()
-    #     self.t3.write(f"Attempts remaining: {num}", move=False, align="center", font=("Courier New", 20, "bold"))
-    #     time.sleep(0.5)
+    # CLEAR FUNCTION
+    def clear_window(self):
+        self.t.clear()
+        self.t1.clear()
+        self.t2.clear()
+        self.t.reset()
+        self.t1.reset()
+        self.t2.reset()
+
 
 Donatello = TurtleWindow()
-
-
-    # def turtle_win(self, word):  # FIXME help
-    #     self.t2.pencolor(38, 70, 83)
-    #     self.t2.clear()
-    #     self.t.clear()
-    #     self.t2.penup()
-    #     self.t2.goto(0, 0)
-    #     self.t2.write("Well done, you win!", move=False, align="center", font=("Courier New", 20, "bold"))
-    #     self.t2.write(f"The word was '{word}'", move=False, align="center", font=("Courier New", 20, "bold"))
-    #     time.sleep(3)
-
-    # def turtle_lose(self, word):
-    #     self.t2.pencolor(38, 70, 83)
-    #     self.t2.clear()
-    #     self.t.clear()
-    #     self.t2.penup()
-    #     self.t2.goto(0, 0)
-    #     self.t2.pencolor()
-    #     self.t2.write("You ran out of attempts", move=False, align="center",
-    #             font=("Courier New", 25, "bold"))
-    #     self.t2.write(f"The word was: '{word}'. \n", move=False, align="center", font=("Courier New", 25, "bold"))
-    #     time.sleep(3)
-
-    # def already_guessed(self, letter):
-    #     self.t2.pencolor(38, 70, 83)
-    #     self.t2.ht()
-    #     self.t2.penup()
-    #     self.t2.goto(200, -250)
-    #     self.t2.clear()
-    #     self.t2.write(f'\nYou have already guessed the letter "{letter}"! Try again.', move=False, align="center",
-    #              font=("arial", 18, "normal"))
-    #     time.sleep(1)
-
-
-
-    # # for more difficulty:
-    # def draw_legs(self):
-    #     self.t.draw_leg1()
-    #     self.t.draw_leg2()
-    #     self.t.draw_leg3()
-    #     self.t.draw_leg4()
-
-    # def draw_back(self):
-    #     self.t.draw_back_middle()
-    #     self.t.draw_back_line()
-
-
-# Donatello_ = self.t.Turtle(visible=False)
-# Donatello_speed = self.t.speed(5000)
-# Donatello_pensize = self.t.pensize(8)
-# Donatello_penup = self.t.penup()
-# Donatello_goto = self.t.goto(0, -150)
-# Donatello_pendown = self.t.pendown()
-# Donatello_ht = self.t.ht()
-
-# Donatello = TurtleDrawing()
-
-# Donatello.draw_body()
-# Donatello.draw_head()
-# Donatello.draw_leg1()
-# Donatello.draw_leg2()
-# Donatello.draw_leg3()
-# Donatello.draw_leg4()
-# Donatello.draw_tail()
-# Donatello.draw_back_middle()
-# Donatello.draw_back_line()
-# Donatello.draw_eyes()
-
-# self.t.mainloop()
-
-# # # # self.t.done()
-# self.t.Screen().exitonclick()
