@@ -105,12 +105,10 @@ class Level:  # main parent class
             self):  # relies on the results from correct_word() and correct_guess() | helper function to incorrect_guess()
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
-            # Donatello.draw_word(self.display_word)
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
             Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
             return True, self.display_word
         elif self.guessed_word():
-            #Donatello.draw_word(self.display_word)
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
             Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
             return True, self.display_word
