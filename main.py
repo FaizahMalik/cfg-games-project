@@ -7,13 +7,11 @@ import json
 from word_picker import word_task
 
 
-# with open("words_list.json", "r") as json_file:
-#     final_words_list = json.load(json_file)
-#     defaultList = [word for word, tag in final_words_list]
 
 # defaultList = ['python']
 
 def level_selection(username):
+    # global username
     user_level = turtle.textinput("WordGuesser",
                                   f"Which level would you like to play, {username}? Beginner/Medium/Hard/Campaign: ").capitalize().strip()
     available_levels = {
@@ -22,7 +20,7 @@ def level_selection(username):
         'Hard': Hard,
         'Campaign': 'Campaign'
     }
-    if user_level in ['Beginner', 'Medium', 'Hard']:
+    if user_level == 'Beginner' or user_level == 'Medium' or user_level == 'Hard':
         level = available_levels[user_level]
         play_hangman(level, username)
     elif user_level == 'Campaign':
@@ -33,6 +31,7 @@ def level_selection(username):
 
 def initiate_game():
     Donatello.welcome_screen()
+    # turtle.ht()
     username = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
     level_selection(username)
 
@@ -41,7 +40,9 @@ def play_again(username):
         level_selection(username)
     else:
         Donatello.turtle_focused_text("Maybe next time!")
-        time.sleep(2)
+        Donatello.goodbye_screen()
+        time.sleep(1.5)
+        exit(0)
 
 def play_hangman(level, username):
     turtle.reset()
@@ -74,15 +75,16 @@ def play_hangman(level, username):
             break
     play_again(username)
 
+
 def play_campaign(username):
-    turtle.reset()
     for task_num in range(1, 3):
         task = word_task.get_word_of_task(task_num)
         turtle.ht()
         turtle.penup()
         turtle.goto(-350, 350)
         turtle.pencolor(45, 83, 98)
-        turtle.write(task[0], move=False, align="center",font=("Courier New", 30, "bold"))
+        turtle.write(task[0], move=False, align="center",
+                     font=("Courier New", 30, "bold"))
         game1 = Beginner(username, [task[1]])
         game1.pick_word()
         print(game1.show_word())
@@ -93,7 +95,6 @@ def play_campaign(username):
             if game1.attempts <= 0:
                 break
         turtle.clear()
-        play_again(username)
 
         #     if game1.status == 'Lost':
         #         break
