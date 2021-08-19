@@ -24,15 +24,15 @@ class PlayGame:
 
         if selected_level in ['Beginner', 'Medium', 'Hard']:
             self.level = self.available_levels[selected_level]
+            self.play_hangman()
             return True
-            # self.play_hangman()
         elif selected_level == 'Campaign':
-            # self.play_campaign()
+            self.play_campaign()
             return True
         else:
             Donatello.turtle_focused_text("Not a valid level! Try again.")
-            return False
-                #self.level_selection()
+            return self.level_selection()
+
 
 
     def initiate_game(self):
