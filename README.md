@@ -1,4 +1,4 @@
-![img.png](README_images/img.png)
+![img.png](README_images/wordguesser_logo.png)
 
 ---
 ## HOW TO PLAY
