@@ -5,11 +5,11 @@ import turtle
 from turtle_window import Donatello
 from word_picker import word_task
 
-
 class PlayGame:
     def __init__(self):
         self.username = None
         self.level = None
+        self.selected_level = None
         self.words_list = None
         self.available_levels = {
             'Beginner': Beginner,
@@ -20,19 +20,26 @@ class PlayGame:
 
     def level_selection(self):
         selected_level = turtle.textinput("WordGuesser",
-                                      f"Which level would you like to play, {self.username}? Beginner/Medium/Hard/Campaign: ").capitalize().strip()
+                                      f"Which level would you like to play, {self.username}? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
 
-        if selected_level in ['Beginner', 'Medium', 'Hard']:
-            self.level = self.available_levels[selected_level]
-            self.play_hangman()
+        self.selected_level = selected_level
+        if selected_level == 'Campaign':
             return True
-        elif selected_level == 'Campaign':
-            self.play_campaign()
+        elif selected_level in self.available_levels:
+            self.level = self.available_levels[selected_level]
             return True
         else:
             Donatello.turtle_focused_text("Not a valid level! Try again.")
             return self.level_selection()
 
+    def start_game(self):
+        if self.selected_level is None:
+            raise Exception('Level is not defined')
+
+        if self.selected_level == 'Campaign':
+            self.play_campaign()
+        else:
+            self.play_hangman()
 
 
     def initiate_game(self):
@@ -113,5 +120,6 @@ if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
    playthrough = PlayGame()
    playthrough.initiate_game()
+   playthrough.start_game()
 
 
