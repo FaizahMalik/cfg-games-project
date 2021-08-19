@@ -44,13 +44,13 @@ class WordPicker:
             self.word_to_guess = random.choice(common_adj)
 
         elif task_num == 3:
-            self.message = "Great work! How about an adverb?:"
+            self.message = "Great work! How about an adverb?"
             adverb = [w for w, tag in self.all_words[:1500] if
                       8 > len(w) > 5 and tag == "ADV" and not self.is_unique_chars(w)]
             self.word_to_guess = random.choice(adverb)
 
         elif task_num == 4:
-            self.message = "Hmmm, a palindrome perhaps?:"
+            self.message = "Hmmm, a palindrome perhaps?"
             palindromes = [w for w in self.only_words if self.is_palindrome(w) and 10 > len(w) > 1]
             self.word_to_guess = random.choice(palindromes)
 
@@ -70,7 +70,7 @@ class WordPicker:
             self.word_to_guess = random.choice(long_adj)
 
         elif task_num == 8:
-            self.message = "Is it a noun or is it a verb?! Who knows!:"
+            self.message = "Is it a noun or is it a verb?! Who knows!"
             rare_noun_verb = [w for w, tag in self.all_words if 9 >= len(w) > 6 and tag not in {"ADJ", "ADV"}]
             self.word_to_guess = random.choice(rare_noun_verb[-50:])
 
