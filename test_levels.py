@@ -39,7 +39,7 @@ class TestLevels(unittest.TestCase):
         cls.l6.display_word = 'l i o _ '
         cls.l6.past_guesses = ['l', 'i', 'o']
 
-    # test that module was successfully imported? can't be run simultaneously as test_incorrect_guess()
+    # can't be run simultaneously as test_incorrect_guess()
     def test_draw(self):
         self.assertFalse(self.l5.draw())
 

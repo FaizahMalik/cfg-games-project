@@ -18,29 +18,34 @@ def level_selection(username):
     if user_level == 'Beginner' or user_level == 'Medium' or user_level == 'Hard':
         level = available_levels[user_level]
         play_hangman(level, username)
+        return True
     elif user_level == 'Campaign':
         play_campaign(username)
+        return True
     else:
         Donatello.turtle_focused_text("Not a valid level! Try again.")
         return level_selection(username)
 
-      
+
 def initiate_game():
     Donatello.welcome_screen()
     username = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
     level_selection(username)
+    return True
 
 
 def play_again(username):
-    if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
+    playAgain = turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip()
+    if playAgain == "y":
         level_selection(username)
     else:
         Donatello.turtle_focused_text("Maybe next time!")
         Donatello.goodbye_screen()
         time.sleep(1.5)
         exit(0)
+    return True
 
-        
+
 def loading_screen(message):
     turtle.clear()
     turtle.pencolor(45, 83, 98)
@@ -55,6 +60,7 @@ def loading_screen(message):
         turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
         time.sleep(random.uniform(0.3, 0.8))
         turtle.clear()
+    return True
 
 
 def run_game(level, username, wordsList):
@@ -68,20 +74,23 @@ def run_game(level, username, wordsList):
         if game1.attempts <= 0:
             break
     turtle.clear()
+    return True
 
 
 def play_hangman(level, username):
     turtle.ht()
     wordsList = list(word_task.only_words)
     if turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ") == "y":
-        wordsList = turtle.textinput("WordGuesser", 
-                                     "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
+        wordsList = turtle.textinput("WordGuesser",
+                                     "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(
+            ", ")
         list_type = 'custom'
     else:
         list_type = 'default'
     loading_screen(f'You will be using a {list_type} list')
     run_game(level, username, wordsList)
     play_again(username)
+    return True
 
 
 def play_campaign(username):
@@ -96,6 +105,7 @@ def play_campaign(username):
                      font=("Courier New", 20, "bold"))
         run_game(Beginner, username, [task[1]])
     play_again(username)
+    return True
 
 
 initiate_game()

@@ -274,14 +274,5 @@ class TurtleWindow:
         self.t1.reset()
         self.t2.reset()
 
-    # CLEAR FUNCTION
-    def clear_window(self):
-        self.t.clear()
-        self.t1.clear()
-        self.t2.clear()
-        self.t.reset()
-        self.t1.reset()
-        self.t2.reset()
-
 
 Donatello = TurtleWindow()
