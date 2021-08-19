@@ -20,9 +20,9 @@ Includes the following modules:
 
 ---
 
-- #### Run main.py
+- #### Run `main.py`
   - A new window titled "Hangman? Pfffffft never heard of it" should appear
-- Answer the questions on the pop-up window.
+- Answer the questions on the pop-up window
 - Start guessing and have fun!
 - Alternatively, open up your terminal, navigate to correct folder and type `python main.py` to run the game
 ---
