@@ -10,9 +10,7 @@
 # # Lemmatize means to use the dictionary form of the word, e.g. cats - cat, knew - know.
 # lemmatizer = WordNetLemmatizer()
 #
-# # Stop words are very common words that do not add much to the meaning (articles, pronouns, prepositions, auxiliary verbs).
-# # We don't want the users to guess such words in our game so we need to filter them from the Brown corpus.
-# stop_words = stopwords.words('english')
+# # Stop words are very common words that do not add much to the meaning (articles, pronouns, prepositions, auxiliary verbs). We don't want the users to guess such words in our game so we need to filter them from the Brown corpus. stop_words = stopwords.words('english')
 #
 # # Part-of-speech (POS) tags in the Brown corpus (tagset='universal')
 # tags = {"ADJ", "ADV", "NOUN", "VERB"}
@@ -33,7 +31,7 @@
 # # [(('would', 'VERB'), 2714), (('make', 'VERB'), 2312)...]
 #
 # final_wordlist = [tup for tup, count in freq_words if len(tup[0]) > 3 ] # a list of tuples: word, tag. Since it is already sorted, we do not need the count anymore.
-# 
+#
 # with open("words_list.json", "w") as file:
 #   res = json.dumps(final_wordlist)
 #   file.write(res)

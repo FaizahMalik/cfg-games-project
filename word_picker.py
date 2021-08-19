@@ -2,6 +2,7 @@ from collections import Counter
 import random
 import json
 
+
 class WordPicker:
 
     def __init__(self):
@@ -44,7 +45,8 @@ class WordPicker:
 
         elif task_num == 3:
             self.message = "Great work! Now guess an adverb:"
-            adverb = [w for w, tag in self.all_words[:1500] if 8 > len(w) > 5 and tag == "ADV" and not self.is_unique_chars(w)]
+            adverb = [w for w, tag in self.all_words[:1500] if
+                      8 > len(w) > 5 and tag == "ADV" and not self.is_unique_chars(w)]
             self.word_to_guess = random.choice(adverb)
 
         elif task_num == 4:
@@ -85,7 +87,4 @@ class WordPicker:
         return (self.message, self.word_to_guess)
 
 
-
 word_task = WordPicker()
-
-

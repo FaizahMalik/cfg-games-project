@@ -6,7 +6,6 @@ from turtle_window import Donatello
 from word_picker import word_task
 
 
-
 def level_selection(username):
     user_level = turtle.textinput("WordGuesser",
                                   f"Which level would you like to play, {username}? Beginner/Medium/Hard/Campaign: ").capitalize().strip()
@@ -25,7 +24,7 @@ def level_selection(username):
         Donatello.turtle_focused_text("Not a valid level! Try again.")
         return level_selection(username)
 
-
+      
 def initiate_game():
     Donatello.welcome_screen()
     username = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
@@ -41,14 +40,15 @@ def play_again(username):
         time.sleep(1.5)
         exit(0)
 
-
+        
 def loading_screen(message):
     turtle.clear()
     turtle.pencolor(45, 83, 98)
     turtle.write(message, move=False, align="center", font=("Courier New", 30, "bold"))
     time.sleep(2)
     turtle.clear()
-    turtle.write("Your word will be hidden below. Good luck.", move=False, align="center", font=("Courier New", 30, "bold"))
+    turtle.write("Your word will be hidden below. Good luck.", move=False, align="center",
+                 font=("Courier New", 30, "bold"))
     time.sleep(2)
     turtle.clear()
     for c in range(4):
@@ -74,7 +74,8 @@ def play_hangman(level, username):
     turtle.ht()
     wordsList = list(word_task.only_words)
     if turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ") == "y":
-        wordsList = turtle.textinput("WordGuesser", "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
+        wordsList = turtle.textinput("WordGuesser", 
+                                     "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
         list_type = 'custom'
     else:
         list_type = 'default'

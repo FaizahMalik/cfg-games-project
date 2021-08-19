@@ -3,12 +3,13 @@ from turtle_window import TurtleWindow
 
 
 class TestTurtleWindow(unittest.TestCase):
-
     """Instantiating a test object before every test case which can be used to ensure function executes correctly."""
+
     def setUp(self):
         self.raphael = TurtleWindow()
 
     """Clears the turtle window after every test case to ensure a clean screen for the next test case."""
+
     def tearDown(self):
         self.raphael.clear_window()
 
@@ -59,9 +60,9 @@ class TestTurtleWindow(unittest.TestCase):
     def test_draw_eyes(self):
         self.assertTrue(self.raphael.draw_eyes())
 
+
 if __name__ == '__main__':
     unittest.main()
-
 
 # cd .. (so you are not in the test folder)
 # then try

@@ -56,7 +56,8 @@ class Level:  # main parent class
         """takes an input, and cleans it, returns false if guess is not exclusively alphabetical"""
         self.guess = letter.lower().strip()
         if not self.guess.isalpha():
-            Donatello.turtle_text("No special characters or numbers")  # no numbers, special characters or multiple words allowed
+            Donatello.turtle_text(
+                "No special characters or numbers")  # no numbers, special characters or multiple words allowed
             return False
         # TODO if type != str raise assert
         return self.guess
@@ -95,17 +96,18 @@ class Level:  # main parent class
         else:
             return False
 
-    def guessed_word(self): # helper function to display_correct_guess()
+    def guessed_word(self):  # helper function to display_correct_guess()
         """checks if the total of the guesses is equal to the chosen word, if yes it returns True and the full word"""
         if self.correct_guess():
-            if self.display_word.replace(' ','') == self.chosen_word:
+            if self.display_word.replace(' ', '') == self.chosen_word:
                 self.display_word = self.chosen_word  # process will continue until it reaches ***
                 return True, self.display_word
         else:
             return False
 
     def display_correct_guess(
-            self):  # relies on the results from correct_word() and correct_guess() | helper function to incorrect_guess()
+            self):  # relies on the results from correct_word() and correct_guess() | helper function to
+        # incorrect_guess()
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
@@ -122,7 +124,8 @@ class Level:  # main parent class
         else:
             return False
 
-    def incorrect_guess(self, letter):  # relies on sanitise_guess, add_previous_guess(), display_correct_guess() & draw()
+    def incorrect_guess(self,
+                        letter):  # relies on sanitise_guess, add_previous_guess(), display_correct_guess() & draw()
         """checks if guess is incorrect. If so self.attempts are added and incorrect messages are displayed."""
         if not self.sanitize_guess(letter):  # ensures that it is alphabetical input
             return False
@@ -133,7 +136,8 @@ class Level:  # main parent class
 
             if self.attempts <= 0:
                 Donatello.turtle_text(f"Wrong guess! Attempts left: {self.attempts}")
-                Donatello.turtle_focused_text(f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
+                Donatello.turtle_focused_text(
+                    f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
                 return False
             else:
                 Donatello.turtle_text(f"Wrong guess! Attempts left: {self.attempts}")
@@ -174,7 +178,7 @@ class Medium(Level):  # this is our medium-difficulty subclass
         }
 
 
-class Hard(Level):  # this is our beast mode subclass
+class Hard(Level):  # this is our 'beast mode' subclass
     def __init__(self, username, words_list):
         super().__init__(username, words_list)
         self.attempts = 7
