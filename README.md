@@ -10,7 +10,8 @@ Our group project, WordGuesser, is entirely written in Python (apart from README
 Includes the following modules:
 - ###Turtle
   - Used to allow program to create a drawing of a turtle in steps each time the user guesses a letter incorrectly 
-  - Also for displaying messages and the hidden word on the Tkinter window.
+  - Also for displaying messages and the hidden word in the Turtle Graphics window.
+  - Allows the user to input messages in a text bar within a small pop-up window titled 'WordGuesser'
 
 
 ---
@@ -35,9 +36,12 @@ Includes the following modules:
 - #### test_levels.py
   - This is where you will find the unit tests we have written for our main.py file, instructions on how to run the tests are at the bottom of the file
 - #### test_turtle_window.py
-  - This is where you will find the unit tests we have written for the turtle_window.py file, instructions on how to run the tests are at the bottom of the file
+  - Here you will find the unit tests we have written for the turtle_window.py file, instructions on how to run the tests are at the bottom of the file
 - #### turtle_window.py
   - This is where the code that runs the turtle module can be found.
-  - Includes the class Turtle
+  - Includes the class TurtleWindow with methods that allow us to:
+    - Create the turtle drawing in steps, method-by-method
+    - Clear and reset everything in Turtle.
+    - 
 - #### words_list.json
   - This file includes all the words we use in the WordGuesser game.
