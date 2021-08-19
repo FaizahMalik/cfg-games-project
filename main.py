@@ -19,15 +19,14 @@ class PlayGame:
         }
 
     def level_selection(self):
-        selected_level = turtle.textinput("WordGuesser",
+        self.selected_level = turtle.textinput("WordGuesser",
                                       f"Which level would you like to play, {self.username}? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
 
-        self.selected_level = selected_level
-        if selected_level == 'Campaign':
+        if self.selected_level == 'Campaign':
             self.level = Beginner
             return True
-        elif selected_level in self.available_levels:
-            self.level = self.available_levels[selected_level]
+        elif self.selected_level in self.available_levels:
+            self.level = self.available_levels[self.selected_level]
             return True
         else:
             Donatello.turtle_focused_text("Not a valid level! Try again.")
@@ -50,14 +49,7 @@ class PlayGame:
 
 
     def play_again(self):
-        if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
-            self.level_selection()
-        else:
-            Donatello.turtle_focused_text("Maybe next time!")
-            Donatello.goodbye_screen()
-            time.sleep(1.5)
-            exit(0)
-
+        return turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y"
 
     def loading_screen(self, message):
         turtle.clear()
@@ -99,7 +91,9 @@ class PlayGame:
             list_type = 'default'
         self.loading_screen(f'You will be using a {list_type} list')
         self.run_game()
-        self.play_again()
+
+    def custom_or_not(self):
+        pass
 
 
     def play_campaign(self):
@@ -114,13 +108,21 @@ class PlayGame:
                          font=("Courier New", 20, "bold"))
             self.words_list = [task[task_num]]
             self.run_game()
-        self.play_again()
 
 
 if __name__ == "__main__":
-   # stuff only to run when not called via 'import' here
-   playthrough = PlayGame()
-   playthrough.initiate_game()
-   playthrough.start_game()
+    # stuff only to run when not called via 'import' here
+    playthrough = PlayGame()
+    isFirstPlay = True
+
+    while isFirstPlay or playthrough.play_again():
+        isFirstPlay = False
+        playthrough.initiate_game()
+        playthrough.start_game()
+
+    Donatello.turtle_focused_text("Maybe next time!")
+    Donatello.goodbye_screen()
+    time.sleep(1.5)
+
 
 
