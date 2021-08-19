@@ -28,11 +28,11 @@ Includes the following modules:
 ---
 
 - #### create_json_wordsfile.py
-  - The code in this file was used to create our json words file.
+  - The code in this file was used to create our json words file. Do not run it again.
 - #### levels.py
   - The main logic of the game can be found here. This file is imported into main.py
 - #### main.py
-  - This where the game is run from.
+  - This is where the game is run from.
 - #### test_levels.py
   - This is where you will find the unit tests we have written for our main.py file, instructions on how to run the tests are at the bottom of the file
 - #### test_turtle_window.py
