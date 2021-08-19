@@ -28,14 +28,14 @@ class WordPicker:
             return False
 
     def is_palindrome(self, word):
-        """Returns True is the word is a palindrome. Otherwise, returns False."""
+        """Returns True if the word is a palindrome. Otherwise, returns False."""
         return word == word[::-1]
 
     def get_word_of_task(self, task_num):
         """Accepts the number of the task as an integer (from 1 to 10) and returns a tuple:
         (message_for_the_user, word_to_guess)"""
         if task_num == 1:
-            self.message = "Lets start! Try guess the most common noun:"
+            self.message = "Let's start! Try to guess the most common noun:"
             self.word_to_guess = self.get_freq_pos("NOUN")[0]
 
         elif task_num == 2:
