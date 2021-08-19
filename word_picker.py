@@ -4,7 +4,6 @@ import json
 
 
 class WordPicker:
-
     def __init__(self):
         """Reads from the words_list.json file (5000 most common words from the Brown corpus)
          and creates a list of lists [word, POS tag] and a set of only words."""
@@ -16,7 +15,8 @@ class WordPicker:
         self.word_to_guess = None
 
     def get_freq_pos(self, pos):
-        """Creates a list of frequent words belonging to a chosen part of speech: either nouns, adjectives, adverbs or verbs."""
+        """Creates a list of frequent words belonging to a chosen part of speech:
+        either nouns, adjectives, adverbs or verbs."""
         return [word for word, tag in self.all_words if tag == pos]
 
     def is_unique_chars(self, word):
@@ -82,9 +82,9 @@ class WordPicker:
         elif task_num == 10:
             self.message = "Well done! One last task, guess a verb:"
             long_verb = [w for w in self.get_freq_pos("VERB") if len(w) == 10]
-            self.word_to_guess = random.choice((long_verb))
+            self.word_to_guess = random.choice(long_verb)
 
-        return (self.message, self.word_to_guess)
+        return self.message, self.word_to_guess
 
 
 word_task = WordPicker()
