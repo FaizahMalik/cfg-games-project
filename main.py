@@ -5,6 +5,8 @@ import turtle
 from turtle_window import Donatello
 from word_picker import word_task
 
+
+
 def level_selection(username):
     user_level = turtle.textinput("WordGuesser",
                                   f"Which level would you like to play, {username}? Beginner/Medium/Hard/Campaign: ").capitalize().strip()
@@ -24,10 +26,11 @@ def level_selection(username):
         return level_selection(username)
 
 
-def initiate_game():s
+def initiate_game():
     Donatello.welcome_screen()
     username = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
     level_selection(username)
+
 
 def play_again(username):
     if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
