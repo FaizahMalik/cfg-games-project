@@ -18,7 +18,7 @@
 - #### main.py
   - This where the game is run from.
 - #### test_levels.py
-  - This is where you will find the unit tests we have written for our main.py file, instructions on how to run the tests are at the bottom of the file
+  - This is where you will find the unit tests we have written for our levels.py file, instructions on how to run the tests are at the bottom of the file
 - #### test_turtle_window.py
   - This is where you will find the unit tests we have written for the turtle_window.py file, instructions on how to run the tests are at the bottom of the file
 - #### turtle_window.py
