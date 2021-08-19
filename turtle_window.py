@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 import time
 
+
 class TurtleWindow:
     def __init__(self):
         self.s = Screen()
@@ -49,7 +50,7 @@ class TurtleWindow:
         self.t2.penup()
         self.t2.goto(0, 100)
         self.t2.write("\n" + " W E L C O M E   T O ".center(44, "~") + "\n\n", move=False, align="center",
-                     font=("Courier New", 20, "normal"))
+                      font=("Courier New", 20, "normal"))
         self.t2.pendown()
         time.sleep(3)
         self.t2.clear()
@@ -61,7 +62,7 @@ class TurtleWindow:
         self.s.bgcolor(157, 238, 238)
         time.sleep(1)
         self.t2.write("\n" + " THANKS FOR PLAYING! ".center(44, "~"), move=False, align="center",
-                     font=("Courier New", 25, "normal"))
+                      font=("Courier New", 25, "normal"))
         time.sleep(2)
         return True
 
@@ -220,7 +221,6 @@ class TurtleWindow:
             self.t.right(300)
         return True
 
-
     # draw back pattern
     def draw_back_line(self):
         self.t.pencolor('dark green')
@@ -252,7 +252,6 @@ class TurtleWindow:
         self.t.left(60)
         self.t.forward(72)
         return True
-
 
     # draw eyes
     def draw_eyes(self):
