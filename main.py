@@ -43,6 +43,7 @@ def play_again(username):
         
 def loading_screen(message):
     turtle.clear()
+    turtle.ht()
     turtle.pencolor(45, 83, 98)
     turtle.write(message, move=False, align="center", font=("Courier New", 30, "bold"))
     time.sleep(2)
