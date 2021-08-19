@@ -26,7 +26,6 @@ class Level:  # main parent class
             print("missing key in self.turtle_drawings")
             return False
 
-
     def pick_word(self):
         """chooses a random word from given list"""
         self.chosen_word = random.choice(self.words_list)
