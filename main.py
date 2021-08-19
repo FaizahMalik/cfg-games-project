@@ -109,7 +109,9 @@ class PlayGame:
         self.play_again()
 
 
-# COMMENT THIS OUT WHEN IMPORTING FILE INTO TEST MODULE
-playthrough = PlayGame()
-playthrough.initiate_game()
+if __name__ == "__main__":
+   # stuff only to run when not called via 'import' here
+   playthrough = PlayGame()
+   playthrough.initiate_game()
+
 

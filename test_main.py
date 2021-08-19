@@ -8,6 +8,3 @@ class TestPlayGame(unittest.TestCase):
     def test_level_selection(self):
         self.assertTrue(self.test.level_selection())
 
-
-if __name__ == '__main__':
-    unittest.main()
