@@ -1,4 +1,4 @@
-![img.png](README_images/img.png)
+![img.png](img.png)
 
 ---
 ## HOW TO PLAY
