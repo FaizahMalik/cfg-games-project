@@ -13,34 +13,17 @@ class PlayGame:
         self.mode = None
 
 
-    # def initiate_game(self):
-    #     Donatello.welcome_screen()
-    #
-    #
-    # def ask_username(self):
-    #     self.username = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
-    #     return self.username
-    #
-    # def ask_mode(self):
-    #     self.mode = turtle.textinput("WordGuesser",
-    #                             "Which mode would you like to play? Campaign, or Levels? ").lower().strip()
-    #     if self.mode not in ['campaign', 'levels']:
-    #         return self.ask_mode()
-    #     return self.mode
-
-
     def play_again(self):
         return turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y"
-
 
     def loading_screen(self, message):
         Donatello.turtle_focused_text(message)
         Donatello.turtle_focused_text("Your word will be hidden below. Good luck.")  #, move=False, align="center", font=("Courier New", 30, "bold"))
+        turtle.pencolor(45, 83, 98)
         for c in range(4):
             turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
             time.sleep(random.uniform(0.3, 0.8))
             turtle.clear()
-
 
     def run_game(self):
         game1 = self.level(self.username, self.words_list)
@@ -53,7 +36,6 @@ class PlayGame:
             if game1.attempts <= 0:
                 break
         turtle.clear()
-
 
 
 class LevelsMode(PlayGame):
@@ -75,7 +57,7 @@ class LevelsMode(PlayGame):
 
     def ask_level(self):
         self.selected_level = turtle.textinput("WordGuesser",
-                                      f"Which level would you like to play, {self.username}? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
+                                      f"And which level would you like to play? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
 
     def check_level(self):
         if self.selected_level in self.available_levels:
@@ -84,12 +66,10 @@ class LevelsMode(PlayGame):
         else:
             Donatello.turtle_focused_text("Not a valid level! Try again.")
             return self.ask_level()
-        
-        
+
     def ask_if_custom_list(self):
         return turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ").lower().strip() == "y"
 
-        
     def set_words_list(self):
         if self.ask_if_custom_list():
             self.list_type = 'custom'
@@ -111,7 +91,7 @@ class CampaignMode(PlayGame):
         self.level = Beginner
 
     def play_campaign(self):
-        self.loading_screen(f'You are playing {self.level} mode')
+        self.loading_screen(f'You are playing campaign mode')
         for task_num in range(1, 11):
             task = word_task.get_word_of_task(task_num)  # task = (task given, word to guess)
             Donatello.turtle_text(task[0], (-220, 325))
@@ -129,9 +109,7 @@ def ask_mode():
     if game_mode in ['campaign', 'levels']:
         return game_mode
     return ask_mode()
-    # if game_mode not in ['campaign', 'levels']:
-    #     return ask_mode()
-    # return game_mode
+
 
 
 if __name__ == "__main__":
@@ -140,50 +118,17 @@ if __name__ == "__main__":
     keep_playing = False
     turtle.ht()
 
-    while is_first_play:
+while is_first_play or playthrough.play_again():
+    if is_first_play:
         is_first_play = False
         Donatello.welcome_screen()
         name = ask_name()
-        mode = ask_mode()
-        if mode == 'campaign':
-            playthrough = CampaignMode(name)
-            playthrough.play_campaign()
-        elif mode == 'levels':
-            playthrough = LevelsMode(name)
-            playthrough.initiate_levels()
-            playthrough.play_levels()
-
-    while playthrough.play_again():
-        mode = ask_mode()
-        if mode == 'campaign':
-            playthrough = CampaignMode(name)
-            playthrough.play_campaign()
-        elif mode == 'levels':
-            playthrough = LevelsMode(name)
-            playthrough.initiate_levels()
-            playthrough.play_levels()
-        playthrough.play_again()
-
-
-    # def start_game(self):
-    #     if self.selected_level is None:
-    #         raise Exception('Level is not defined')
-    #
-    #     if self.selected_level == 'Campaign':
-    #         self.play_campaign()
-    #     else:
-    #         self.play_levels()
-    #
-    #
-    #
-    # while is_first_play or playthrough.play_again():
-    #     is_first_play = False
-    #     playthrough.initiate_game()
-    #     playthrough.start_game()
-    #
-    # Donatello.turtle_focused_text("Maybe next time!")
-    # Donatello.goodbye_screen()
-    # time.sleep(1.5)
-
-
+    mode = ask_mode()
+    if mode == 'campaign':
+        playthrough = CampaignMode(name)
+        playthrough.play_campaign()
+    elif mode == 'levels':
+        playthrough = LevelsMode(name)
+        playthrough.initiate_levels()
+        playthrough.play_levels()
 
