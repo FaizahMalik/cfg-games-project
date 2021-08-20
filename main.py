@@ -10,8 +10,6 @@ class PlayGame:
         self.username = None
         self.level = None
         self.words_list = None
-        self.mode = None
-
 
     def play_again(self):
         return turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y"
