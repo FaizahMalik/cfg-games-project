@@ -27,6 +27,7 @@ class PlayGame:
             self.play_hangman()
             return True
         elif selected_level == 'Campaign':
+            self.level = Beginner
             self.play_campaign()
             return True
         else:
