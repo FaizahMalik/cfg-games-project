@@ -111,11 +111,11 @@ class Level:  # main parent class
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
-            Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
+            Donatello.turtle_focused_text("YOU DID IT! YOU'RE AWESOME! ".center(40, "~"))
             return True, self.display_word
         elif self.guessed_word():
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
-            Donatello.turtle_focused_text(" YOU WIN! ".center(40, "*"))
+            Donatello.turtle_focused_text("YOU DID IT! YOU'RE AWESOME! ".center(40, "~"))
             return True, self.display_word
         elif self.correct_guess():
             Donatello.turtle_text(f"Correct guess! Attempts left: {self.attempts}")
