@@ -66,10 +66,10 @@ class TurtleWindow:
         time.sleep(2)
         return True
 
-    def turtle_text(self, string):
+    def turtle_text(self, string, position=(200, -250)):
         self.t2.pencolor(45, 83, 98)
         self.t2.penup()
-        self.t2.goto(200, -250)
+        self.t2.goto(position)
         self.t2.clear()
         self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
         time.sleep(0.5)
@@ -82,7 +82,7 @@ class TurtleWindow:
         self.t2.penup()
         self.t2.goto(0, 0)
         self.t2.clear()
-        self.t2.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
+        self.t2.write(string, move=False, align="center", font=("Courier New", 30, "bold"))
         time.sleep(3)
         self.t2.clear()
         return True
