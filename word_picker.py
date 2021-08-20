@@ -4,7 +4,6 @@ import json
 
 
 class WordPicker:
-
     def __init__(self):
         """Reads from the words_list.json file (5000 most common words from the Brown corpus)
          and creates a list of lists [word, POS tag] and a set of only words."""
@@ -16,7 +15,8 @@ class WordPicker:
         self.word_to_guess = None
 
     def get_freq_pos(self, pos):
-        """Creates a list of frequent words belonging to a chosen part of speech: either nouns, adjectives, adverbs or verbs."""
+        """Creates a list of frequent words belonging to a chosen part of speech:
+        either nouns, adjectives, adverbs or verbs."""
         return [word for word, tag in self.all_words if tag == pos]
 
     def is_unique_chars(self, word):
@@ -28,14 +28,14 @@ class WordPicker:
             return False
 
     def is_palindrome(self, word):
-        """Returns True is the word is a palindrome. Otherwise, returns False."""
+        """Returns True if the word is a palindrome. Otherwise, returns False."""
         return word == word[::-1]
 
     def get_word_of_task(self, task_num):
         """Accepts the number of the task as an integer (from 1 to 10) and returns a tuple:
         (message_for_the_user, word_to_guess)"""
         if task_num == 1:
-            self.message = "Lets start! Try guess the most common noun:"
+            self.message = "Let's start! Try to guess the most common noun:"
             self.word_to_guess = self.get_freq_pos("NOUN")[0]
 
         elif task_num == 2:
@@ -44,13 +44,13 @@ class WordPicker:
             self.word_to_guess = random.choice(common_adj)
 
         elif task_num == 3:
-            self.message = "Great work! Now guess an adverb:"
+            self.message = "Great work! How about an adverb?"
             adverb = [w for w, tag in self.all_words[:1500] if
                       8 > len(w) > 5 and tag == "ADV" and not self.is_unique_chars(w)]
             self.word_to_guess = random.choice(adverb)
 
         elif task_num == 4:
-            self.message = "A palindrome perhaps?:"
+            self.message = "Hmmm, a palindrome perhaps?"
             palindromes = [w for w in self.only_words if self.is_palindrome(w) and 10 > len(w) > 1]
             self.word_to_guess = random.choice(palindromes)
 
@@ -60,17 +60,17 @@ class WordPicker:
             self.word_to_guess = random.choice(unique)
 
         elif task_num == 6:
-            self.message = "A verb with all unique characters:"
+            self.message = "Now we got a verb with all unique characters:"
             unique_verbs = [w for w in self.get_freq_pos("VERB") if 7 <= len(w) <= 9 and self.is_unique_chars(w)]
             self.word_to_guess = random.choice(unique_verbs)
 
         elif task_num == 7:
-            self.message = "Another adjective this time:"
+            self.message = "You got this! Another adjective this time:"
             long_adj = [w for w in self.get_freq_pos("ADJ")[-110:] if len(w) == 9]
             self.word_to_guess = random.choice(long_adj)
 
         elif task_num == 8:
-            self.message = "Is it a noun or is it a verb?!:"
+            self.message = "Is it a noun or is it a verb?! Who knows!"
             rare_noun_verb = [w for w, tag in self.all_words if 9 >= len(w) > 6 and tag not in {"ADJ", "ADV"}]
             self.word_to_guess = random.choice(rare_noun_verb[-50:])
 
@@ -82,9 +82,9 @@ class WordPicker:
         elif task_num == 10:
             self.message = "Well done! One last task, guess a verb:"
             long_verb = [w for w in self.get_freq_pos("VERB") if len(w) == 10]
-            self.word_to_guess = random.choice((long_verb))
+            self.word_to_guess = random.choice(long_verb)
 
-        return (self.message, self.word_to_guess)
+        return self.message, self.word_to_guess
 
 
 word_task = WordPicker()

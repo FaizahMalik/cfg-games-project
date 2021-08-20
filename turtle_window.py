@@ -14,7 +14,7 @@ class TurtleWindow:
         self.t.ht()  # t is turtle drawing
         self.t1.ht()  # t1 is for big messages that clear the screen
         self.t2.ht()  # t2 is for small side notes in the corner of the screen
-        self.t.speed(8)
+        self.t.speed(10)
         self.t.pensize(8)
         self.t.penup()
         self.t.goto(0, -150)
@@ -22,6 +22,7 @@ class TurtleWindow:
         self.t.pencolor('dark green')
 
     def draw_word(self, word):
+        """Draws the hidden word in the turtle window"""
         self.t1.pencolor(45, 83, 98)
         self.t1.clear()
         self.t1.speed(5)
@@ -33,6 +34,7 @@ class TurtleWindow:
         return True
 
     def welcome_screen(self):
+        """Shows the welcome screen which says "welcome to" and the WordGuesser logo below"""
         self.t.clear()
         self.t1.clear()
         self.t2.clear()
@@ -57,6 +59,7 @@ class TurtleWindow:
         return True
 
     def goodbye_screen(self):
+        """Clears screen and thanks the user for playing"""
         self.s.clear()
         self.s.colormode(255)
         self.s.bgcolor(157, 238, 238)
@@ -65,8 +68,10 @@ class TurtleWindow:
                       font=("Courier New", 25, "normal"))
         time.sleep(2)
         return True
-
+      
     def turtle_text(self, string, position=(200, -250)):
+        """Function for adding small text on the bottom right of the screen without clearing anything else"""
+
         self.t2.pencolor(45, 83, 98)
         self.t2.penup()
         self.t2.goto(position)
@@ -76,6 +81,7 @@ class TurtleWindow:
         return True
 
     def turtle_focused_text(self, string):
+        """Used to add large text in the middle of the screen, clears the screen before and after message"""
         self.t2.pencolor(45, 83, 98)
         self.t.clear()
         self.t1.clear()
@@ -136,7 +142,6 @@ class TurtleWindow:
             self.t.left(4)
         self.t.forward(10)
         self.t.end_fill()
-        # self.t.done()
         return True
 
     # draw leg 2
@@ -154,7 +159,6 @@ class TurtleWindow:
             self.t.right(4)
         self.t.forward(10)
         self.t.end_fill()
-        # self.t.done()
         return True
 
     # draw leg 3
@@ -171,7 +175,6 @@ class TurtleWindow:
             self.t.right(4)
         self.t.forward(10)
         self.t.end_fill()
-        # self.t.done()
         return True
 
     # draw leg 4
@@ -189,7 +192,6 @@ class TurtleWindow:
             self.t.left(4)
         self.t.forward(10)
         self.t.end_fill()
-        # # self.t.done()
         return True
 
     # draw tail
@@ -205,7 +207,6 @@ class TurtleWindow:
         self.t.left(90)
         self.t.forward(30)
         self.t.end_fill()
-        # # self.t.done()
         return True
 
     # draw back
@@ -265,17 +266,8 @@ class TurtleWindow:
         self.t.circle(3)
         return True
 
-    # CLEAR FUNCTION
     def clear_window(self):
-        self.t.clear()
-        self.t1.clear()
-        self.t2.clear()
-        self.t.reset()
-        self.t1.reset()
-        self.t2.reset()
-
-    # CLEAR FUNCTION
-    def clear_window(self):
+        """Clears and resets entire turtle window - used for testing purposes"""
         self.t.clear()
         self.t1.clear()
         self.t2.clear()
