@@ -136,7 +136,7 @@ class Level:  # main parent class
             if self.attempts <= 0:
                 Donatello.turtle_text(f"Wrong guess! Attempts left: {self.attempts}")
                 Donatello.turtle_focused_text(
-                    f"Oh no! You ran out of attempts. The word was '{self.chosen_word.upper()}'")
+                    f"Oh no! You ran out of attempts.\nThe word was '{self.chosen_word.upper()}'")
                 return False
             else:
                 Donatello.turtle_text(f"Wrong guess! Attempts left: {self.attempts}")
