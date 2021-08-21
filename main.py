@@ -12,6 +12,24 @@ class PlayGame:
         self.level = None
         self.words_list = None
 
+    @staticmethod  # These methods are static so that they can be accessed without requiring an instance of the class.
+    def ask_name():
+        """Asks the user for their name, and returns it"""
+        name = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
+        return name
+
+    @staticmethod
+    def ask_mode():
+        """Asks the user which mode they want to play, returns the mode if it exists.
+        If they enter an invalid mode, it will alert the user and ask again (recursively)"""
+        game_mode = turtle.textinput("WordGuesser",
+                                     f"Which mode would you like to play, {username}? Campaign, or Levels? ").lower().strip()
+        if game_mode in ['campaign', 'levels']:
+            return game_mode
+        else:
+            Donatello.turtle_focused_text("Invalid mode! Try again")
+            return PlayGame.ask_mode()
+
     def play_again(self):
         if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
             return True
@@ -40,6 +58,7 @@ class PlayGame:
             if game1.attempts <= 0:
                 break
         return True
+
 
 
 class LevelsMode(PlayGame):
@@ -141,22 +160,6 @@ class CampaignMode(PlayGame):  # This is our campaign mode where the user will c
             self.run_game()
 
 
-def ask_name():
-    """Asks the user for their name, and returns it"""
-    name = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
-    return name
-
-
-def ask_mode():
-    """Asks the user which mode they want to play, returns the mode if it exists.
-    If they enter an invalid mode, it will alert the user and ask again (recursively)"""
-    game_mode = turtle.textinput("WordGuesser",
-                                 f"Which mode would you like to play, {username}? Campaign, or Levels? ").lower().strip()
-    if game_mode in ['campaign', 'levels']:
-        return game_mode
-    else:
-        Donatello.turtle_focused_text("Invalid mode! Try again")
-        return ask_mode()
 
 
 if __name__ == "__main__":
@@ -164,13 +167,14 @@ if __name__ == "__main__":
     is_first_play = True
     keep_playing = False
     turtle.ht()  # Hides turtle cursor
+    username = ''
 
     while is_first_play or playthrough.play_again():
         if is_first_play:
             is_first_play = False
             Donatello.welcome_screen()
-            username = ask_name()
-        mode = ask_mode()
+            username = PlayGame.ask_name()
+        mode = PlayGame.ask_mode()
         if mode == 'campaign':
             playthrough = CampaignMode(username)
             playthrough.play_campaign()
