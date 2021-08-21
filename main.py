@@ -20,8 +20,7 @@ class PlayGame:
 
     def loading_screen(self, message):
         Donatello.turtle_focused_text(message)
-        Donatello.turtle_focused_text(
-            "Your word will be hidden below. Good luck.")
+        Donatello.turtle_focused_text("Your word will be hidden below. Good luck.")
         turtle.pencolor(45, 83, 98)
         for c in range(4):
             turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
@@ -39,7 +38,6 @@ class PlayGame:
             game1.incorrect_guess(guess)
             if game1.attempts <= 0:
                 break
-        turtle.clear()
         return True
 
 
@@ -115,6 +113,17 @@ class CampaignMode(PlayGame):  # This is our campaign mode where the user will c
         self.level = Beginner  # Beginner difficulty by default.
         self.task_range = (10)
 
+    def display_task(self, string):
+        """Displays the given message at the top of the screen"""
+        # turtle.pencolor(45, 83, 98)
+        turtle.pencolor(45, 83, 98)
+        turtle.penup()
+        turtle.clear()
+        turtle.goto(-150, 280)
+        turtle.write(string, move=False, align="center", font=("Courier New", 20, "bold"))
+        time.sleep(0.5)
+        return True
+
     def play_campaign(self):
         """Shows the loading screen with a message. Then calls task_cycle()"""
         self.loading_screen(f'You are playing campaign mode')
@@ -126,9 +135,22 @@ class CampaignMode(PlayGame):  # This is our campaign mode where the user will c
         and displaying the task message on the Turtle window"""
         for task_num in range(self.task_range):
             task = word_task.get_word_of_task(task_num)  # task = (task given, word to guess)
-            Donatello.turtle_text(f'{task_num}. {task[0]}', (-220, 325))  # task[0] is where the task instructions are stored
+            self.display_task(f'{task_num+1}. {task[0]}') # task[0] is where the task instructions are stored
             self.words_list = [task[1]]  # task[1] is where the task answer word is stored
             self.run_game()
+
+
+    #
+    # def play_campaign(self):
+    #     """Shows the loading screen with a message. Then calls task_cycle()"""
+    #     self.loading_screen(f'You are playing campaign mode')
+    #     for task_num in range(self.task_range):
+    #         task = word_task.get_word_of_task(task_num)  # task = (task given, word to guess)
+    #         Donatello.turtle_text(f'{task_num + 1}. {task[0]}',
+    #                               (-220, 325))  # task[0] is where the task instructions are stored
+    #         self.words_list = [task[1]]  # task[1] is where the task answer word is stored
+    #         self.run_game()
+    #     return True
 
 
 def ask_name():

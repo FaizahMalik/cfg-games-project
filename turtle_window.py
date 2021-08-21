@@ -69,9 +69,9 @@ class TurtleWindow:
         time.sleep(2)
         return True
       
-    def turtle_text(self, string, position=(200, -250)):
-        """Function for adding small text on the bottom right of the screen without clearing anything else"""
-
+    def turtle_text(self, string, position=(200, -275)):
+        """Function for adding small text on the bottom right of the screen without clearing anything else.
+        Takes an optional after string input to modify the position of the message"""
         self.t2.pencolor(45, 83, 98)
         self.t2.penup()
         self.t2.goto(position)
@@ -80,13 +80,14 @@ class TurtleWindow:
         time.sleep(0.5)
         return True
 
-    def turtle_focused_text(self, string):
-        """Used to add large text in the middle of the screen, clears the screen before and after message"""
+    def turtle_focused_text(self, string, position=(0, 0)):
+        """Used to add large text in the middle of the screen, clears the screen before and after message.
+        Takes an optional after string input to modify the position of the message"""
         self.t2.pencolor(45, 83, 98)
         self.t.clear()
         self.t1.clear()
         self.t2.penup()
-        self.t2.goto(0, 0)
+        self.t2.goto(position)
         self.t2.clear()
         self.t2.write(string, move=False, align="center", font=("Courier New", 30, "bold"))
         time.sleep(3)
