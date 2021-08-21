@@ -110,7 +110,6 @@ The new features we achieved are detailed below:
   - Start guessing and have fun!
   - You have the option to play again at the end.
   - Alternatively you can open up your terminal, navigate to correct folder and type `python main.py` to run the game
-  - And most importantly, have fun!
 
 
 - **Levels Mode**
