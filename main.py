@@ -5,6 +5,7 @@ import turtle
 from turtle_window import Donatello
 from word_picker import word_task
 
+
 class PlayGame:
     def __init__(self):
         self.username = None
@@ -12,16 +13,21 @@ class PlayGame:
         self.words_list = None
 
     def play_again(self):
-        return turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y"
+        if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
+            return True
+        else:
+            return False
 
     def loading_screen(self, message):
         Donatello.turtle_focused_text(message)
-        Donatello.turtle_focused_text("Your word will be hidden below. Good luck.")  #, move=False, align="center", font=("Courier New", 30, "bold"))
+        Donatello.turtle_focused_text(
+            "Your word will be hidden below. Good luck.")  # , move=False, align="center", font=("Courier New", 30, "bold"))
         turtle.pencolor(45, 83, 98)
         for c in range(4):
             turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
             time.sleep(random.uniform(0.3, 0.8))
             turtle.clear()
+        return True
 
     def run_game(self):
         game1 = self.level(self.username, self.words_list)
@@ -34,6 +40,7 @@ class PlayGame:
             if game1.attempts <= 0:
                 break
         turtle.clear()
+        return True
 
 
 class LevelsMode(PlayGame):
@@ -47,15 +54,18 @@ class LevelsMode(PlayGame):
             'Hard': Hard
         }
         self.is_custom_list = None
+        self.list_type = None
 
     def initiate_levels(self):
         self.ask_level()
         self.check_level()
         self.set_words_list()
+        return True
 
     def ask_level(self):
         self.selected_level = turtle.textinput("WordGuesser",
-                                      f"And which level would you like to play? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
+                                               f"And which level would you like to play? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
+        return True
 
     def check_level(self):
         if self.selected_level in self.available_levels:
@@ -66,20 +76,29 @@ class LevelsMode(PlayGame):
             return self.ask_level()
 
     def ask_if_custom_list(self):
-        return turtle.textinput("WordGuesser", "Do you want to use a custom words list? y/n: ").lower().strip() == "y"
+        self.is_custom_list = turtle.textinput("WordGuesser",
+                                               "Do you want to use a custom words list? y/n: ").lower().strip()
+        if self.is_custom_list == "y":
+            return True
+        else:
+            return False
 
     def set_words_list(self):
         if self.ask_if_custom_list():
             self.list_type = 'custom'
             self.words_list = turtle.textinput("WordGuesser",
-                                               "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(", ")
+                                               "Please enter the words separated by a comma, e.g. car, plane, ... \n").lower().split(
+                ", ")
+            return False
         else:
             self.list_type = 'default'
             self.words_list = list(word_task.only_words)
-            
+            return True
+
     def play_levels(self):
         self.loading_screen(f'You will be using a {self.list_type} list\nwith {self.selected_level} difficulty')
         self.run_game()
+        return True
 
 
 class CampaignMode(PlayGame):
@@ -101,17 +120,25 @@ def ask_name():
     name = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
     return name
 
+
 def ask_mode():
     game_mode = turtle.textinput("WordGuesser",
-                            f"Which mode would you like to play, {name}? Campaign, or Levels? ").lower().strip()
+                                 f"Which mode would you like to play, {name}? Campaign, or Levels? ").lower().strip()
     if game_mode in ['campaign', 'levels']:
         return game_mode
     return ask_mode()
 
 
-
 if __name__ == "__main__":
     # stuff only to run when not called via 'import' here
+# THIS NEEDS TO BE COMMENTED OUT WHEN RUNNING MAIN
+#     PlayGame()
+#     LevelsMode()
+#     CampaignMode()
+#     ask_name()
+#     ask_mode()
+
+# THIS NEEDS TO BE COMMENTED OUT WHEN TESTING
     is_first_play = True
     keep_playing = False
     turtle.ht()
@@ -129,4 +156,3 @@ while is_first_play or playthrough.play_again():
         playthrough = LevelsMode(name)
         playthrough.initiate_levels()
         playthrough.play_levels()
-
