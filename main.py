@@ -153,7 +153,9 @@ def ask_mode():
                                  f"Which mode would you like to play, {username}? Campaign, or Levels? ").lower().strip()
     if game_mode in ['campaign', 'levels']:
         return game_mode
-    return Donatello.turtle_focused_text("Invalid mode! Try again"), ask_mode()  # TODO CHECK IF WORKS
+    else:
+        Donatello.turtle_focused_text("Invalid mode! Try again")
+        return ask_mode()
 
 
 if __name__ == "__main__":
