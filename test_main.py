@@ -46,6 +46,7 @@ class TestLevelsMode(unittest.TestCase):
     def test_play_levels(self):
         pass
 
+
     ## HELPER FUNCTIONS - can't be tested with test_initiate_levels ##
 
     """Type beginner, medium or hard"""

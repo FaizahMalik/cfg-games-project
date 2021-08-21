@@ -21,7 +21,7 @@ class PlayGame:
     def loading_screen(self, message):
         Donatello.turtle_focused_text(message)
         Donatello.turtle_focused_text(
-            "Your word will be hidden below. Good luck.")  # , move=False, align="center", font=("Courier New", 30, "bold"))
+            "Your word will be hidden below. Good luck.")
         turtle.pencolor(45, 83, 98)
         for c in range(4):
             turtle.write("LOADING" + c * " .", move=False, align="center", font=("Courier New", 30, "bold"))
@@ -56,34 +56,40 @@ class LevelsMode(PlayGame):
         self.is_custom_list = None
         self.list_type = None
 
+
     def initiate_levels(self):
+        """Runs the level and list selection process.
+        The user will be prompted to enter a valid level until one has been provided"""
         self.ask_level()
-        self.check_level()
+        while not self.check_level():
+            self.ask_level()
         self.set_words_list()
         return True
 
     def ask_level(self):
+        """Asks the user to type which level they want to select and saves it to an attribute"""
         self.selected_level = turtle.textinput("WordGuesser",
                                                f"And which level would you like to play? {'/'.join(self.available_levels.keys())}: ").capitalize().strip()
         return True
 
     def check_level(self):
+        """Checks if the level selected is an available level"""
         if self.selected_level in self.available_levels:
             self.level = self.available_levels[self.selected_level]
             return True
         else:
             Donatello.turtle_focused_text("Not a valid level! Try again.")
-            return self.ask_level()
-
-    def ask_if_custom_list(self):
-        self.is_custom_list = turtle.textinput("WordGuesser",
-                                               "Do you want to use a custom words list? y/n: ").lower().strip()
-        if self.is_custom_list == "y":
-            return True
-        else:
             return False
 
+    def ask_if_custom_list(self):
+        """Asks the user if they want to use a custom list, checks if the answer == 'y' and returns true or false"""
+        self.is_custom_list = turtle.textinput("WordGuesser",
+                                               "Do you want to use a custom words list? y/n: ").lower().strip()
+        return self.is_custom_list == "y"  # This statement evaluates to True or False, so no need for an if statement.
+
+
     def set_words_list(self):
+        """Checks if ask_if_custom_list() is True or False and sets the list type and list words accordingly"""
         if self.ask_if_custom_list():
             self.list_type = 'custom'
             self.words_list = turtle.textinput("WordGuesser",
@@ -96,63 +102,75 @@ class LevelsMode(PlayGame):
             return True
 
     def play_levels(self):
+        """The loading screen will appear with the specified message and then it runs the game"""
         self.loading_screen(f'You will be using a {self.list_type} list\nwith {self.selected_level} difficulty')
         self.run_game()
         return True
 
 
-class CampaignMode(PlayGame):
+class CampaignMode(PlayGame):  # This is our campaign mode where the user will cycle through a set of tasks
     def __init__(self, username):
         super().__init__()
         self.username = username
-        self.level = Beginner
+        self.level = Beginner  # Beginner difficulty by default.
+        self.task_range = (10)
 
     def play_campaign(self):
+        """Shows the loading screen with a message. Then calls task_cycle()"""
         self.loading_screen(f'You are playing campaign mode')
-        for task_num in range(1, 11):
+        self.task_cycle()
+        return True
+
+    def task_cycle(self):
+        """Cycles through the tasks and runs the game after setting the words_list to the task word,
+        and displaying the task message on the Turtle window"""
+        for task_num in range(self.task_range):
             task = word_task.get_word_of_task(task_num)  # task = (task given, word to guess)
-            Donatello.turtle_text(task[0], (-220, 325))
-            self.words_list = [task[1]]
+            Donatello.turtle_text(f'{task_num}. {task[0]}', (-220, 325))  # task[0] is where the task instructions are stored
+            self.words_list = [task[1]]  # task[1] is where the task answer word is stored
             self.run_game()
 
 
 def ask_name():
+    """Asks the user for their name, and returns it"""
     name = turtle.textinput("WordGuesser", "Hi there! What's your name? ")
     return name
 
 
 def ask_mode():
+    """Asks the user which mode they want to play, returns the mode if it exists.
+    If they enter an invalid mode, it will alert the user and ask again (recursively)"""
     game_mode = turtle.textinput("WordGuesser",
-                                 f"Which mode would you like to play, {name}? Campaign, or Levels? ").lower().strip()
+                                 f"Which mode would you like to play, {username}? Campaign, or Levels? ").lower().strip()
     if game_mode in ['campaign', 'levels']:
         return game_mode
-    return ask_mode()
+    return Donatello.turtle_focused_text("Invalid mode! Try again"), ask_mode()  # TODO CHECK IF WORKS
 
 
 if __name__ == "__main__":
     # stuff only to run when not called via 'import' here
+    is_first_play = True
+    keep_playing = False
+    turtle.ht()  # Hides turtle cursor
+
+    while is_first_play or playthrough.play_again():
+        if is_first_play:
+            is_first_play = False
+            Donatello.welcome_screen()
+            username = ask_name()
+        mode = ask_mode()
+        if mode == 'campaign':
+            playthrough = CampaignMode(username)
+            playthrough.play_campaign()
+        elif mode == 'levels':
+            playthrough = LevelsMode(username)
+            playthrough.initiate_levels()
+            playthrough.play_levels()
+
+
 # THIS NEEDS TO BE COMMENTED OUT WHEN RUNNING MAIN
 #     PlayGame()
 #     LevelsMode()
 #     CampaignMode()
 #     ask_name()
 #     ask_mode()
-
-# THIS NEEDS TO BE COMMENTED OUT WHEN TESTING
-    is_first_play = True
-    keep_playing = False
-    turtle.ht()
-
-while is_first_play or playthrough.play_again():
-    if is_first_play:
-        is_first_play = False
-        Donatello.welcome_screen()
-        name = ask_name()
-    mode = ask_mode()
-    if mode == 'campaign':
-        playthrough = CampaignMode(name)
-        playthrough.play_campaign()
-    elif mode == 'levels':
-        playthrough = LevelsMode(name)
-        playthrough.initiate_levels()
-        playthrough.play_levels()
