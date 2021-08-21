@@ -1,11 +1,13 @@
 ![img.png](README_images/wordguesser_logo.png)
 
+---
 
 ## ABOUT
 
 ---
-WordGuesser is a game that allows the user to guess the correct keyword. Depending on which game mode the user chooses the number of attempts varies. 
-Our group project, WordGuesser, is entirely written in Python (apart from README.md which is in English).
+
+WordGuesser is our group project for the Code First Girls Nanodegree 2021. It is entirely written in Python (apart from README.md which is in English).
+This game allows the user to guess characters in a given word for a limited number of tries. Once the attempts are exhausted, the user loses. If the user guesses the word correctly, they win.
 
 ### Project plan
 
@@ -37,10 +39,10 @@ The new features we achieved are detailed below:
   - Add a new game mode called **Campaign** where the user can make their way through given tasks.
 
 
-  - **Draw a picture of a turtle** in steps each time the user guesses wrong using Turtle Graphics
+  - **Draw a picture of a turtle** in steps using Turtle Graphics each time the user guesses incorrectly.
 
 
-  - **Display messages on the Turtle screen** whether they guessed the wrong or right character or the correct full word.
+  - **Display messages on the Turtle screen** alerting whether the user guessed a wrong character, right character or the correct full word.
 
 
   - Check whether the user **already guessed a letter** and alert them, also don't take away from remaining attempts
@@ -57,7 +59,7 @@ The new features we achieved are detailed below:
 
   - Make the program more user-friendly by:
 
-    - Allow the program to take **user inputs from Turtle** window pop-ups rather than from console.
+    - Allowing the program to take **user inputs from Turtle** window pop-ups rather than from console.
     
     - Adding a **welcome, goodbye and loading screen**
     - Tell the user which mode and which difficulty they are playing during the loading screen
@@ -127,7 +129,7 @@ The new features we achieved are detailed below:
   
 ---
 
-## Files
+  ## FILES
 
 ---
 
