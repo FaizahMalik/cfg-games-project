@@ -33,8 +33,10 @@ Includes the following modules:
   - The main logic of the game can be found here. This file is imported into main.py
 - #### main.py
   - This is where the game is run from.
+- #### test_main.py
+  - Thia is the file with the unit tests for the main.py file. Instructions on how to run the tests are at the bottom of the file, as well as at the bottom of the main.py file.
 - #### test_levels.py
-  - This is where you will find the unit tests we have written for our main.py file, instructions on how to run the tests are at the bottom of the file
+  - This is where you will find the unit tests we have written for our levels.py file, instructions on how to run the tests are at the bottom of the file
 - #### test_turtle_window.py
   - Here you will find the unit tests we have written for the turtle_window.py file, instructions on how to run the tests are at the bottom of the file
 - #### turtle_window.py
