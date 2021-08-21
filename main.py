@@ -16,6 +16,7 @@ class PlayGame:
         if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
             return True
         else:
+            Donatello.goodbye_screen()
             return False
 
     def loading_screen(self, message):
