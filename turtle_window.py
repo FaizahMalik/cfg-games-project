@@ -28,7 +28,7 @@ class TurtleWindow:
         self.t1.speed(5)
         self.t1.pensize(4)
         self.t1.penup()
-        self.t1.goto(-350, -250)
+        self.t1.goto(-350, -230)
         self.t1.pendown()
         self.t1.write(word, move=False, align="center", font=("arial", 25, "normal"))
         return True
@@ -69,7 +69,7 @@ class TurtleWindow:
         time.sleep(2)
         return True
       
-    def turtle_text(self, string, position=(200, -275)):
+    def turtle_text(self, string, position=(200, -250)):
         """Function for adding small text on the bottom right of the screen without clearing anything else.
         Takes an optional after string input to modify the position of the message"""
         self.t2.pencolor(45, 83, 98)
