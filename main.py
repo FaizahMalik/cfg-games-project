@@ -31,6 +31,8 @@ class PlayGame:
             return PlayGame.ask_mode()
 
     def play_again(self):
+        """Asks the user if they want to play again,
+        returns true if response is y and returns false otherwise after showing the goodbye screen"""
         if turtle.textinput("WordGuesser", "Do you want to play again? y/n: ").lower().strip() == "y":
             return True
         else:
@@ -38,6 +40,7 @@ class PlayGame:
             return False
 
     def loading_screen(self, message):
+        """Shows the loading screen when called with a specified message"""
         Donatello.turtle_focused_text(message)
         Donatello.turtle_focused_text("Your word will be hidden below. Good luck.")
         turtle.pencolor(45, 83, 98)
@@ -48,6 +51,7 @@ class PlayGame:
         return True
 
     def run_game(self):
+        """Runs the actual game"""
         game1 = self.level(self.username, self.words_list)
         game1.pick_word()
         game1.show_word()
