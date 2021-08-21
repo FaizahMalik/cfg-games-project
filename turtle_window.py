@@ -98,10 +98,10 @@ class TurtleWindow:
 
     # draw body
     def draw_body(self):
-        self.t.penup()
         self.t.reset()
         self.t.ht()
         self.t.pensize(8)
+        self.t.penup()
         self.t.goto(0, -150)
         self.t.pendown()
         self.t.pencolor('dark green')
