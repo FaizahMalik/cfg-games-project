@@ -164,12 +164,8 @@ class CampaignMode(PlayGame):  # This is our campaign mode where the user will c
             self.run_game()
 
 
-
-
-if __name__ == "__main__":
-    # stuff only to run when not called via 'import' here
+def run():
     is_first_play = True
-    keep_playing = False
     turtle.ht()  # Hides turtle cursor
     username = ''
 
@@ -186,6 +182,10 @@ if __name__ == "__main__":
             playthrough = LevelsMode(username)
             playthrough.initiate_levels()
             playthrough.play_levels()
+
+if __name__ == "__main__":
+    # stuff only to run when not called via 'import' here
+    run()
 
 
 # THIS NEEDS TO BE COMMENTED OUT WHEN RUNNING MAIN
