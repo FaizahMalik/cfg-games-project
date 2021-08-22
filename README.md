@@ -16,7 +16,7 @@ This game allows the user to guess characters in a given word for a limited numb
 **MVP**
 
 Our plan was to first define and create a Minimum Viable Product (MVP). As an MVP, program should allow the user to:
-- Select a random word from a words list, 
+- Select a random word from a words list
 - Show the selected words in a hidden format i.e. "_ _ _ _"
 - Allow the user to guess a letter or word
 - Process that guess and tell them whether they are wrong or right
@@ -118,8 +118,8 @@ Below is a rough, informal chart on the game logic
   - Questions will appear on a pop-up window
   - Answer the questions and tell WordGuesser which game mode you would like to play
   - Start guessing and have fun!
-  - You have the option to play again at the end.
-  - Alternatively you can open up your terminal, navigate to correct folder and type `python main.py` to run the game
+  - You have the option to play again at the end of each round
+  - Alternatively you can open up your terminal, navigate to the correct folder and type `python main.py` to run the game
 
 
 - **Levels Mode**
