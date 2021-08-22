@@ -1,5 +1,5 @@
 import unittest
-from main import PlayGame, LevelsMode, CampaignMode, ask_mode, ask_name
+from main import PlayGame, LevelsMode, CampaignMode
 from levels import Beginner
 
 
@@ -11,8 +11,15 @@ class TestPlayGame(unittest.TestCase):
         # self.test.words_list = ['test']
         self.test.game1 = Beginner('v', ['car'])
 
-    """Turtle will ask for input twice."""
+    """type test"""
+    def test_ask_name(self):
+        self.assertEqual(self.test.ask_name(), 'test')
 
+    def test_ask_mode(self):
+        self.assertEqual(self.test.ask_mode('tester'), 'campaign')
+        self.assertEqual(self.test.ask_mode('tester'), 'levels')
+
+    """Turtle will ask for input twice."""
     def test_play_again(self):
         # type y
         self.assertTrue(self.test.play_again())
@@ -22,10 +29,10 @@ class TestPlayGame(unittest.TestCase):
     def test_loading_screen(self):
         self.assertTrue(self.test.loading_screen('This is a test.'))
 
-
 # PROBLEMS TO TEST
 # def test_run_game(self):
 #     self.assertTrue(self.test.run_game())
+
 
 class TestLevelsMode(unittest.TestCase):
     def setUp(self):
@@ -37,7 +44,6 @@ class TestLevelsMode(unittest.TestCase):
     #     self.assertTrue(self.test2.initiate_levels())
 
     """First type y and car, when prompted a second time type n"""
-
     def test_set_words_list(self):
         self.assertFalse(self.test2.set_words_list())
         self.assertTrue(self.test2.set_words_list())
@@ -58,7 +64,7 @@ class TestLevelsMode(unittest.TestCase):
     #
     # """Type y and then n"""
     # can't be tested with set_words_list()
-    # def test_ask_if_custom(self):
+    # def test_ask_if_custom_list(self):
     #     self.assertTrue(self.test2.ask_if_custom_list())
     #     self.assertFalse(self.test2.ask_if_custom_list())
 
@@ -67,21 +73,24 @@ class TestCampaignMode(unittest.TestCase):
     def setUp(self):
         self.test3 = CampaignMode('V')
 
+    def test_display_task(self):
+        self.assertTrue(self.test3.display_task('test'))
+
     # DIFFICULT TO TEST
     def test_play_campaign(self):
+        pass
+
+    # DIFFICULT TO TEST
+    def test_task_cycle(self):
         pass
 
 
 class TestMain(unittest.TestCase):
 
-## Not working at the moment
-    # def test_ask_mode(self):
-    #     self.assertEqual(ask_mode(), 'campaign')
+    #DIFFICULT TO TEST
+    def test_run(self):
+        pass
 
-    ## HELPER FUNCTION - can't be run with ask_mode()
-    """type test"""
-    def test_ask_name(self):
-        self.assertEqual(ask_name(), 'test')
 
 
 if __name__ == '__main__':
