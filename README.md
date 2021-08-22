@@ -16,12 +16,13 @@ This game allows the user to guess characters in a given word for a limited numb
 **MVP**
 
 Our plan was to first define and create a Minimum Viable Product (MVP). As an MVP, program should allow the user to:
-- select a random word from a words list, 
-- show the hidden words in a "_ _ _ _" format 
-- allow the user to guess a letter or word
-- process that guess and tell them whether they are wrong or right
-- replace the hidden word "_ _ _ _" with the correctly guessed characters in the right positions
-- ask the user again until the whole word has been guessed
+- Select a random word from a words list, 
+- Show the selected words in a hidden format i.e. "_ _ _ _"
+- Allow the user to guess a letter or word
+- Process that guess and tell them whether they are wrong or right
+- Replace the hidden word with the correctly guessed characters in the right positions. i.e. if they guess "L" in "hello" then it should show as "_ _ l l _"
+- Ask the user again until the whole word has been guessed or until they run out of attempts
+
 
 ---
 
@@ -63,6 +64,15 @@ The new features we achieved are detailed below:
     
     - Adding a **welcome, goodbye and loading screen**
     - Tell the user which mode and which difficulty they are playing during the loading screen
+
+---
+
+**Logic**
+
+Below is a rough, informal chart on the game logic
+
+
+![img.png](README_images/game_flowchart.png)
 
 
 
