@@ -15,15 +15,12 @@ class Level:  # main parent class
 
     def draw(self):  # helper function to incorrect_guess()
         """Calls the draw method where self.attempt is the key"""
-        try:
-            for draw_method in self.turtle_drawings[self.attempts]:
-                method = getattr(Donatello, draw_method)
-                method()
-            if self.attempts > 10:
-                raise Exception(KeyError)
-        except KeyError:
-            print("missing key in self.turtle_drawings")
-            return False
+        if self.attempts not in self.turtle_drawings:
+            raise KeyError(f"missing key: {self.attempts} in self.turtle_drawings")
+
+        for draw_method in self.turtle_drawings[self.attempts]:
+            method = getattr(Donatello, draw_method)
+            method()
 
     def pick_word(self):
         """chooses a random word from given list"""
