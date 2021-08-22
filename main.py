@@ -165,6 +165,7 @@ class CampaignMode(PlayGame):  # This is our campaign mode where the user will c
 
 
 def run():
+    """Starts the game"""
     is_first_play = True
     turtle.ht()  # Hides turtle cursor
     username = ''
