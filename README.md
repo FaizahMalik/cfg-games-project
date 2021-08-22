@@ -16,7 +16,7 @@ This game allows the user to guess characters in a given word for a limited numb
 **MVP**
 
 Our plan was to first define and create a Minimum Viable Product (MVP). As an MVP, program should allow the user to:
-- select a random word from a words list, 
+- select a random word from a words list 
 - show the hidden words in a "_ _ _ _" format 
 - allow the user to guess a letter or word
 - process that guess and tell them whether they are wrong or right
@@ -33,7 +33,7 @@ The new features we achieved are detailed below:
   - Create different **difficulty levels** (Beginner, Medium, Hard) using inheritance.
 
 
-  - Create a new **words list** file which will have a huge list of words so that the user is less likely to get the same word twice.
+  - Create a new **words list** file which will have a list of 5,000 words so that the user is less likely to get the same word twice.
 
 
   - Add a new game mode called **Campaign** where the user can make their way through given tasks.
@@ -81,15 +81,15 @@ The new features we achieved are detailed below:
 
 
 - **Json**
-  - Used as a way for the program to write the entire words list into a json file which will be used to select words from.
+  - Used to write the entire words list into a json file as well as read from it. The words for the game are selected from the json file.
 
 - **NLTK**
-  - Used to generate the list of words for the game
+  - Used to generate the list of words for the game from the Brown corpus.
 
 - **Collections - counter**
-  - From Collections we use the counter function to identify words with all unique characters from the words list and have the user guess them in the unique characters task in campaign mode.
+  - From Collections we use Counter to determine whether the word has all unique characters. The is_unique_chars() method in the WordPicker class is later used various tasks for the Campaign mode.
   
-
+  
 - **Unittest**
   - Allows us to write unit tests for each function or class method in the program to ensure that they all work
 
@@ -122,9 +122,9 @@ The new features we achieved are detailed below:
 
 
 - **Campaign Mode**
-  - This mode will run through 10 given tasks.
-  - Each task comes with instructions like "Guess a word with all unique characters"
-  - This mode uses Beginner difficulty by default
+  - This mode will run through 10 different tasks.
+  - Each task comes with instructions like "Guess a word with all unique characters".
+  - This mode uses Beginner difficulty by default.
   
 ---
 
@@ -152,8 +152,6 @@ The new features we achieved are detailed below:
     - Display text, focused or on the side
     - Show the welcome and goodbye screens
 - `word_picker.py`
-  - This is where the WordPicker class which allows the user to play Campaign mode.
+  - This is where the WordPicker class is that allows the user to play Campaign mode as well as reads and processes the words_list.json file to produce the words to be guessed.
 - `words_list.json`
   - This file includes all the words we use in the WordGuesser game.
-
-  
