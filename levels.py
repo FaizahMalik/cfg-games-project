@@ -104,9 +104,8 @@ class Level:  # main parent class
         else:
             return False
 
-    def display_correct_guess(
-            self):  # relies on the results from correct_word() and correct_guess() | helper function to
-        # incorrect_guess()
+    def display_correct_guess(self):
+        # relies on the results from correct_word() and correct_guess() | helper function to incorrect_guess()
         """Displays the word or a letter if the guess was correct."""
         if self.correct_word():  # *** guessed all characters
             Donatello.turtle_focused_text(f"Well done, the word was '{self.chosen_word.upper()}'")
