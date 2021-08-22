@@ -21,7 +21,7 @@ Our plan was to first define and create a Minimum Viable Product (MVP). As an MV
 - Allow the user to guess a letter or word
 - Process that guess and tell them whether they are wrong or right
 - Replace the hidden word with the correctly guessed characters in the right positions. i.e. if they guess "L" in "hello" then it should show as "_ _ l l _"
-- Ask the user again until the whole word has been guessed or until they run out of attempts
+- Ask the user to guess again until the whole word has been guessed or until the user runs out of attempts
 
 
 ---
