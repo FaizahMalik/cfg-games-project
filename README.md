@@ -46,7 +46,7 @@ The new features we achieved are detailed below:
   - **Display messages on the Turtle screen** alerting whether the user guessed a wrong character, right character or the correct full word.
 
 
-  - Check whether the user **already guessed a letter** and alert them, also don't take away from remaining attempts
+  - Check whether the user **already guessed a letter** and alert them, and do not subtract from remaining attempts for guessing a previously guessed letter.
 
 
   - Detect special characters and alert that **only exclusively letters** are allowed, again don't take away from remaining attempts
@@ -55,21 +55,20 @@ The new features we achieved are detailed below:
   - During the mode selection process, if the **user spells 'campaign' or 'levels' wrong**, alert them and ask again until correct.
 
 
-  - Same with the level selection process, if the **user spells any of the levels wrong**, alert and ask again until correct
+  - Same with the level selection process, if the **user spells any of the levels wrong**, alert and ask again until correct.
 
 
   - Make the program more user-friendly by:
 
     - Allowing the program to take **user inputs from Turtle** window pop-ups rather than from console.
-    
-    - Adding a **welcome, goodbye and loading screen**
-    - Tell the user which mode and which difficulty they are playing during the loading screen
+    - Adding a **welcome, goodbye and loading screen**.
+    - Tell the user which mode and which difficulty they are playing during the loading screen.
 
 ---
 
 **Logic**
 
-Below is a rough, informal chart on the game logic
+Below is a rough, informal chart on the game algorithm.
 
 
 ![img.png](README_images/game_flowchart.png)
@@ -81,25 +80,22 @@ Below is a rough, informal chart on the game logic
 ---
 
 - **Turtle**
-  - Used to allow program to create a drawing of a turtle in steps each time the user guesses a letter incorrectly 
-  - Also, for displaying messages and the hidden word in the Turtle Graphics window.
+  - Used to allow program to create a drawing of a turtle in steps each time the user guesses a letter incorrectly
+  - Also, for displaying messages and the hidden word in the Turtle Graphics window
   - Allows the user to input messages in a text bar within a small pop-up window titled 'WordGuesser'
-
 
 - **Random**
   - Allows the program to select a random choice from a list of words to be guessed so that the user does not receive the same word everytime
 
-
 - **Json**
-  - Used to write the entire words list into a json file as well as read from it. The words for the game are selected from the json file.
+  - Used to write the entire words list into a json file as well as read from it. The words for the game are selected from the json file
 
 - **NLTK**
   - Used to generate the list of words for the game
 
 - **Collections - counter**
-  - From Collections we use Counter to determine whether a word has all unique characters. This is useful for certain tasks in Campaign mode.
+  - From Collections we use Counter to determine whether a word has all unique characters. This is useful for certain tasks in Campaign mode
   
-
 - **Unittest**
   - Allows us to write unit tests for each function or class method in the program to ensure that they all work
 
@@ -143,27 +139,25 @@ Below is a rough, informal chart on the game logic
 ---
 
 - `create_json_wordsfile.py`
-  - The code in this file was used to create our json words file. Do not run it again.
+  - The code in this file was used to create our json words file. Do not run it again
 - `levels.py`
   - The main logic of the game can be found here. Each level is separated into a subclass (Beginner, Medium, Hard). This file is imported into main.py
 - `main.py`
-  - This is where the game is run from.
+  - This is where the game is run from
 - `test_main.py`
-  - This is the file with the unit tests for the main.py file. Instructions on how to run the tests are at the bottom of the file, as well as at the bottom of the main.py file.
+  - This is the file with the unit tests for the main.py file. Instructions on how to run the tests are at the bottom of the file, as well as at the bottom of the main.py file
 - `test_levels.py`
   - This is where you will find the unit tests we have written for our levels.py file, instructions on how to run the tests are at the bottom of the file
 - `test_turtle_window.py`
   - Here you will find the unit tests we have written for the turtle_window.py file, instructions on how to run the tests are at the bottom of the file
 - `turtle_window.py`
-  - This is where the code that runs the turtle module can be found.
+  - This is where the code that runs the turtle module can be found
   - Includes the class TurtleWindow with methods that allow us to:
-    - Create the turtle drawing in steps, method-by-method;
-    - Clear and reset everything in Turtle.
+    - Create the turtle drawing in steps, method-by-method
+    - Clear and reset everything in Turtle
     - Display text, focused or on the side
     - Show the welcome and goodbye screens
 - `word_picker.py`
-  - Includes the WordPicker class, which holds all of the tasks for Campaign mode, and selects the random words for the associated tasks.
+  - Includes the WordPicker class, which holds all of the tasks for Campaign mode, and selects the random words for the associated tasks
 - `words_list.json`
-  - This file includes all the words we use in the WordGuesser game.
-
-  
+  - This file includes all the words we use in the WordGuesser game
