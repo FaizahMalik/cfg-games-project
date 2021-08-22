@@ -187,11 +187,3 @@ def run():
 if __name__ == "__main__":
     # stuff only to run when not called via 'import' here
     run()
-
-
-# THIS NEEDS TO BE COMMENTED OUT WHEN RUNNING MAIN
-#     PlayGame()
-#     LevelsMode()
-#     CampaignMode()
-#     ask_name()
-#     ask_mode()
