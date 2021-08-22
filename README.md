@@ -83,6 +83,8 @@ The new features we achieved are detailed below:
 - **Json**
   - Used as a way for the program to write the entire words list into a json file which will be used to select words from.
 
+- **NLTK**
+  - Used to generate the list of words for the game
 
 - **Collections - counter**
   - From Collections we use the counter function to identify words with all unique characters from the words list and have the user guess them in the unique characters task in campaign mode.
@@ -91,8 +93,6 @@ The new features we achieved are detailed below:
 - **Unittest**
   - Allows us to write unit tests for each function or class method in the program to ensure that they all work
 
-
-- **NLTK**
   
 
 
