@@ -20,10 +20,8 @@ class WordPicker:
     def is_unique_chars(self, word):
         """Returns True if all letters in the word are unique. Otherwise, returns False."""
         freq = Counter(word)
-        if len(freq) == len(word):
-            return True
-        else:
-            return False
+        return len(freq) == len(word)
+
 
     def is_palindrome(self, word):
         """Returns True if the word is a palindrome. Otherwise, returns False."""
