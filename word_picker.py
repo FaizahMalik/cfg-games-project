@@ -28,7 +28,7 @@ class WordPicker:
         return word == word[::-1]
 
     def get_word_of_task(self, task_num):
-        """Accepts the number of the task as an integer (from 1 to 10) and returns a tuple:
+        """Accepts the number of the task as an integer (from 0 to 9) and returns a tuple:
         (message_for_the_user, word_to_guess)"""
 
         if task_num == 0:
